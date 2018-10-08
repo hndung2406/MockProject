@@ -1,0 +1,83 @@
+#site-header {
+	margin-bottom: 1rem;
+	margin-top: 0;
+	background-color: #7f5a83;
+	background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+	
+	font-family: 'Roboto', "Heveltica";
+	margin-bottom: 0;
+	
+}
+
+
+.site-header--top {
+	padding-top: 0.4rem;
+}
+
+.site-header__icon {
+	
+	border-radius: 0.2rem;
+	margin-left: 1rem;
+	color:#fff;	
+	border-radius: 0.2rem;	
+}
+
+.site-header__icon .site-header__icon--link:hover{
+	background: orange;
+	color: #fff;
+	text-decoration: none;
+	padding: 0.4rem;
+	border-radius: 0.3rem;
+}
+
+.site-header__brand-image {
+	transform: translateY(-30%);
+	width: 15rem;
+	
+}
+
+.site-header--main {
+	margin-top: 0.5rem;
+}
+
+.site-search {
+	
+	
+	padding:0;
+	display: flex;
+	
+	flex-direction: column;
+	justify-content: center;
+}
+
+.site-search__btn--category {
+	color:#fff;*/
+}
+
+.site-search__btn--category:hover {
+	background: orange;
+}
+
+.site-search__input {
+	padding: 
+}
+
+.site-header__cart {	
+	text-align: center;
+	font-size: 1.3rem;
+	color: #fff;
+}
+
+.site-header__cart a {
+	
+	background: orange;
+	color: #fff;
+	padding:0.5rem;
+	border-radius: 0.3rem;
+	text-decoration: none;
+}
+
+.site-header__cart--text {
+	font-size: 0.9rem;
+	color: #ccc;
+}

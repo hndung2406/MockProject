@@ -1,0 +1,22 @@
+/*Footer style*/
+#site-footer {
+	background: black;
+	color: #ccc;
+}
+
+.site-footer__row--secondary {
+	margin-top: 2rem;
+
+}
+
+
+/*Utility class */
+
+.social-icon {
+
+}
+
+.social-icon {
+	color: orange;
+	margin: 0 0.2rem;
+}
