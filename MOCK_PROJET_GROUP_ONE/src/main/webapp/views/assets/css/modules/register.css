@@ -1,0 +1,57 @@
+
+.register-form {
+	
+}
+
+.register-form img {
+	display:block; 
+	margin: 0 auto;
+}
+
+.register-form .name {
+font-weight: bold;
+}
+
+.register-form .email {
+font-weight: bold;
+}
+
+.register-form .password {
+font-weight: bold;
+}
+
+.register-form .repassword {
+font-weight: bold;
+}
+
+.register-form .button-sign-up {
+background-color: 	#FFA500;
+border-radius: 10px;
+height: 40px;
+width: 100px;
+color: white;
+width: 70%;
+font-weight: bold;
+}
+
+.register-form .card {
+border-radius: 20px;
+}
+
+.register-form .register-form {
+margin-top: 100px;
+margin-bottom: 100px;
+}
+
+.register-form .error-form {
+margin-left: 10px;
+font-size: 13px;
+color: red;
+}
+
+.register-form .account-existed {
+font-size: 14px;
+}
+.register-form .wrapper {
+	text-align: center;
+}

@@ -1,0 +1,66 @@
+.login-container {
+	font-family: 'Roboto', sans-serif;
+	height:100vh;
+}
+
+.login-container .email {
+	font-weight: bold;
+}
+
+.login-container .password {
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+.login-container #wrapper {
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login-container button {
+	background-color: #FFA500;
+	border-radius: 10px;
+	height: 40px;
+	width: 100px;
+	color: white;
+	width: 70%;
+	font-weight: bold;
+}
+
+.login-container .sign-in-form {
+	margin-top: 0px;
+	margin-bottom: 5.5rem;
+}
+
+.login-container .custom-control-register {
+	margin-top: 40px;
+}
+
+.login-container .card {
+	border-radius: 20px;
+}
+
+.login-container .account-link {
+	font-size: 14px;
+	margin-left: 30px;
+}
+
+.login-container .custom-control-label {
+	font-size: 15px;
+}
+
+.login-container .forgot-label {
+	font-size: 15px;
+}
+
+.login-container .center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-container .account-register {
+	font-size: 14px;
+}

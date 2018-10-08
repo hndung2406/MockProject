@@ -1,0 +1,37 @@
+
+
+.checkout-container {
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.checkout-container .payment-title {
+margin-top: 10px;
+}
+
+.checkout-container .payment-information {
+margin-bottom: 100px;
+}
+
+.checkout-container .checkout-container .credit-information {
+margin-top: 20px;
+}
+
+.checkout-container .card-summary {
+border-radius: 20px;
+}
+
+.checkout-container .row-max {
+margin-top: 20px;
+}
+
+.checkout-container .btn-submit {
+border-radius: 20px;
+width: 78px;
+background-color: #FFA500;
+}
+
+.checkout-container .btn-cancel {
+border-radius: 20px;
+width: 78px;
+}
