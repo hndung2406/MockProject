@@ -1,4 +1,4 @@
-CREATE DATABASE [mockproject];
+﻿CREATE DATABASE [mockproject];
 
 USE [mockproject];
 
@@ -71,3 +71,5 @@ CREATE TABLE [OrderDetail](
     FOREIGN KEY ([OrderId]) REFERENCES [Orders]([OrderId]) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY ([ProductId]) REFERENCES [Product]([ProductId]) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+SELECT * FROM Users;
