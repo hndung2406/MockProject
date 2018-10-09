@@ -28,7 +28,7 @@ public class StateDAOImpl implements StateDAO {
 		int affectedRow = 0;
 
 		try {
-			pstm = conn.prepareStatement(DbQuery.StateQuery.SAVE_NEW_STATE);
+			pstm = conn.prepareStatement(DbQuery.SAVE_NEW_STATE);
 			pstm.setString(1, state.getStateName());
 			affectedRow = pstm.executeUpdate();
 		} finally {

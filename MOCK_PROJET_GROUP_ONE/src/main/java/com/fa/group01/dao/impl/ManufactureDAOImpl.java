@@ -28,7 +28,7 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 		int affectedRow = 0;
 
 		try {
-			pstm = conn.prepareStatement(DbQuery.ManufactureQuery.SAVE_NEW_MANUFACTURE);
+			pstm = conn.prepareStatement(DbQuery.SAVE_NEW_MANUFACTURE);
 			pstm.setString(1, manufacture.getName());
 			affectedRow = pstm.executeUpdate();
 		} finally {
