@@ -4,6 +4,7 @@
 package com.fa.group01.service.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.fa.group01.dao.UserDAO;
 import com.fa.group01.entity.User;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
-	 * Save the register user to the database;
+	 * Save the register user to the database
 	 * @param user
 	 * @return
 	 * @throws SQLException
@@ -31,6 +32,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String registerUser(User user) throws SQLException {
 		return userDao.registerUser(user);
+	}
+
+	/**
+	 * Get all the user from the database
+	 * @return
+	 * @throws SQLException
+	 */
+	@Override
+	public List<User> findAll() throws SQLException {
+		return userDao.findAll();
 	}
 	
 }
