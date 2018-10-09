@@ -149,3 +149,36 @@ CREATE TABLE [OrderDetail](
 );
 GO
 
+
+--INSERT RECORDS
+
+--Country--
+INSERT INTO Country 
+VALUES ('Viet Nam')
+GO
+INSERT INTO Country 
+VALUES ('USA')
+GO
+
+--State--
+INSERT INTO State 
+VALUES ('Michigan')
+GO
+INSERT INTO State 
+VALUES ('Texas')
+GO
+
+--User
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
+VALUES ('hoanglatoi','Hoangday@7589','group01@domain.com','Nguyen','Dinh Hoang', 'admin', GETDATE(),1,1)
+GO
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
+VALUES ('dunglatoi','Dung@123','group01@domain.com','Hoang','Ngoc Dung', 'admin', GETDATE(),1,2)
+GO
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
+VALUES ('linhlatoi','Linh@123','group01@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE(),2,2)
+GO
+
+
+
+SELECT * FROM Users
