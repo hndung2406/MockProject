@@ -17,7 +17,7 @@
    <package name="authentication" extends="json-default">    	
     	
     	
-    	<action name="login" method="authenticate" class="com.fa.group01.action.UserAction">
+    	<action name="login" method="authenticate" class="com.fa.group01.action.AuthenticationAction">
     		<result name="success" type="json"></result>
     		<result name="fail" type="json"></result>
     	</action> 

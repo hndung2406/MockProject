@@ -31,13 +31,13 @@ public class UserDAOImpl implements UserDAO {
 		prepareStatement.setString(2, password);		
 		ResultSet resultSet = prepareStatement.executeQuery();
 		
-		while(resultSet.next()) {
-			resultSet.getInt("UserId");
-			resultSet.getString("UserName");
-			resultSet.getString("Password");
-			resultSet.getString("Email");
-			resultSet.getString("FirstName");
-		}
+//		while(resultSet.next()) {
+//			resultSet.getInt("UserId");
+//			resultSet.getString("UserName");
+//			resultSet.getString("Password");
+//			resultSet.getString("Email");
+//			resultSet.getString("FirstName");
+//		}
 		
 		return resultSet.next();
 	}
