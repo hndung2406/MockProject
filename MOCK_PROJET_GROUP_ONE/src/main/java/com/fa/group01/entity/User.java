@@ -4,6 +4,7 @@
 package com.fa.group01.entity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * @author nguyenthanhlinh
@@ -18,12 +19,12 @@ public class User {
 	private String userFirstName;
 	private String userLastName;
 	private String userRole;
-	private Date userCreateDate;
+	private Timestamp userCreateDate;
 	private Country country;
 	private State state;
 
 	public User(int userId, String userName, String userPassword, String userEmail, String userFirstName,
-			String userLastName, String userRole, Date userCreateDate, Country country, State state) {
+			String userLastName, String userRole, Timestamp userCreateDate, Country country, State state) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -97,11 +98,11 @@ public class User {
 		this.userRole = userRole;
 	}
 
-	public Date getUserCreateDate() {
+	public Timestamp getUserCreateDate() {
 		return userCreateDate;
 	}
 
-	public void setUserCreateDate(Date userCreateDate) {
+	public void setUserCreateDate(Timestamp userCreateDate) {
 		this.userCreateDate = userCreateDate;
 	}
 

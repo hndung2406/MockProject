@@ -13,4 +13,6 @@ public class DbLogging {
 	
 	public static final Logger LOGGER = Logger.getLogger(DbLogging.class);
 
+	public static final Logger LOG = Logger.getLogger(DbLogging.class);
+	
 }

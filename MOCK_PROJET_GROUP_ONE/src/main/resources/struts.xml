@@ -5,16 +5,31 @@
 
 <struts>
 
-    <constant name="struts.devMode" value="true" />
-	<package name="default" namespace="/" extends="struts-default">
-		<action name="addManufacture" class="com.fa.group01.action.AddManufactureAction" method="addManufacture">
+    <package name="group1" extends="struts-default">
+    
+    	<action name="registerUser" class="com.fa.group01.action.RegisterAction" method="registerUser">
+    		<result name="register">/views/pages/register.jsp</result>
+    		<result name="input">/views/pages/register.jsp</result>
+    	</action>
+    	
+    	<action name="addManufacture" class="com.fa.group01.action.AddManufactureAction" method="addManufacture">
 			<result name="success">/views/pages/admin-add-manufacture.jsp</result>
 			<result name="error">/views/pages/admin-add-manufacture.jsp</result>
 		</action>
+		
 		<action name="addState" class="com.fa.group01.action.StateAction" method="addState">
 			<result name="success">/views/pages/admin-add-state.jsp</result>
 			<result name="error">/views/pages/admin-add-state.jsp</result>
 		</action>
+    	
+    </package>
+	
+	<package name="json" extends="json-default">
+	
+		<action name="findAll" class="com.fa.group01.action.ReportAction" method="findAll">
+			<result name="report" type="json"></result>
+		</action>
+		
 	</package>
- 
+	
 </struts>
