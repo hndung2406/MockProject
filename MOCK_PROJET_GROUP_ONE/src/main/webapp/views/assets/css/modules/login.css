@@ -1,6 +1,6 @@
 .login-container {
 	font-family: 'Roboto', sans-serif;
-	height:100vh;
+	height:100vh;	
 }
 
 .login-container .email {
@@ -17,6 +17,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 }
 
 .login-container button {
@@ -63,4 +64,9 @@
 
 .login-container .account-register {
 	font-size: 14px;
+}
+
+
+.login-container label.error {
+	color:red;
 }

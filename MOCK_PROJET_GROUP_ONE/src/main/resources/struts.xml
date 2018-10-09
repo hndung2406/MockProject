@@ -5,8 +5,28 @@
 
 <struts>
 
-    <!-- <constant name="struts.devMode" value="true" /> -->
-
+    <!-- <constant name="struts.devMode" value="true" /> -->    
+    
+    <package name="default" extends="struts-default">
+    	<action name="">
+    		<result type="redirect">/views/index.jsp</result>
+    	</action> 
+   
+    </package>
+   
+   <package name="authentication" extends="json-default">    	
+    	
+    	
+    	<action name="login" method="authenticate" class="com.fa.group01.action.UserAction">
+    		<result name="success" type="json"></result>
+    		<result name="fail" type="json"></result>
+    	</action> 
+    	
+    </package>
+    
+    	
+    	
+    	
     
 
 </struts>
