@@ -9,4 +9,6 @@ package com.fa.group01.constants;
  */
 public class DbQuery {
 
+
+	
 }
