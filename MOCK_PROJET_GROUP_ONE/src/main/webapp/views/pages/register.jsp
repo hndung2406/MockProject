@@ -17,13 +17,6 @@
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="<c:url value="../assets/css/main.css"/>">
-<style>
-	.register-form {
-			
-	}
-	
-</style>
-
 
 </head>
 <body>	
@@ -39,32 +32,32 @@
 				<div class="card">
 					<h4 class="card-header" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">Start shopping with a Free Account</h4>
 					<div class="card-body">
-						<form action="">
+						<form action="registerUser" method="POST">
 							<div class="form-group">
 								<p class="name">Username</p>
-								<input type="text" class="form-control" placeholder="Your username">
+								<input type="text" class="form-control" placeholder="Your username" name="user.userName">
 								<span class="error-form">*Username is required</span>
 							</div>
 							<div class="form-group">
 								<p class="email">Email</p>
-								<input type="email" class="form-control" placeholder="youremail@gmail.com">
+								<input type="email" class="form-control" placeholder="youremail@gmail.com" name="user.userEmail">
 								<span class="error-form">*Email is required</span>
 							</div>
 							<div class="row">
 								<div class="form-group col-6">
 									<p class="email">First Name</p>
-									<input type="text" class="form-control" placeholder="First name">
+									<input type="text" class="form-control" placeholder="First name" name="user.userFirstName">
 									<span class="error-form">*First name is required</span>
 								</div>
 								<div class="form-group col-6">
 									<p class="email">Last Name</p>
-									<input type="text" class="form-control" placeholder="Last name">
+									<input type="text" class="form-control" placeholder="Last name" name="user.userLastName">
 									<span class="error-form">*Last name is required</span>
 								</div>
 							</div>
 							<div class="form-group">
 								<p class="password">Password</p>
-								<input type="password" class="form-control" placeholder="********">
+								<input type="password" class="form-control" placeholder="********" name="user.userPassword">
 								<span class="error-form">*Password is required</span>
 							</div>
 							<div class="form-group">
@@ -72,14 +65,14 @@
 								<input type="password" class="form-control" placeholder="********">
 								<span class="error-form">*Confirm password does not matched with password</span>
 							</div>
+							<div class="wrapper">
+                            	<button type="submit" class="button-sign-up">Sign up</button>
+                        	</div>
+							<hr>
+							<div class ="wrapper">
+								<span class="account-existed">Already have an account? <a href="login.jsp">Sign in</a></span>
+							</div>	
 						</form>
-						<div class="wrapper">
-							<button type="button" class="button-sign-up">Sign up</button>
-						</div>
-						<hr>
-						<div class ="wrapper">
-							<span class="account-existed">Already have an account? <a href="login.jsp">Sign in</a></span>
-						</div>
 					</div>
 
 				</div>
