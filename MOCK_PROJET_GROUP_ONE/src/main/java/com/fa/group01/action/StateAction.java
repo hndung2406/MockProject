@@ -6,45 +6,40 @@ package com.fa.group01.action;
 import java.sql.SQLException;
 
 import com.fa.group01.constants.PagesConstants;
-import com.fa.group01.entity.Manufacture;
+import com.fa.group01.entity.State;
 import com.fa.group01.logging.DbLogging;
-import com.fa.group01.service.ManufactureService;
-import com.fa.group01.service.impl.ManufactureServiceImpl;
+import com.fa.group01.service.StateService;
+import com.fa.group01.service.impl.StateServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author nguyenthanhlinh
  *
  */
-public class AddManufactureAction extends ActionSupport {
+public class StateAction extends ActionSupport {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ManufactureService manufactureService;
-	private Manufacture manufacture;
+	private StateService stateService;
+	private State state;
 	private String message;
-
-	/**
-	 * 
-	 */
-	public AddManufactureAction() {
-		this.manufactureService = new ManufactureServiceImpl();
+	
+	public StateAction() {
+		this.stateService = new StateServiceImpl();
 	}
-
-	/**
-	 * @return
-	 */
-	public String addManufacture() {
+	
+	public String addState() {
 		int isAddSuccess = 0;
+		
 		try {
-			isAddSuccess = this.manufactureService.save(manufacture);
+			isAddSuccess = this.stateService.save(state);
 		} catch (SQLException e) {
 			DbLogging.LOGGER.error("SQLException", e);
 		}
 		if (isAddSuccess > 0) {
-			this.message = "Add Success!!!";
+			this.message = "Add Success!!";
 			return PagesConstants.SUCCESS;
 		}
 		this.message = "Add Fail!!!";
@@ -52,17 +47,17 @@ public class AddManufactureAction extends ActionSupport {
 	}
 
 	/**
-	 * @return the manufacture
+	 * @return the state
 	 */
-	public Manufacture getManufacture() {
-		return manufacture;
+	public State getState() {
+		return state;
 	}
 
 	/**
-	 * @param manufacture the manufacture to set
+	 * @param state the state to set
 	 */
-	public void setManufacture(Manufacture manufacture) {
-		this.manufacture = manufacture;
+	public void setState(State state) {
+		this.state = state;
 	}
 
 	/**
