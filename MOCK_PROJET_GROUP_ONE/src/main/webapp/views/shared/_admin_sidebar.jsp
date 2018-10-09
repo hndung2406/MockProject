@@ -46,20 +46,27 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="user-management.jsp"><i class="fa fa-table fa-fw"></i> User Management</a>
-                        </li>
-                        <li>
                             <a href="../pages/admin-list-products.jsp"><i class="fa fa-table fa-fw"></i> List Product</a>
                         </li>
                         <li>
                             <a href="../pages/admin-list-order.jsp"><i class="fa fa-table fa-fw"></i> List Order</a>
                         </li>
-                        <li>
-                            <a href="../pages/admin-add-product.jsp"><i class="fa fa-edit fa-fw"></i> Add Product</a>
-                        </li>
+                       	<li>
+	                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-table fa-fw"></i> Content</a>
+                    		<div id="collapseOne" class="panel-collapse collapse">
+                        		<ul class="nav" id="side-menu">
+                        			<li>
+                        			     <a href="../pages/admin-add-product.jsp"><i class="fa fa-edit fa-fw"></i> Add Product</a>
+                        			</li>
+                        			<li>
+  										<a href="../pages/admin-add-state.jsp"><i class="fa fa-edit fa-fw"></i> Add State</a>
+                        			</li>
+                        			<li>
+										<a href="../pages/admin-add-manufacture.jsp"><i class="fa fa-edit fa-fw"></i> Add Manufacture</a>
+                        			</li>
+                        		</ul>
+                        	</div>
+                       	</li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

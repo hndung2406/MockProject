@@ -27,7 +27,7 @@ public class DatabaseConnect {
 			final String driver = properties.getProperty("driver");
 			final String server = properties.getProperty("server");
 			final String user = properties.getProperty("user");
-			final String pass = properties.getProperty("linh.pass");
+			final String pass = properties.getProperty("pass");
 			Class.forName(driver);
 			connection = DriverManager.getConnection(server, user, pass);
 		} catch (IOException | ClassNotFoundException | SQLException e) {

@@ -54,13 +54,16 @@
                                         <form role="form" class="form col-lg-11" action="addManufacture" method="post">
                                             <div class="form-group row">
                                                 <label>Manufacture Name</label>
-                                                <input class="form-control" name="manufacture.name" placeholder="Manufacture Name">
-                                                
+                                                <input class="form-control" name="manufacture.name" placeholder="Manufacture Name">   
                                             </div>
-                                            <span><c:out value="${message}"></c:out> </span>
+                                            
                                             <div class="row col-lg-12" style="padding-left:0;">
                                                 <button type="submit" class="btn btn-default">Submit Button</button>
                                                 <button type="reset" class="btn btn-default">Reset Button</button>
+                                            </div>
+                                            
+                                            <div class="row col-lg-12" style="padding-left:0;">
+                                            	<span><c:out value="${message}"></c:out> </span>
                                             </div>
                                             
                                         </form>

@@ -54,15 +54,15 @@
                                         <form role="form" class="form col-lg-11" action="addState" method="post">
                                             <div class="form-group row">
                                                 <label>State Name</label>
-                                                <input class="form-control" name="state.stateName" placeholder="State Name">
-                                                
+                                                <input class="form-control" name="state.stateName" placeholder="State Name">        
                                             </div>
-                                            <span><c:out value="${message}"></c:out> </span>
                                             <div class="row col-lg-12" style="padding-left:0;">
                                                 <button type="submit" class="btn btn-default">Submit Button</button>
                                                 <button type="reset" class="btn btn-default">Reset Button</button>
                                             </div>
-                                            
+                                             <div class="row col-lg-12" style="padding-left:0;">
+                                            	<span><c:out value="${message}"></c:out> </span>
+                                            </div>
                                         </form>
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->

@@ -6,10 +6,12 @@ package com.fa.group01.action;
 import java.sql.SQLException;
 
 import com.fa.group01.constants.PagesConstants;
+import com.fa.group01.dao.manufacture.ManufactureDAO;
+import com.fa.group01.dao.manufacture.impl.ManufactureDAOImpl;
 import com.fa.group01.entity.Manufacture;
 import com.fa.group01.logging.DbLogging;
-import com.fa.group01.service.ManufactureService;
-import com.fa.group01.service.impl.ManufactureServiceImpl;
+import com.fa.group01.service.manufactureservice.ManufactureService;
+import com.fa.group01.service.manufactureservice.impl.ManufactureServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -25,12 +27,13 @@ public class AddManufactureAction extends ActionSupport {
 	private ManufactureService manufactureService;
 	private Manufacture manufacture;
 	private String message;
+	private ManufactureDAO manufactureDao = new ManufactureDAOImpl();
 
 	/**
 	 * 
 	 */
 	public AddManufactureAction() {
-		this.manufactureService = new ManufactureServiceImpl();
+		this.manufactureService = new ManufactureServiceImpl(manufactureDao);
 	}
 
 	/**
@@ -39,7 +42,7 @@ public class AddManufactureAction extends ActionSupport {
 	public String addManufacture() {
 		int isAddSuccess = 0;
 		try {
-			isAddSuccess = this.manufactureService.save(manufacture);
+			isAddSuccess = manufactureService.addManufacture(manufacture);
 		} catch (SQLException e) {
 			DbLogging.LOGGER.error("SQLException", e);
 		}

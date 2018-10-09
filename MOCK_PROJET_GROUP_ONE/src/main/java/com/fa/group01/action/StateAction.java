@@ -6,10 +6,12 @@ package com.fa.group01.action;
 import java.sql.SQLException;
 
 import com.fa.group01.constants.PagesConstants;
+import com.fa.group01.dao.statedao.StateDAO;
+import com.fa.group01.dao.statedao.impl.StateDAOImpl;
 import com.fa.group01.entity.State;
 import com.fa.group01.logging.DbLogging;
-import com.fa.group01.service.StateService;
-import com.fa.group01.service.impl.StateServiceImpl;
+import com.fa.group01.service.stateservice.StateService;
+import com.fa.group01.service.stateservice.impl.StateServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -23,26 +25,27 @@ public class StateAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	private StateService stateService;
+	private StateDAO stateDao = new StateDAOImpl();
 	private State state;
 	private String message;
 	
 	public StateAction() {
-		this.stateService = new StateServiceImpl();
+		stateService = new StateServiceImpl(stateDao);
 	}
 	
 	public String addState() {
 		int isAddSuccess = 0;
 		
 		try {
-			isAddSuccess = this.stateService.save(state);
+			isAddSuccess = stateService.addState(state);
 		} catch (SQLException e) {
 			DbLogging.LOGGER.error("SQLException", e);
 		}
 		if (isAddSuccess > 0) {
-			this.message = "Add Success!!";
+			this.message = "Add Success!";
 			return PagesConstants.SUCCESS;
 		}
-		this.message = "Add Fail!!!";
+		this.message = "Add Fail!";
 		return PagesConstants.ERROR;
 	}
 
