@@ -1182,3 +1182,6 @@ com.microsoft.sqlserver.jdbc.SQLServerException: Cannot insert the value NULL in
 2018-10-10 11:13:46 DEBUG cache:44 - Couldn't find template in cache for "org/apache/struts2/dispatcher/error.ftl"("en_US", UTF-8, parsed); will try to load it.
 2018-10-10 11:13:46 DEBUG cache:44 - TemplateLoader.findTemplateSource("org/apache/struts2/dispatcher/error.ftl"): Found
 2018-10-10 11:13:46 DEBUG cache:44 - Loading template for "org/apache/struts2/dispatcher/error.ftl"("en_US", UTF-8, parsed) from "jar:file:/Users/dung/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MOCK_PROJET_GROUP_ONE/WEB-INF/lib/struts2-core-2.5.16.jar!/org/apache/struts2/dispatcher/error.ftl"
+2018-10-10 11:29:38 DEBUG cache:44 - Couldn't find template in cache for "org/apache/struts2/dispatcher/error.ftl"("en_US", UTF-8, parsed); will try to load it.
+2018-10-10 11:29:38 DEBUG cache:44 - TemplateLoader.findTemplateSource("org/apache/struts2/dispatcher/error.ftl"): Found
+2018-10-10 11:29:38 DEBUG cache:44 - Loading template for "org/apache/struts2/dispatcher/error.ftl"("en_US", UTF-8, parsed) from "jar:file:/Users/dung/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MOCK_PROJET_GROUP_ONE/WEB-INF/lib/struts2-core-2.5.16.jar!/org/apache/struts2/dispatcher/error.ftl"
