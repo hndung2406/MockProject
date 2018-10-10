@@ -13,6 +13,7 @@ public class DbQuery {
 	public static final String INSERT_NEW_STATE = "INSERT INTO [State]([StateName]) VALUES (?)";
 	public static final String INSERT_NEW_COUNTRY = "INSERT INTO [Country]([CountryName]) VALUES (?)";
 	public static final String INSERT_USER_QUERY = "INSERT INTO [Users] (UserName, Password, Email, FirstName, LastName, Role, CreateDate) VALUES (?,?,?,?,?,?,?)";
+	public static final String INSERT_ORDER_QUERY = "INSERT INTO [Orders] (UserId, CardNumber, CountryId, OrderDate, Phone, PostalCode, StateId, City, OrderAddress1, OrderAddress2) VALUES(?,?,?,?,?,?,?,?,?,?)";
 	public static final String SELECT_ALL_USER_QUERY = "SELECT * FROM [Users]";
 	public static final String SELECT_ALL_STATE_QUERY = "SELECT * FROM [State]";
 	public static final String SELECT_ALL_COUNTRY_QUERY = "SELECT* FROM [Country]";

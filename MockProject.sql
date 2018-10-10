@@ -1,4 +1,5 @@
 ﻿
+
 USE master
 GO
 
@@ -68,10 +69,6 @@ CREATE TABLE [Users](
     [LastName] NVARCHAR(155),
     [Role] VARCHAR(35),
     [CreateDate] DATETIME NOT NULL,
-    [CountryId] INT,
-    [StateId] INT,
-    FOREIGN KEY ([CountryId]) REFERENCES [Country]([CountryId]) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY ([StateId]) REFERENCES [State]([StateId]) ON DELETE CASCADE ON UPDATE CASCADE
 );
 GO
 
@@ -119,14 +116,16 @@ CREATE TABLE [Orders](
     [OrderId] INT IDENTITY PRIMARY KEY,
     [UserId] INT,
     [CartNumber] INT,
-    [Country] NVARCHAR(45),
+    [CountryId] INT,
     [OderDate] DATE,
     [Phone] VARCHAR(10),
     [PostalCode] VARCHAR(20),
-    [State] VARCHAR(45),
+    [StateId] INT,
     [City] VARCHAR(45),
     [OrderAddress1] VARCHAR(55),
     [OrderAddress2] VARCHAR(55),
+    FOREIGN KEY ([CountryId]) REFERENCES [Country]([CountryId]) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY ([StateId]) REFERENCES [State]([StateId]) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY ([UserId]) REFERENCES [Users]([UserId]) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -169,14 +168,14 @@ VALUES ('Texas')
 GO
 
 --User
-INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
-VALUES ('hoanglatoi','Hoangday@7589','group01@domain.com','Nguyen','Dinh Hoang', 'admin', GETDATE(),1,1)
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
+VALUES ('hoanglatoi','Hoangday@7589','group01@domain.com','Nguyen','Dinh Hoang', 'admin', GETDATE())
 GO
-INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
-VALUES ('dunglatoi','Dung@123','group01@domain.com','Hoang','Ngoc Dung', 'admin', GETDATE(),1,2)
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
+VALUES ('dunglatoi','Dung@123','group01@domain.com','Hoang','Ngoc Dung', 'admin', GETDATE())
 GO
-INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
-VALUES ('linhlatoi','Linh@123','group01@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE(),2,2)
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
+VALUES ('linhlatoi','Linh@123','group01@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE())
 GO
 
 

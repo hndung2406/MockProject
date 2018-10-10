@@ -202,7 +202,7 @@
 							<p>Phone</p>
 						</div>
 						<div class="col-3">
-							<input type="text" class="form-control form-control-sm" name="">
+							<input type="text" class="form-control form-control-sm" name="order.orderPhone">
 						</div>
 						<div class="col-3"></div>
 					</div>
