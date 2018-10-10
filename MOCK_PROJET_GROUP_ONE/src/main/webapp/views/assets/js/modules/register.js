@@ -1,7 +1,8 @@
 $(document).ready(function() {
 	$(".error-form").hide();
 	$("#button-sign-up").click(function() {
-		if ($("#username").val() == "") {
+		
+		if ($("#username").val() == "") {			
 			$("#username-error").show();
 			event.preventDefault();
 		}
@@ -21,16 +22,21 @@ $(document).ready(function() {
 			$("#password-error").show();
 			event.preventDefault();
 		}
+		console.log($("#username-error-input").text());
 		if ($("#username-error-input").text() != ""){
+			console.log("123");
 			event.preventDefault();
 		}
 		if ($("#email-error-input").text() != ""){
+			console.log("456");
 			event.preventDefault();
 		}
 		if ($("#password-error-input").text() != ""){
+			console.log("789");
 			event.preventDefault();
 		}
 		if ($("#repassword-error").text() != ""){
+			console.log("000");
 			event.preventDefault();
 		}
 	});
@@ -49,11 +55,11 @@ $(document).ready(function() {
 					}
 				});
 				if (username == "") {
-					$("#username-error-input").hide();
+					$("#username-error-input").text("").hide();
 				} else if (valid) {
 					$("#username-error-input").text("*Username existed").show();
 				} else if (username.length > 5){
-					$("#username-error-input").hide();
+					$("#username-error-input").text("").hide();
 				} else {
 					$("#username-error-input").text("*Username must have at least 6 characters").show();
 				}
