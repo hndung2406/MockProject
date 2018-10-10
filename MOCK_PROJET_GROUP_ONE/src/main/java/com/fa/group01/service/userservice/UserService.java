@@ -26,4 +26,12 @@ public interface UserService {
 	 * @throws SQLException
 	 */
 	public List<User> findAll() throws SQLException;
+	
+	/**
+	 * @param email
+	 * @param password
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean isAuthenticated (String email, String password) throws SQLException;
 }

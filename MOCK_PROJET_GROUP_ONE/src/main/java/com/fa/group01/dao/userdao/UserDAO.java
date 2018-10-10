@@ -27,4 +27,18 @@ public interface UserDAO {
 	 */
 	public List<User> findAll() throws SQLException;
 	
+	/**
+	 * @param email
+	 * @param password
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean isAuthenticatedUser(String email, String password) throws SQLException;
+	
+	/**
+	 * @param email
+	 * @return
+	 */
+	public boolean fetchUserByEmail(String email);
+	
 }

@@ -12,10 +12,6 @@
 
 /*Global style*/
 
-
-body {
-	
-	
 }
 
 a {
@@ -184,3 +180,12 @@ ul {
 
 
 
+/*Utility style*/
+.notification-error {
+	color: red;
+}
+.loading-img {
+	width: 4rem;
+	position: absolute;
+	transform: translateY(-10%);
+}

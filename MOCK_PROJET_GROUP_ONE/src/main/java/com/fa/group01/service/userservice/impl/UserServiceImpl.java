@@ -44,4 +44,15 @@ public class UserServiceImpl implements UserService {
 		return userDao.findAll();
 	}
 	
+	/**
+	 * @param email
+	 * @param password
+	 * @return
+	 * @throws SQLException
+	 */
+	@Override
+	public boolean isAuthenticated(String email, String password) throws SQLException {
+		return userDao.isAuthenticatedUser(email, password);
+	}
+	
 }

@@ -5,6 +5,7 @@ package com.fa.group01.dao.userdao.impl;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,6 +29,8 @@ public class UserDAOImpl implements UserDAO {
 	Statement statement = null;
 	ResultSet resultSet = null;
 	CallableStatement callabaleStatement = null;
+	PreparedStatement prepareStatement = null;
+
 
 	/**
 	 * Save the register user to the database;
@@ -116,4 +119,29 @@ public class UserDAOImpl implements UserDAO {
 		return users;
 	}
 
+	@Override
+	public boolean isAuthenticatedUser(String email, String password) throws SQLException {
+		
+		connection = DatabaseConnect.getConnection();
+		prepareStatement = connection.prepareStatement(DbQuery.SELECT_USER_BY_EMAIL_AND_PASSWORD);
+		prepareStatement.setString(1, email);
+		prepareStatement.setString(2, password);		
+		ResultSet resultSet = prepareStatement.executeQuery();
+		
+//		while(resultSet.next()) {
+//			resultSet.getInt("UserId");
+//			resultSet.getString("UserName");
+//			resultSet.getString("Password");
+//			resultSet.getString("Email");
+//			resultSet.getString("FirstName");
+//		}
+		
+		return resultSet.next();
+	}
+
+	@Override
+	public boolean fetchUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
