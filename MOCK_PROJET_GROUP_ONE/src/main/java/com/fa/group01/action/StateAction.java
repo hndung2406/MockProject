@@ -5,7 +5,7 @@ package com.fa.group01.action;
 
 import java.sql.SQLException;
 
-import com.fa.group01.constants.PagesConstants;
+import com.fa.group01.constants.PageConstant;
 import com.fa.group01.dao.statedao.StateDAO;
 import com.fa.group01.dao.statedao.impl.StateDAOImpl;
 import com.fa.group01.entity.State;
@@ -43,10 +43,10 @@ public class StateAction extends ActionSupport {
 		}
 		if (isAddSuccess > 0) {
 			this.message = "Add Success!";
-			return PagesConstants.SUCCESS;
+			return PageConstant.SUCCESS;
 		}
 		this.message = "Add Fail!";
-		return PagesConstants.ERROR;
+		return PageConstant.ERROR;
 	}
 
 	/**

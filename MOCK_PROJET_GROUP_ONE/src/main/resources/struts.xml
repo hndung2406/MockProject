@@ -12,7 +12,7 @@
     	</action> 
     
     	<action name="registerUser" class="com.fa.group01.action.RegisterAction" method="registerUser">
-    		<result name="register">/views/pages/register.jsp</result>
+    		<result name="register">/views/pages/login.jsp</result>
     		<result name="input">/views/pages/register.jsp</result>
     	</action>
     	
@@ -24,6 +24,11 @@
 		<action name="addState" class="com.fa.group01.action.StateAction" method="addState">
 			<result name="success">/views/pages/admin-add-state.jsp</result>
 			<result name="error">/views/pages/admin-add-state.jsp</result>
+		</action>
+		
+		<action name="addCountry" class="com.fa.group01.action.CountryAction" method="addCountry">
+			<result name="success">/views/pages/admin-add-country.jsp</result>
+			<result name="error">/views/pages/admin-add-country.jsp</result>
 		</action>
     	
     </package>

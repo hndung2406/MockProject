@@ -26,8 +26,8 @@
 	<div class="container login-container sign-in-form">
 		<div class="row ">
 			<div class="col-5 mx-auto">
-				<img src="../assets/images/logo.svg" width="200px" height="200px"
-					alt="Site-Logo" class="center">
+				<a href="<%=request.getServletContext().getContextPath() %>/views/index.jsp"><img src="../assets/images/logo.svg" width="200px" height="200px"
+					alt="Site-Logo" class="center"></a>
 				<div class="card">
 					<h5 class="card-header"
 						style="border-top-left-radius: 20px; border-top-right-radius: 20px;">Sign

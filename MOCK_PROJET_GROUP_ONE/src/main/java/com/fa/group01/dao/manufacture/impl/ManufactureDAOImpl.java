@@ -34,7 +34,7 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 		int affectedRow = 0;
 		try {
 			callableStatement = connection.prepareCall(DbQuery.INSERT_NEW_MANUFACTURE);
-			callableStatement.setString(1, manufacture.getName());
+			callableStatement.setString(1, manufacture.getManufactureName());
 			affectedRow = callableStatement.executeUpdate();
 		} finally {
 			if (callableStatement != null) {
