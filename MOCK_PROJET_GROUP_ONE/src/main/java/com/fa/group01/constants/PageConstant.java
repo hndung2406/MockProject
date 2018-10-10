@@ -12,5 +12,6 @@ public class PageConstant {
 	public static final String REGISTER = "register";
 	public static final String ERROR = "error";
 	public static final String REPORT = "report";
+	public static final String SUCCESS = "success";
 	
 }

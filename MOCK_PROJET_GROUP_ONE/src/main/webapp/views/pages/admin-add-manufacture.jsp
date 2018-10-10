@@ -14,7 +14,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin 2 - Bootstrap Admin Theme</title>
+        <title>Add Manufacture</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../assets/css/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -54,16 +54,17 @@
                                         <form role="form" class="form col-lg-11" action="addManufacture" method="post">
                                             <div class="form-group row">
                                                 <label>Manufacture Name</label>
-                                                <input class="form-control" name="manufacture.name" placeholder="Manufacture Name">   
+                                                <input class="form-control" name="manufacture.manufactureName" placeholder="Manufacture Name" id="manufacture">   
                                             </div>
                                             
                                             <div class="row col-lg-12" style="padding-left:0;">
-                                                <button type="submit" class="btn btn-default">Submit Button</button>
+                                                <button type="submit" class="btn btn-default" id="submit-button">Submit Button</button>
                                                 <button type="reset" class="btn btn-default">Reset Button</button>
                                             </div>
                                             
-                                            <div class="row col-lg-12" style="padding-left:0;">
-                                            	<span><c:out value="${message}"></c:out> </span>
+                                            <div class="row col-lg-12" style="padding-left:10;">
+                                            	<span style="color:red" id="error"></span>
+                                            	<span style="color:red"><c:out value="${message}"></c:out> </span>
                                             </div>
                                             
                                         </form>
@@ -91,7 +92,10 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="../assets/css/vendors/bootstrap/js/bootstrap.min.js"></script>
-
+        
+        <!-- Javascript -->
+        <script src="<%=request.getContextPath()%>/views/assets/js/modules/admin-add-manufacture.js"></script>
+        
     </body>
 
     </html>

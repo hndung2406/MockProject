@@ -5,7 +5,7 @@ package com.fa.group01.action;
 
 import java.sql.SQLException;
 
-import com.fa.group01.constants.PagesConstants;
+import com.fa.group01.constants.PageConstant;
 import com.fa.group01.dao.manufacture.ManufactureDAO;
 import com.fa.group01.dao.manufacture.impl.ManufactureDAOImpl;
 import com.fa.group01.entity.Manufacture;
@@ -47,11 +47,11 @@ public class AddManufactureAction extends ActionSupport {
 			DbLogging.LOGGER.error("SQLException", e);
 		}
 		if (isAddSuccess > 0) {
-			this.message = "Add Success!!!";
-			return PagesConstants.SUCCESS;
+			this.message = "Add Success!";
+			return PageConstant.SUCCESS;
 		}
-		this.message = "Add Fail!!!";
-		return PagesConstants.ERROR;
+		this.message = "Add Fail!";
+		return PageConstant.ERROR;
 	}
 
 	/**

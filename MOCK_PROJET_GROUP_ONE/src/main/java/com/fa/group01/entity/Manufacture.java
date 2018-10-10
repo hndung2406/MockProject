@@ -9,32 +9,32 @@ package com.fa.group01.entity;
  */
 public class Manufacture {
 
-	private int id;
-	private String name;
+	private int manufactureId;
+	private String manufactureName;
 
-	public Manufacture(int id, String name) {
-		this.id = id;
-		this.name = name;
+	public Manufacture(int manufactureId, String manufactureName) {
+		this.manufactureId = manufactureId;
+		this.manufactureName = manufactureName;
 	}
 	
 	public Manufacture() {
 
 	}
 
-	public int getId() {
-		return id;
+	public int getManufactureId() {
+		return manufactureId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setManufactureId(int manufactureId) {
+		this.manufactureId = manufactureId;
 	}
 
-	public String getName() {
-		return name;
+	public String getManufactureName() {
+		return manufactureName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setManufactureName(String manufactureName) {
+		this.manufactureName = manufactureName;
 	}
-
+	
 }
