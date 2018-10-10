@@ -30,6 +30,14 @@
 			<result name="success">/views/pages/admin-add-country.jsp</result>
 			<result name="error">/views/pages/admin-add-country.jsp</result>
 		</action>
+		
+		<action name="checkOut" class="com.fa.group01.action.CheckOutAction" method="checkOut">
+			<result name="success">/views/pages/checkout.jsp</result>
+		</action>
+    	
+    	<action name="checkOutCart" class="com.fa.group01.action.CheckOutAction" method="checkOutCart">
+    		<result name="success" type="redirect">/views/index.jsp</result>
+    	</action>
     	
     </package>
 	

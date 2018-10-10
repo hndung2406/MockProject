@@ -136,7 +136,7 @@
 							</div>
 						</div>
 						<hr>
-						<a href="checkout.jsp"><button class="button-checkout">Check out</button></a>
+						<a href="checkOut"><button class="button-checkout">Check out</button></a>
 					</div>
 				</div>
 			</div>
