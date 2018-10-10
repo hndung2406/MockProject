@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<%=request.getContextPath()%>/views/index.jsp">Group One Admin Page</a>
+                <a class="navbar-brand" href="index.html">Group One Admin Page</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -63,9 +63,6 @@
                         			</li>
                         			<li>
 										<a href="../pages/admin-add-manufacture.jsp"><i class="fa fa-edit fa-fw"></i> Add Manufacture</a>
-                        			</li>
-                        			<li>
-										<a href="../pages/admin-add-country.jsp"><i class="fa fa-edit fa-fw"></i> Add Country</a>
                         			</li>
                         		</ul>
                         	</div>

@@ -55,11 +55,11 @@ $(document).ready(function() {
 					}
 				});
 				if (username == "") {
-					$("#username-error-input").text("").hide();
+					$("#username-error-input").hide();
 				} else if (valid) {
 					$("#username-error-input").text("*Username existed").show();
 				} else if (username.length > 5){
-					$("#username-error-input").text("").hide();
+					$("#username-error-input").hide();
 				} else {
 					$("#username-error-input").text("*Username must have at least 6 characters").show();
 				}
