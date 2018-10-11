@@ -14,10 +14,6 @@ import com.fa.group01.service.userservice.UserService;
  * @author nguyenthanhlinh
  *
  */
-/**
- * @author Administrator
- *
- */
 public class UserServiceImpl implements UserService {
 
 	private UserDAO userDao;
@@ -57,16 +53,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean isAuthenticated(String email, String password) throws SQLException {
 		return userDao.isAuthenticatedUser(email, password);
-	}
-
-	/**
-	 * @param email
-	 * @return
-	 * @throws SQLException
-	 */
-	@Override
-	public User fetchUserByEmail(String email) throws SQLException {
-		return userDao.fetchUserByEmail(email);
 	}
 	
 }

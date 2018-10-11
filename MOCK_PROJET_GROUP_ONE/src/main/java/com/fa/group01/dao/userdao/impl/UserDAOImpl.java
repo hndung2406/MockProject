@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.fa.group01.connect.DatabaseConnect;
 import com.fa.group01.constants.DbQuery;
@@ -141,9 +140,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User fetchUserByEmail(String email) throws SQLException {
-		User user = findAll().stream().filter(u->u.getUserEmail().equals(email)).findFirst().get();
-		return user;
-		
+	public boolean fetchUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
