@@ -78,8 +78,6 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> findAll() throws SQLException {
 		List<User> users = new ArrayList<>();
 		User user = null;
-		Country country = null;
-		State state = null;
 		String getUserQuery = DbQuery.SELECT_ALL_USER_QUERY;
 		connection = DatabaseConnect.getConnection();
 		if(connection != null) {
@@ -88,8 +86,6 @@ public class UserDAOImpl implements UserDAO {
 				resultSet = statement.executeQuery(getUserQuery);
 				while(resultSet.next()) {
 					user = new User();
-					state = new State();
-					country = new Country();
 					user.setUserId(resultSet.getInt("UserId"));
 					user.setUserName(resultSet.getString("UserName"));
 					user.setUserPassword(resultSet.getString("Password"));
@@ -98,10 +94,6 @@ public class UserDAOImpl implements UserDAO {
 					user.setUserLastName(resultSet.getString("LastName"));
 					user.setUserRole(resultSet.getString("Role"));
 					user.setUserCreateDate(resultSet.getTimestamp("CreateDate"));
-					country.setCountryId(resultSet.getInt("CountryId"));
-					state.setStateId(resultSet.getInt("StateId"));
-					user.setCountry(country);
-					user.setState(state);
 					users.add(user);
 				}
 			} finally {
