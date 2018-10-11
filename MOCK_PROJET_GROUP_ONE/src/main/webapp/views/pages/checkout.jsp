@@ -37,7 +37,8 @@
 							<p>First Name</p>
 						</div>
 						<div class="col-6">
-							<input type="text" class="form-control form-control-sm" name="user.userFirstName">
+							<input type="text" class="form-control form-control-sm" name="user.userFirstName" id="firstname">
+							<span class="error" style="color:red; padding-left:10px; font-size:13px" id="firstname-error"></span>
 						</div>
 					</div>
 					<div class="row justify-content-center row-max">
@@ -45,7 +46,8 @@
 							<p>Last Name</p>
 						</div>
 						<div class="col-6">
-							<input type="text" class="form-control form-control-sm" name="user.userLastName">
+							<input type="text" class="form-control form-control-sm" name="user.userLastName" id="lastname">
+							<span class="error" style="color:red; padding-left:10px; font-size:13px" id="lastname-error"></span>
 						</div>
 					</div>
 					<div class="row justify-content-center row-max">
@@ -53,7 +55,8 @@
 							<p>Card Number</p>
 						</div>
 						<div class="col-6">
-							<input type="text" class="form-control form-control-sm" name="order.orderCardNumber">
+							<input type="text" class="form-control form-control-sm" name="order.orderCardNumber" id="card">
+							<span class="error" style="color:red; padding-left:10px; font-size:13px" id="card-error"></span>
 						</div>
 					</div>
 					<div class="row justify-content-center row-max">
@@ -98,15 +101,15 @@
 							<p>Security Code</p>
 						</div>
 						<div class="col-3">
-							<input type="password" class="form-control form-control-sm">
+							<input type="password" class="form-control form-control-sm" id="security">
+							<span class="error" style="color:red; padding-left:10px; font-size:13px" id="security-error"></span>
 						</div>
 						<div class="col-3"></div>
 					</div>
 				</div>
 				<div class="col-4">
 					<div class="card card-summary">
-						<div class="card-header"
-							style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+						<div class="card-header" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
 							<h3>
 								<u>Summary</u>
 							</h3>
@@ -158,7 +161,8 @@
 							<p>Billing Addr</p>
 						</div>
 						<div class="col-6">
-							<input type="text" class="form-control form-control-sm" placeholder="Address line 1" name="order.orderAddress1">
+							<input type="text" class="form-control form-control-sm" placeholder="Address line 1" name="order.orderAddress1" id="address">
+							<span class="error" style="color:red; padding-left:10px; font-size:13px" id="address-error"></span>
 						</div>
 					</div>
 					<div class="row justify-content-center row-max">
@@ -172,7 +176,8 @@
 							<p>City</p>
 						</div>
 						<div class="col-6">
-							<input type="text" class="form-control form-control-sm" name="order.orderCity">
+							<input type="text" class="form-control form-control-sm" name="order.orderCity" id="city">
+							<span class="error" style="color:red; padding-left:10px; font-size:13px" id="city-error"></span>
 						</div>
 					</div>
 					<div class="row justify-content-center row-max">
@@ -193,7 +198,8 @@
 							<p>Postal Code</p>
 						</div>
 						<div class="col-3">
-							<input type="text" class="form-control form-control-sm" name="order.orderPostalCode">
+							<input type="text" class="form-control form-control-sm" name="order.orderPostalCode" id="postal">
+							<span class="error" style="color:red; padding-left:10px; font-size:13px" id="postal-error"></span>
 						</div>
 						<div class="col-3"></div>
 					</div>
@@ -202,14 +208,15 @@
 							<p>Phone</p>
 						</div>
 						<div class="col-3">
-							<input type="text" class="form-control form-control-sm" name="order.orderPhone">
+							<input type="text" class="form-control form-control-sm" name="order.orderPhone" id="phone">
+							<span class="error" style="color:red; padding-left:10px; font-size:13px" id="phone-error"></span>
 						</div>
 						<div class="col-3"></div>
 					</div>
 					<div class="row justify-content-center row-max">
 						<div class="col-2"></div>
 						<div class="col-3">
-							<button class="btn-submit" style="font-weight: bold;">Submit</button>
+							<button class="btn-submit" style="font-weight: bold;" id="submit-button">Submit</button>
 							<button class="btn-cancel" style="font-weight: bold;">Cancel</button>
 						</div>
 						<div class="col-3"></div>
@@ -225,12 +232,11 @@
 	<jsp:include page="../shared/_footer.jsp"></jsp:include>
 	<!-- End footer  -->
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-		crossorigin="anonymous"></script>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	
+	<!-- Javascript -->
+    <script src="<%=request.getContextPath()%>/views/assets/js/modules/checkout.js"></script>
+    
 </body>
 </html>

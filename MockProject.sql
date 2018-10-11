@@ -37,7 +37,7 @@ GO
 
 CREATE TABLE [Country](
     [CountryId] INT IDENTITY PRIMARY KEY,
-    [CountryName] NVARCHAR(20)
+    [CountryName] NVARCHAR(20) UNIQUE
 );
 GO
 
@@ -50,7 +50,7 @@ GO
 
 CREATE TABLE [State](
     [StateId] INT IDENTITY PRIMARY KEY,
-    [StateName] NVARCHAR(35)
+    [StateName] NVARCHAR(35) UNIQUE
 );
 GO
 
@@ -62,9 +62,9 @@ GO
 
 CREATE TABLE [Users](
     [UserId] INT IDENTITY PRIMARY KEY,
-    [UserName] NVARCHAR(255) NOT NULL,
+    [UserName] NVARCHAR(255) NOT NULL UNIQUE,
     [Password] NVARCHAR(80) NOT NULL,
-    [Email] VARCHAR(155) NOT NULL,
+    [Email] VARCHAR(155) NOT NULL UNIQUE,
     [FirstName] NVARCHAR(155),
     [LastName] NVARCHAR(155),
     [Role] VARCHAR(35),
@@ -79,7 +79,7 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '[Manufact
 GO
 CREATE TABLE [Manufacture](
     [ManufactureId] INT PRIMARY KEY IDENTITY,
-    [ManufactureName] NVARCHAR(155) NOT NULL
+    [ManufactureName] NVARCHAR(155) NOT NULL UNIQUE
 );
 
 
@@ -114,10 +114,10 @@ GO
 
 CREATE TABLE [Orders](
     [OrderId] INT IDENTITY PRIMARY KEY,
-    [UserId] INT,
-    [CartNumber] INT,
+    [UserId] INT NULL,
+    [CardNumber] BIGINT,
     [CountryId] INT,
-    [OderDate] DATE,
+    [OrderDate] DATE,
     [Phone] VARCHAR(10),
     [PostalCode] VARCHAR(20),
     [StateId] INT,
@@ -153,7 +153,7 @@ GO
 
 --Country--
 INSERT INTO Country 
-VALUES ('Viet Nam')
+VALUES ('Vietnam')
 GO
 INSERT INTO Country 
 VALUES ('USA')
@@ -161,23 +161,21 @@ GO
 
 --State--
 INSERT INTO State 
-VALUES ('Michigan')
+VALUES ('IL')
 GO
 INSERT INTO State 
-VALUES ('Texas')
+VALUES ('MA')
 GO
 
 --User
 INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
+VALUES ('','','','','', '','')
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
 VALUES ('hoanglatoi','Hoangday@7589','group01@domain.com','Nguyen','Dinh Hoang', 'admin', GETDATE())
 GO
 INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
-VALUES ('dunglatoi','Dung@123','group01@domain.com','Hoang','Ngoc Dung', 'admin', GETDATE())
+VALUES ('dunglatoi','Dung@123','group02@domain.com','Hoang','Ngoc Dung', 'admin', GETDATE())
 GO
 INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
-VALUES ('linhlatoi','Linh@123','group01@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE())
+VALUES ('linhlatoi','Linh@123','group03@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE())
 GO
-
-
-
-SELECT * FROM Users

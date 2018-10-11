@@ -54,6 +54,10 @@ public class CheckOutAction extends ActionSupport implements SessionAware {
 	private State state;
 	private Map<String, Object> userSession;
 
+	/**
+	 * Go to checkout page
+	 * @return
+	 */
 	public String checkOut() {
 		try {
 			countries = countryService.findAll();
@@ -64,21 +68,27 @@ public class CheckOutAction extends ActionSupport implements SessionAware {
 		return PageConstant.SUCCESS;
 	}
 	
+	/**
+	 * Put the input from the check out form into the database
+	 * @return
+	 */
 	public String checkOutCart() {
 		try {
 			int affectedRow = 0;
 			java.sql.Date createDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-			if(userSession.isEmpty()) {
-				user.setUserId(0);
-			} else {
-				user = (User) userSession.get("User");
-			}
 			state = stateService.findById(state);
 			country = countryService.findByID(country);
-			order.setUser(user);
 			order.setState(state);
 			order.setCountry(country);
 			order.setOrderDate(createDate);
+			if(userSession.isEmpty()) {
+				user = new User();
+				user.setUserId(1);
+				order.setUser(user);
+			} else {
+				user = (User) userSession.get("User");
+				order.setUser(user);
+			}
 			affectedRow = orderService.addOrder(order);
 			if(affectedRow > 0) {
 				DbLogging.LOG.info("SUCCESS");
