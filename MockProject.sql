@@ -61,12 +61,12 @@ GO
 
 CREATE TABLE [Users](
     [UserId] INT IDENTITY PRIMARY KEY,
-    [UserName] NVARCHAR(255) NOT NULL,
+    [UserName] NVARCHAR(255) UNIQUE NOT NULL,
     [Password] NVARCHAR(80) NOT NULL,
-    [Email] VARCHAR(155) NOT NULL,
+    [Email] VARCHAR(155) UNIQUE NOT NULL,
     [FirstName] NVARCHAR(155),
     [LastName] NVARCHAR(155),
-    [Role] VARCHAR(35),
+    [Role] VARCHAR(35)  DEFAULT 'user',
     [CreateDate] DATETIME NOT NULL,
     [CountryId] INT,
     [StateId] INT,
@@ -170,13 +170,17 @@ GO
 
 --User
 INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
-VALUES ('hoanglatoi','Hoangday@7589','group01@domain.com','Nguyen','Dinh Hoang', 'admin', GETDATE(),1,1)
+VALUES ('hoanglatoi','Hoangday@7589','hoang@domain.com','Nguyen','Dinh Hoang', 'admin', GETDATE(),1,1)
 GO
 INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
-VALUES ('dunglatoi','Dung@123','group01@domain.com','Hoang','Ngoc Dung', 'admin', GETDATE(),1,2)
+VALUES ('dunglatoi','Dung@123','dung@domain.com','Hoang','Ngoc Dung', 'admin', GETDATE(),1,2)
 GO
 INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
-VALUES ('linhlatoi','Linh@123','group01@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE(),2,2)
+VALUES ('linhlatoi','Linh@123','linh@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE(),2,2)
+GO
+
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
+VALUES ('sonlatoi','Son@123','sonh@domain.com','Nguyen','Thanh Linh','', GETDATE(),2,2)
 GO
 
 
