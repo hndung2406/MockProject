@@ -56,7 +56,7 @@
                     		<div id="collapseOne" class="panel-collapse collapse">
                         		<ul class="nav" id="side-menu">
                         			<li>
-                        			     <a href="../pages/admin-add-product.jsp"><i class="fa fa-edit fa-fw"></i> Add Product</a>
+                        			     <a href="showAddProduct"><i class="fa fa-edit fa-fw"></i> Add Product</a>
                         			</li>
                         			<li>
   										<a href="../pages/admin-add-state.jsp"><i class="fa fa-edit fa-fw"></i> Add State</a>

@@ -1,0 +1,29 @@
+/**
+ * 
+ */
+package com.fa.group01.service.productservice.impl;
+
+import java.sql.SQLException;
+
+import com.fa.group01.dao.productdao.ProductDAO;
+import com.fa.group01.entity.Product;
+import com.fa.group01.service.productservice.ProductService;
+
+/**
+ * @author nguyenthanhlinh
+ *
+ */
+public class ProductServiceImpl implements ProductService {
+
+	private ProductDAO productDao;
+
+	public ProductServiceImpl(ProductDAO productDao) {
+		this.productDao = productDao;
+	}
+
+	@Override
+	public int save(Product product) throws SQLException {
+		return this.productDao.save(product);
+	}
+
+}
