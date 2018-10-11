@@ -55,6 +55,7 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 					if ("user".equals(role)) {
 						redirectUrl = "../index.jsp";
 					}
+					System.out.println("test");
 					//add user to session
 					session.put("authenticatedUser", user);
 					return "success";
