@@ -67,7 +67,7 @@ CREATE TABLE [Users](
     [Email] VARCHAR(155) NOT NULL UNIQUE,
     [FirstName] NVARCHAR(155),
     [LastName] NVARCHAR(155),
-    [Role] VARCHAR(35),
+    [Role] VARCHAR(35)  DEFAULT 'user',
     [CreateDate] DATETIME NOT NULL,
 );
 GO
@@ -179,3 +179,4 @@ GO
 INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
 VALUES ('linhlatoi','Linh@123','group03@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE())
 GO
+

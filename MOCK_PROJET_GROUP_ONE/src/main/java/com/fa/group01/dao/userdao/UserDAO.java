@@ -38,7 +38,8 @@ public interface UserDAO {
 	/**
 	 * @param email
 	 * @return
+	 * @throws SQLException 
 	 */
-	public boolean fetchUserByEmail(String email);
+	public User fetchUserByEmail(String email) throws SQLException;
 	
 }

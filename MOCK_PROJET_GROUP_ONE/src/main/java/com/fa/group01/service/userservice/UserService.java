@@ -34,4 +34,11 @@ public interface UserService {
 	 * @throws SQLException
 	 */
 	public boolean isAuthenticated (String email, String password) throws SQLException;
+	
+	/**
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 */
+	public User fetchUserByEmail(String email) throws SQLException;
 }
