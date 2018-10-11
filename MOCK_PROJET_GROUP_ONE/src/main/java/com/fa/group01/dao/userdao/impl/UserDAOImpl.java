@@ -15,8 +15,6 @@ import java.util.List;
 import com.fa.group01.connect.DatabaseConnect;
 import com.fa.group01.constants.DbQuery;
 import com.fa.group01.dao.userdao.UserDAO;
-import com.fa.group01.entity.Country;
-import com.fa.group01.entity.State;
 import com.fa.group01.entity.User;
 
 /**
@@ -132,8 +130,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean fetchUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return false;
+	public User fetchUserByEmail(String email) throws SQLException {
+		User user = findAll().stream().filter(u->u.getUserEmail().equals(email)).findFirst().get();
+		return user;
+		
 	}
 }

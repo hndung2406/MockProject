@@ -69,4 +69,29 @@
 		
 	</package>
 	
+	<package name="sercurity" extends="struts-default">
+    	<interceptors>
+    		<interceptor name="authenticationInterceptor" class="com.fa.group01.interceptor.AuthenticationInterceptor"></interceptor>
+    		<interceptor-stack name="sercureStack">
+    			<interceptor-ref name="authenticationInterceptor"></interceptor-ref>
+    			<interceptor-ref name="defaultStack"></interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="sercureStack"></default-interceptor-ref>
+    	<action name="admin*">    		
+    		<result type="redirect">
+    			/views/pages/admin-list-products.jsp
+    		</result>
+    		<result name="input" type="redirect">
+    			/views/pages/login.jsp
+    		</result>
+    	</action>
+    	<action name="logout" class="com.fa.group01.action.AuthenticationAction" method="logout">
+    		<result type="redirect">
+    			/views/pages/login.jsp
+    		</result>
+    	</action>
+    
+    </package>
+	
 </struts>

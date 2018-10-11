@@ -55,4 +55,14 @@ public class UserServiceImpl implements UserService {
 		return userDao.isAuthenticatedUser(email, password);
 	}
 	
+	/**
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 */
+	@Override
+	public User fetchUserByEmail(String email) throws SQLException {
+		return userDao.fetchUserByEmail(email);
+	}
+	
 }

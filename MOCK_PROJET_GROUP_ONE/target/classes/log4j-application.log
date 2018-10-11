@@ -194,3 +194,4 @@ com.microsoft.sqlserver.jdbc.SQLServerException: The column name CountryId is no
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:745)
 2018-10-11 13:38:48 INFO  DbLogging:94 - SUCCESS
+2018-10-11 13:57:47 INFO  DbLogging:94 - SUCCESS
