@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author nguyenthanhlinh
  *
  */
-public class AddManufactureAction extends ActionSupport {
+public class ManufactureAction extends ActionSupport {
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class AddManufactureAction extends ActionSupport {
 	/**
 	 * 
 	 */
-	public AddManufactureAction() {
+	public ManufactureAction() {
 		this.manufactureService = new ManufactureServiceImpl(manufactureDao);
 	}
 

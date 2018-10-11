@@ -33,7 +33,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author nguyenthanhlinh
  *
  */
-public class AddProductAction extends ActionSupport {
+public class ProductAction extends ActionSupport {
 
 	/**
 	 * 
@@ -49,7 +49,7 @@ public class AddProductAction extends ActionSupport {
 	private Manufacture manufacture;
 	private String message;
 	
-	public AddProductAction() {
+	public ProductAction() {
 		manufactureService = new ManufactureServiceImpl(manufactureDao);
 		productService = new ProductServiceImpl(productDao);
 	}
@@ -132,12 +132,12 @@ public class AddProductAction extends ActionSupport {
 		this.dateOfManufacture = dateOfManufacture;
 	}
 
-	public List<Manufacture> getListManufacture() {
+	public List<Manufacture> getManufactures() {
 		return manufactures;
 	}
 
-	public void setListManufacture(List<Manufacture> listManufacture) {
-		this.manufactures = listManufacture;
+	public void setManufactures(List<Manufacture> manufactures) {
+		this.manufactures = manufactures;
 	}
 
 	public Manufacture getManufacture() {

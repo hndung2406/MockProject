@@ -53,8 +53,7 @@
 							<div class="row">
 								<div class="col-lg-12">
 								<span><c:out value="${message}"></c:out> </span>
-									<form role="form" class="form col-lg-11" action="addProduct"
-										method="post" enctype="multipart/form-data">
+									<form role="form" class="form col-lg-11" action="addProduct" method="post" enctype="multipart/form-data">
 										<div class="form-group row">
 											<label>Product Code</label> 
 											<input class="form-control" name="productForm.id" id="productFormId" placeholder="Example P0001" required="required" pattern="(P[A-Za-z0-9]{2,4})|(p[A-Za-z0-9]{2,4})">
@@ -112,10 +111,8 @@
 											</select>
 										</div>
 										<div class="row col-lg-12" style="padding-left: 0;">
-											<button type="submit" class="btn btn-default">Submit
-												Button</button>
-											<button type="reset" class="btn btn-default">Reset
-												Button</button>
+											<button type="submit" class="btn btn-default">Submit Button</button>
+											<button type="reset" class="btn btn-default">Reset Button</button>
 										</div>
 
 									</form>
