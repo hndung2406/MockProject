@@ -6,8 +6,6 @@ package com.fa.group01.action;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -46,7 +44,7 @@ public class ProductAction extends ActionSupport {
 	private ProductDAO productDao = new ProductDAOImpl();
 	private ProductService productService;
 	private ProductForm productForm;
-	private String dateOfManufacture;
+	private Date dateOfManufacture;
 	private List<Manufacture> manufactures;
 	private Manufacture manufacture;
 	private String message;
@@ -66,6 +64,7 @@ public class ProductAction extends ActionSupport {
 	}
 
 	public String addProduct() {
+		System.out.println(dateOfManufacture);
 		String randomName = "";
 		int isAddSuccess = 0;
 		
@@ -93,14 +92,7 @@ public class ProductAction extends ActionSupport {
 		product.setManufacture(manufacture);
 		product.setImageUrl(randomName);
 		if (dateOfManufacture != null) {
-			Date utilDate = null;
-			try {
-				SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-				utilDate = sdf1.parse(dateOfManufacture);
-			} catch (ParseException e) {
-				UtilsLogging.LOGGER.error("ParseException", e);
-			}
-			product.setDateOfManufacture(new java.sql.Date(utilDate.getTime()));
+			product.setDateOfManufacture(new java.sql.Date(dateOfManufacture.getTime()));
 		}
 		if (productForm.getPrice() != null) {
 			product.setPrice(Double.parseDouble(productForm.getPrice()));
@@ -132,11 +124,11 @@ public class ProductAction extends ActionSupport {
 		this.productForm = productForm;
 	}
 
-	public String getDateOfManufacture() {
+	public Date getDateOfManufacture() {
 		return dateOfManufacture;
 	}
 
-	public void setDateOfManufacture(String dateOfManufacture) {
+	public void setDateOfManufacture(Date dateOfManufacture) {
 		this.dateOfManufacture = dateOfManufacture;
 	}
 
