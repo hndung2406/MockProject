@@ -22,7 +22,7 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 	private String jsonData;
 	private String redirectUrl;
 
-	private Map<String, Object> session;
+	private Map<String, Object> userSession;
 
 	@Override
 	public void prepare() throws Exception {
@@ -45,7 +45,7 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 		try {
 			if (userService.isAuthenticated(email, password)) {
 				// check role of user
-				User user = (User) session.get("authenticatedUser");
+				User user = (User) userSession.get("authenticatedUser");
 				if (user == null) {
 					user = userService.fetchUserByEmail(email);
 					String role = user.getUserRole();
@@ -56,7 +56,7 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 						redirectUrl = "../index.jsp";
 					}
 					//add user to session
-					session.put("authenticatedUser", user);
+					userSession.put("authenticatedUser", user);
 					return "success";
 				}
 
@@ -72,9 +72,9 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 
 	public String logout() {
 		//remove session user
-		User user = (User) session.get("authenticatedUser");
+		User user = (User) userSession.get("authenticatedUser");
 		if(user!= null) {
-			session.remove("authenticatedUser");
+			userSession.remove("authenticatedUser");
 			System.out.println(user);
 		}
 		return SUCCESS;
@@ -106,7 +106,7 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 
 	@Override
 	public void setSession(Map<String, Object> session) {
-		this.session = session;
+		this.userSession = session;
 	}
 
 }

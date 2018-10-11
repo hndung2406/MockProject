@@ -26,11 +26,13 @@
 							<a class="dropdown-item" href="#">Separated link</a>
 						</div>
 					</div>
-					<input class="site-search__input form-control py-2 border-right-0 border " type="search" value="Search">
+					<input class="site-search__input form-control py-2 border-right-0 border " type="search" placeholder="Search" id="search">
 					<span class="input-group-append">
 						<div class="input-group-text "><i class="fa fa-search"></i></div>
 					</span>
+					<ul class="list-group" id="result"></ul>
 				</div>
+				
 			</div>
 			<div class="col-3 d-flex flex-column justify-content-center text-center">
 				<div class="site-header__cart">

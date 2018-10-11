@@ -28,13 +28,14 @@ import com.fa.group01.service.orderservice.OrderService;
 import com.fa.group01.service.orderservice.impl.OrderServiceImpl;
 import com.fa.group01.service.stateservice.StateService;
 import com.fa.group01.service.stateservice.impl.StateServiceImpl;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author DungHN2
  *
  */
-public class CheckOutAction extends ActionSupport implements SessionAware {
+public class CheckOutAction extends ActionSupport {
 
 	/**
 	 * 
@@ -52,7 +53,6 @@ public class CheckOutAction extends ActionSupport implements SessionAware {
 	private User user;
 	private Country country;
 	private State state;
-	private Map<String, Object> userSession;
 
 	/**
 	 * Go to checkout page
@@ -78,15 +78,15 @@ public class CheckOutAction extends ActionSupport implements SessionAware {
 			java.sql.Date createDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 			state = stateService.findById(state);
 			country = countryService.findByID(country);
+			user = (User) ActionContext.getContext().getSession().get("authenticatedUser");
 			order.setState(state);
 			order.setCountry(country);
 			order.setOrderDate(createDate);
-			if(userSession.isEmpty()) {
+			if(user == null) {
 				user = new User();
 				user.setUserId(1);
 				order.setUser(user);
 			} else {
-				user = (User) userSession.get("User");
 				order.setUser(user);
 			}
 			affectedRow = orderService.addOrder(order);
@@ -149,11 +149,6 @@ public class CheckOutAction extends ActionSupport implements SessionAware {
 
 	public void setCountries(List<Country> countries) {
 		this.countries = countries;
-	}
-
-	@Override
-	public void setSession(Map<String, Object> session) {
-		userSession = session;
 	}
 	
 }

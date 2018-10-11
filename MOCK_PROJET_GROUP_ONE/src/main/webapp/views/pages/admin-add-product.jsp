@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Bootstrap Admin Theme</title>
+<title>Add Product</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="../assets/css/vendors/bootstrap/css/bootstrap.min.css"
@@ -48,7 +48,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">Input Product Information</div>
+						<div class="panel-heading" style="background-color: #7f5a83; color:orange; font-weight:bold">Input Product Information</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
@@ -111,8 +111,8 @@
 											</select>
 										</div>
 										<div class="row col-lg-12" style="padding-left: 0;">
-											<button type="submit" class="btn btn-default">Submit Button</button>
-											<button type="reset" class="btn btn-default">Reset Button</button>
+											<button type="submit" class="btn btn-default" style="background-color:#FFA500;font-weight:bold;">Submit</button>
+											<button type="reset" class="btn btn-default" style="font-weight:bold;">Reset</button>
 										</div>
 
 									</form>

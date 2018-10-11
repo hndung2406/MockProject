@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading" style="background-color: #7f5a83; color:orange; font-weight:bold">
                                 Input State Information
                             </div>
                             <div class="panel-body">
@@ -57,8 +57,8 @@
                                                 <input class="form-control" name="state.stateName" placeholder="State Name" id="state">        
                                             </div>
                                             <div class="row col-lg-12" style="padding-left:0;">
-                                                <button type="submit" class="btn btn-default" id="submit-button">Submit Button</button>
-                                                <button type="reset" class="btn btn-default">Reset Button</button>
+                                                <button type="submit" class="btn btn-default" id="submit-button" style="background-color:#FFA500;font-weight:bold;">Submit</button>
+                                                <button type="reset" class="btn btn-default" style="font-weight:bold">Reset</button>
                                             </div>
                                              <div class="row col-lg-12" style="padding-left:10;">
                                              	<span style="color:red" id="error"></span>
