@@ -69,32 +69,37 @@
 
 										</div>
 										<div class="form-group row">
-											<label>Product Image</label> 
-											<input type="file" name="productForm.image" required="required">
+											<label>Product Description</label> <input
+												class="form-control" name="productForm.description"
+												placeholder="Product Description" required="required">
+
 										</div>
 										<div class="form-group row">
-											<label>Date Of Manufacture</label> 
-											<input type="date" name="dateOfManufacture" required="required">
+											<label>Product Image</label> <input type="file"
+												name="productForm.image" required="required">
 										</div>
 										<div class="form-group row">
-											<label>Product Quantity</label> 
-											<input type="number" class="form-control" name="productForm.quantity" placeholder="Product Quantity" required="required">
+											<label>Date Of Manufacture</label> <input type="date"
+												name="dateOfManufacture" required="required">
 										</div>
 										<div class="form-group row">
-											<label>Product Condition</label> 
-											<input class="form-control" name="productForm.condition" placeholder="Condition of Product" required="required">
+											<label>Product Quantity</label> <input type="number" class="form-control"
+												name="productForm.quantity" placeholder="Product Quantity" required="required">
+
 										</div>
 										<div class="form-group row">
-											<label>Product Spec</label> 
-											<textarea class="form-control" name="productForm.spec" required="required"></textarea>
+											<label>Product Condition</label> <input class="form-control"
+												name="productForm.condition" placeholder="Condition of Product" required="required">
+
 										</div>
 										<div class="form-group row">
-											<label>Product Description</label> 
-											<textarea class="form-control" name="productForm.description" required="required"></textarea>
+											<label>Product Spec</label> <input class="form-control"
+												name="productForm.spec" placeholder="Product Spec" required="required">
 										</div>
 										<div class="form-group row">
 											<label>Product Properties</label>
-											<textarea class="form-control" name="productForm.properties" rows="3" required="required"></textarea>
+											<textarea class="form-control" name="productForm.properties"
+												rows="3" required="required"></textarea>
 										</div>
 
 										<div class="form-group col-lg-2 row" style="padding-left: 0;">
