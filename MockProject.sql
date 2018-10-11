@@ -1,4 +1,5 @@
 ﻿
+
 USE master
 GO
 
@@ -36,7 +37,7 @@ GO
 
 CREATE TABLE [Country](
     [CountryId] INT IDENTITY PRIMARY KEY,
-    [CountryName] NVARCHAR(20)
+    [CountryName] NVARCHAR(20) UNIQUE
 );
 GO
 
@@ -49,7 +50,7 @@ GO
 
 CREATE TABLE [State](
     [StateId] INT IDENTITY PRIMARY KEY,
-    [StateName] NVARCHAR(35)
+    [StateName] NVARCHAR(35) UNIQUE
 );
 GO
 
@@ -61,17 +62,13 @@ GO
 
 CREATE TABLE [Users](
     [UserId] INT IDENTITY PRIMARY KEY,
-    [UserName] NVARCHAR(255) NOT NULL,
+    [UserName] NVARCHAR(255) NOT NULL UNIQUE,
     [Password] NVARCHAR(80) NOT NULL,
-    [Email] VARCHAR(155) NOT NULL,
+    [Email] VARCHAR(155) NOT NULL UNIQUE,
     [FirstName] NVARCHAR(155),
     [LastName] NVARCHAR(155),
     [Role] VARCHAR(35),
     [CreateDate] DATETIME NOT NULL,
-    [CountryId] INT,
-    [StateId] INT,
-    FOREIGN KEY ([CountryId]) REFERENCES [Country]([CountryId]) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY ([StateId]) REFERENCES [State]([StateId]) ON DELETE CASCADE ON UPDATE CASCADE
 );
 GO
 
@@ -82,7 +79,7 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '[Manufact
 GO
 CREATE TABLE [Manufacture](
     [ManufactureId] INT PRIMARY KEY IDENTITY,
-    [ManufactureName] NVARCHAR(155) NOT NULL
+    [ManufactureName] NVARCHAR(155) NOT NULL UNIQUE
 );
 
 
@@ -117,16 +114,18 @@ GO
 
 CREATE TABLE [Orders](
     [OrderId] INT IDENTITY PRIMARY KEY,
-    [UserId] INT,
-    [CartNumber] INT,
-    [Country] NVARCHAR(45),
-    [OderDate] DATE,
+    [UserId] INT NULL,
+    [CardNumber] BIGINT,
+    [CountryId] INT,
+    [OrderDate] DATE,
     [Phone] VARCHAR(10),
     [PostalCode] VARCHAR(20),
-    [State] VARCHAR(45),
+    [StateId] INT,
     [City] VARCHAR(45),
     [OrderAddress1] VARCHAR(55),
     [OrderAddress2] VARCHAR(55),
+    FOREIGN KEY ([CountryId]) REFERENCES [Country]([CountryId]) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY ([StateId]) REFERENCES [State]([StateId]) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY ([UserId]) REFERENCES [Users]([UserId]) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -154,7 +153,7 @@ GO
 
 --Country--
 INSERT INTO Country 
-VALUES ('Viet Nam')
+VALUES ('Vietnam')
 GO
 INSERT INTO Country 
 VALUES ('USA')
@@ -162,23 +161,21 @@ GO
 
 --State--
 INSERT INTO State 
-VALUES ('Michigan')
+VALUES ('IL')
 GO
 INSERT INTO State 
-VALUES ('Texas')
+VALUES ('MA')
 GO
 
 --User
-INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
-VALUES ('hoanglatoi','Hoangday@7589','group01@domain.com','Nguyen','Dinh Hoang', 'admin', GETDATE(),1,1)
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
+VALUES ('','','','','', '','')
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
+VALUES ('hoanglatoi','Hoangday@7589','group01@domain.com','Nguyen','Dinh Hoang', 'admin', GETDATE())
 GO
-INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
-VALUES ('dunglatoi','Dung@123','group01@domain.com','Hoang','Ngoc Dung', 'admin', GETDATE(),1,2)
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
+VALUES ('dunglatoi','Dung@123','group02@domain.com','Hoang','Ngoc Dung', 'admin', GETDATE())
 GO
-INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate, CountryId, StateId)
-VALUES ('linhlatoi','Linh@123','group01@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE(),2,2)
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
+VALUES ('linhlatoi','Linh@123','group03@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE())
 GO
-
-
-
-SELECT * FROM Users

@@ -41,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public String registerUser(User user) throws SQLException {
 		int affectedRow = 0;
-		String insertUserQuery = DbQuery.INSERT_USER_QUERY;
+		String insertUserQuery = DbQuery.INSERT_NEW_USER_QUERY;
 		connection = DatabaseConnect.getConnection();
 		if(connection != null) {
 			try {

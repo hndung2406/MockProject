@@ -68,9 +68,6 @@
 			<version>2.8.5</version>
 		</dependency>
 
-
-
-
 	</dependencies>
 	<build>
 		<finalName>MOCK_PROJET_GROUP_ONE</finalName>

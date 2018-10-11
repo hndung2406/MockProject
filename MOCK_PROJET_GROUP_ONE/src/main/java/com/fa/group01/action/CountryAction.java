@@ -41,7 +41,7 @@ public class CountryAction extends ActionSupport {
 			DbLogging.LOGGER.error("SQLException", e);
 		}
 		if (isAddSuccess > 0) {
-			message = "Add Not Success!";
+			message = "Add Success!";
 			return PageConstant.SUCCESS;
 		}
 		message = "Add Fail!";

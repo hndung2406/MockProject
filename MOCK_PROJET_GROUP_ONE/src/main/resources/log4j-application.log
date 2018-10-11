@@ -1,3 +1,0 @@
-2018-10-11 09:19:18 DEBUG cache:44 - Couldn't find template in cache for "org/apache/struts2/dispatcher/error.ftl"("en_VN", UTF-8, parsed); will try to load it.
-2018-10-11 09:19:18 DEBUG cache:44 - TemplateLoader.findTemplateSource("org/apache/struts2/dispatcher/error.ftl"): Found
-2018-10-11 09:19:18 DEBUG cache:44 - Loading template for "org/apache/struts2/dispatcher/error.ftl"("en_VN", UTF-8, parsed) from "jar:file:/Users/nguyenthanhlinh/eclipse-workspace/jsp/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MOCK_PROJET_GROUP_ONE/WEB-INF/lib/struts2-core-2.5.16.jar!/org/apache/struts2/dispatcher/error.ftl"
