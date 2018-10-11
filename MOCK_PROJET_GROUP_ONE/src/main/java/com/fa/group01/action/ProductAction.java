@@ -64,6 +64,7 @@ public class ProductAction extends ActionSupport {
 	}
 
 	public String addProduct() {
+		System.out.println(dateOfManufacture);
 		String randomName = "";
 		int isAddSuccess = 0;
 		
@@ -93,7 +94,6 @@ public class ProductAction extends ActionSupport {
 		if (dateOfManufacture != null) {
 			product.setDateOfManufacture(new java.sql.Date(dateOfManufacture.getTime()));
 		}
-		System.out.println(productForm.getPrice());
 		if (productForm.getPrice() != null) {
 			product.setPrice(Double.parseDouble(productForm.getPrice()));
 		}
