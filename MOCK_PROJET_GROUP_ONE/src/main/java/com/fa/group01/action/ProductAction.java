@@ -48,6 +48,7 @@ public class ProductAction extends ActionSupport {
 	private List<Manufacture> manufactures;
 	private Manufacture manufacture;
 	private String message;
+	private String id;
 	
 	public ProductAction() {
 		manufactureService = new ManufactureServiceImpl(manufactureDao);
@@ -55,6 +56,7 @@ public class ProductAction extends ActionSupport {
 	}
 	
 	public String showAddProductPage() {
+		System.out.println(id);
 		try {
 			manufactures = manufactureService.findAll();
 		} catch (SQLException e) {
@@ -103,7 +105,7 @@ public class ProductAction extends ActionSupport {
 		
 		try {
 			manufactures = manufactureService.findAll();
-			isAddSuccess = productService.save(product);
+			isAddSuccess = productService.addProduct(product);
 		} catch (SQLException e) {
 			DbLogging.LOGGER.error("SQLException", e);
 		}
@@ -154,6 +156,14 @@ public class ProductAction extends ActionSupport {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

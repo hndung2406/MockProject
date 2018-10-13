@@ -65,7 +65,7 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 
 		try {
 			connection = DatabaseConnect.getConnection();
-			prepareStatement = connection.prepareStatement(DbQuery.FIND_ALL_MANUFACTURE);
+			prepareStatement = connection.prepareStatement(DbQuery.SELECT_ALL_MANUFACTURE_QUERY);
 			resultSet = prepareStatement.executeQuery();
 			Manufacture manufacture = null;
 			while (resultSet.next()) {

@@ -58,7 +58,11 @@
 	
 	<package name="json" extends="json-default">
 	
-		<action name="findAll" class="com.fa.group01.action.ReportAction" method="findAll">
+		<action name="findAllUser" class="com.fa.group01.action.ReportAction" method="findAllUser">
+			<result name="report" type="json"></result>
+		</action>
+		
+		<action name="findAllProduct" class="com.fa.group01.action.ReportAction" method="findAllProduct">
 			<result name="report" type="json"></result>
 		</action>
 		

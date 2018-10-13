@@ -75,7 +75,6 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 		User user = (User) userSession.get("authenticatedUser");
 		if(user!= null) {
 			userSession.remove("authenticatedUser");
-			System.out.println(user);
 		}
 		return SUCCESS;
 	}

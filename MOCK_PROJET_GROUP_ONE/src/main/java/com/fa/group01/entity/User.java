@@ -20,11 +20,9 @@ public class User {
 	private String userLastName;
 	private String userRole;
 	private Timestamp userCreateDate;
-	private Country country;
-	private State state;
 
 	public User(int userId, String userName, String userPassword, String userEmail, String userFirstName,
-			String userLastName, String userRole, Timestamp userCreateDate, Country country, State state) {
+			String userLastName, String userRole, Timestamp userCreateDate) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -34,8 +32,6 @@ public class User {
 		this.userLastName = userLastName;
 		this.userRole = userRole;
 		this.userCreateDate = userCreateDate;
-		this.country = country;
-		this.state = state;
 	}
 
 	public User() {
@@ -106,27 +102,11 @@ public class User {
 		this.userCreateDate = userCreateDate;
 	}
 
-	public Country getCountry() {
-		return country;
-	}
-
-	public void setCountry(Country country) {
-		this.country = country;
-	}
-
-	public State getState() {
-		return state;
-	}
-
-	public void setState(State state) {
-		this.state = state;
-	}
-
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword + ", userEmail="
 				+ userEmail + ", userFirstName=" + userFirstName + ", userLastName=" + userLastName + ", userRole="
-				+ userRole + ", userCreateDate=" + userCreateDate + ", country=" + country + ", state=" + state + "]";
+				+ userRole + ", userCreateDate=" + userCreateDate + "]";
 	}
 
 }

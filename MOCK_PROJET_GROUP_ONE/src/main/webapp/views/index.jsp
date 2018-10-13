@@ -18,7 +18,9 @@
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="<c:url value="/views/assets/css/main.css"/>">
+<style>
 
+</style>
 </head>
 <body>
 	<!--Begin header -->
