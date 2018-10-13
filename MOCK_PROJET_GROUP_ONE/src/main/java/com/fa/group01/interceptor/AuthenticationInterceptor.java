@@ -25,6 +25,7 @@ public class AuthenticationInterceptor implements Interceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
+		System.out.println("interceptor");
 		
 		Map<String, Object> session = invocation.getInvocationContext().getSession();
 		Object action = invocation.getAction();
@@ -33,7 +34,17 @@ public class AuthenticationInterceptor implements Interceptor {
 		User user = (User) session.get("authenticatedUser");
 		if(user== null) {
 			return ActionSupport.INPUT;
-		}			
+		}else {
+			if(user.getUserRole().equals("admin")) {
+				System.out.println("master here");
+				return "master";
+			}
+			if(user.getUserRole().equals("user")) {
+				System.out.println("user here");
+				return "user";
+			}
+		}
+		
 		
 		return invocation.invoke();
 	}

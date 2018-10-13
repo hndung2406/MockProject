@@ -168,8 +168,7 @@ VALUES ('MA')
 GO
 
 --User
-INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
-VALUES ('','','','','', '','')
+
 INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
 VALUES ('hoanglatoi','Hoangday@7589','group01@domain.com','Nguyen','Dinh Hoang', 'admin', GETDATE())
 GO
@@ -179,3 +178,5 @@ GO
 INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateDate)
 VALUES ('linhlatoi','Linh@123','group03@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE())
 GO
+
+SELECt * FROM Users

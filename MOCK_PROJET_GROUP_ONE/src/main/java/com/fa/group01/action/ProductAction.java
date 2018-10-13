@@ -72,7 +72,7 @@ public class ProductAction extends ActionSupport {
 				String randomCode = UUID.randomUUID().toString();
 				String originFileName = productForm.getImage().getName();
 				randomName = randomCode + StorageUtils.getFileExtension(originFileName);
-				File file = new File(StorageUtils.FEATURE_LOCATION, randomName);
+				File file = new File(StorageUtils.WIN_LOCATION, randomName);
 				
 				FileUtils.copyFile(productForm.getImage(), file);
 				

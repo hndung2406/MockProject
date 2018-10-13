@@ -38,9 +38,7 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 
 		JsonObject obj = new JsonParser().parse(jsonData).getAsJsonObject();
 		String email = obj.get("email").getAsString();
-		String password = obj.get("password").getAsString();
-
-		
+		String password = obj.get("password").getAsString();		
 
 		try {
 			if (userService.isAuthenticated(email, password)) {
@@ -50,10 +48,12 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 					user = userService.fetchUserByEmail(email);
 					String role = user.getUserRole();
 					if ("admin".equals(role)) {
-						redirectUrl = "admin-list-products.jsp";
+						redirectUrl = "admin-list-products.jsp";				
+						
 					}
 					if ("user".equals(role)) {
-						redirectUrl = "../index.jsp";
+						redirectUrl = "../index.jsp";			
+						
 					}
 					//add user to session
 					session.put("authenticatedUser", user);
