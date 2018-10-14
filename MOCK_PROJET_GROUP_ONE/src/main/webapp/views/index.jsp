@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
+<%@taglib prefix="s" uri="/struts-tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 	rel="stylesheet"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="<c:url value="/views/assets/css/main.css"/>">
+<link rel="stylesheet" href="<%=request.getServletContext().getContextPath()%>/views/assets/css/main.css">
 
 </head>
 <body>

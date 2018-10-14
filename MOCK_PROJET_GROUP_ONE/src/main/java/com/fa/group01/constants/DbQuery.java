@@ -22,5 +22,6 @@ public class DbQuery {
 	public static final String SELECT_USER_BY_EMAIL_AND_PASSWORD = "SELECT * FROM Users WHERE Email=? AND Password=?";
 	public static final String SELECT_STATE_BY_ID = "SELECT * FROM [State] WHERE StateId = ?";
 	public static final String SELECT_COUNTRY_BY_ID = "SELECT * FROM [Country] WHERE CountryId = ?";
+	public static final String FIND_ALL_PRODUCTS = "SELECT * FROM Product";
 	
 }

@@ -4,6 +4,7 @@
 package com.fa.group01.service.productservice.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.fa.group01.dao.productdao.ProductDAO;
 import com.fa.group01.entity.Product;
@@ -24,6 +25,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int save(Product product) throws SQLException {
 		return this.productDao.save(product);
+	}
+
+	@Override
+	public List<Product> fetchAllProducts() throws SQLException {
+		return this.productDao.findAllProducts();
 	}
 
 }

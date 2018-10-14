@@ -48,6 +48,7 @@ public class ProductAction extends ActionSupport {
 	private List<Manufacture> manufactures;
 	private Manufacture manufacture;
 	private String message;
+	private List<Product> products;
 	
 	public ProductAction() {
 		manufactureService = new ManufactureServiceImpl(manufactureDao);
@@ -72,7 +73,7 @@ public class ProductAction extends ActionSupport {
 				String randomCode = UUID.randomUUID().toString();
 				String originFileName = productForm.getImage().getName();
 				randomName = randomCode + StorageUtils.getFileExtension(originFileName);
-				File file = new File(StorageUtils.WIN_LOCATION, randomName);
+				File file = new File(StorageUtils.FEATURE_LOCATION, randomName);
 				
 				FileUtils.copyFile(productForm.getImage(), file);
 				
@@ -115,6 +116,22 @@ public class ProductAction extends ActionSupport {
 		message = "Add Fail!";
 		return PageConstant.ERROR;
 	}
+	
+	
+	public String getAllProducts() {
+		try {
+			products = productService.fetchAllProducts();			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
+	
+	
+	
+	
+	
 
 	public ProductForm getProductForm() {
 		return productForm;
@@ -154,6 +171,14 @@ public class ProductAction extends ActionSupport {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 }
