@@ -8,8 +8,12 @@
     <package name="group1" extends="struts-default">
     
     	<action name="">
-    		<result type="redirect">/views/index.jsp</result>
+    		<result type="redirect">/views/home.jsp</result>
     	</action> 
+    
+    	<action name="home" class="com.fa.group01.action.HomeAction" method="home">
+    		<result name="success">/views/index.jsp</result>
+    	</action>
     
     	<action name="registerUser" class="com.fa.group01.action.RegisterAction" method="registerUser">
     		<result name="register">/views/pages/login.jsp</result>
@@ -70,6 +74,10 @@
     		<result name="success" type="json"></result>
     		<result name="fail" type="json"></result>
     	</action> 
+    	
+    	<action name="checkSession" class="com.fa.group01.action.HomeAction" method="checkSession">
+    		<result name="success" type="json"></result>
+    	</action>
 		
 	</package>
 	

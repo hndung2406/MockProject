@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<%=request.getContextPath()%>/views/index.jsp">
+                <a class="navbar-brand" href="<%=request.getContextPath()%>/views/home">
                 	<img class="site-header__brand-image" src="<%=request.getServletContext().getContextPath() %>/views/assets/images/logo.svg" alt="Logo site" style="height:25px;width:100px">
                 </a>
             </div>

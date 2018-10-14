@@ -2,13 +2,13 @@
 	<div class="container site-header__container">
 		<div class="row justify-content-end site-header--top">
 			<span class="site-header__icon">
-				<a href="<%=request.getServletContext().getContextPath() %>/views/pages/login.jsp" class="site-header__icon--link"><i
-					 class="fa fa-users"></i> Login</a>
+				<a href="<%=request.getServletContext().getContextPath() %>/views/pages/login.jsp" class="site-header__icon--link" id="login-link">
+				<i class="fa fa-users"></i><span id="login"> Login</span> </a>
 			</span>
 		</div>
 		<div class="row site-header--main">
 			<div class="col-3 site-header__brand">
-				<a href="<%=request.getServletContext().getContextPath() %>/views/index.jsp">
+				<a href="<%=request.getServletContext().getContextPath() %>/views/home">
 					<img class="site-header__brand-image" src="<%=request.getServletContext().getContextPath() %>/views/assets/images/logo.svg"
 					 alt="Logo site">
 				</a>

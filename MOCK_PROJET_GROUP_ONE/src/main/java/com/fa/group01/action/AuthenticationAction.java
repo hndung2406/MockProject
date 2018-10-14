@@ -50,10 +50,10 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 					user = userService.fetchUserByEmail(email);
 					String role = user.getUserRole();
 					if ("admin".equals(role)) {
-						redirectUrl = "admin-list-products.jsp";
+						redirectUrl = "../home";
 					}
 					if ("user".equals(role)) {
-						redirectUrl = "../index.jsp";
+						redirectUrl = "../home";
 					}
 					//add user to session
 					userSession.put("authenticatedUser", user);
