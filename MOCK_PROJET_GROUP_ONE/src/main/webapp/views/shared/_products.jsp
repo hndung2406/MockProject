@@ -1,3 +1,5 @@
+<%@taglib prefix="s" uri="/struts-tags" %>
+<%@page isELIgnored="false" %>
 <main id="site-main">
 	<!-- begin wrapper-container -->
 	<div class="container wrapper-container">
@@ -44,7 +46,7 @@
 				  </ol>
 				  <div class="carousel-inner">
 				    <div class="carousel-item active ">
-				      <img class="d-block mx-auto" src="assets/images/iphone-x-256gb-h2-400x460-400x460.png" alt="First slide">
+				      <img class="d-block mx-auto" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/iphone-x-256gb-h2-400x460-400x460.png" alt="First slide">
 				      <div class="carousel-caption d-none d-md-block">
 				          <h5>Iphone XI - The next generation of Nokia</h5>
 				          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, quibusdam.</p>
@@ -52,7 +54,7 @@
 				       </div>
 				    </div>
 				    <div class="carousel-item">
-				      <img class="d-block mx-auto" src="assets/images/oppo-f9-red-2-400x460.png" alt="Second slide">
+				      <img class="d-block mx-auto" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/oppo-f9-red-2-400x460.png" alt="Second slide">
 				      <div class="carousel-caption d-none d-md-block">
 				         <h5>Iphone XI - The next generation of Nokia</h5>
 				          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, quibusdam.</p>
@@ -60,7 +62,7 @@
 				       </div>
 				    </div>
 				    <div class="carousel-item">
-				      <img class="d-block mx-auto" src="assets/images/bphone-2017-gold-400x460.png" alt="Third slide">
+				      <img class="d-block mx-auto" src="<%=request.getServletContext().getContextPath()%>/views/<%=request.getServletContext().getContextPath()%>/views/assets/images/bphone-2017-gold-400x460.png" alt="Third slide">
 				      <div class="carousel-caption d-none d-md-block">
 				          <h5>Iphone XI - The next generation of Nokia</h5>
 				          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, quibusdam.</p>
@@ -97,7 +99,7 @@
 					<div class="row weshop-mobiles ">					
 						<div class="col-3">
 							<div class="card mobile-item text-center ">
-								  <img class="card-img-top mobile-item__thumbnail" src="assets/images/oppo-f9-red-2-400x460.png" alt="mobile image">
+								  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/oppo-f9-red-2-400x460.png" alt="mobile image">
 								  <div class="card-body mobile-item__price ">
 								  	<p class="mobile-item__name mb-0">Opp F9</p>
 								    <p class="mobile-item__price-value">
@@ -107,13 +109,13 @@
 									<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 
 								  </div>
-								<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+								<img class="d-block mobile-item--hightlight" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/sale.svg" alt="">
 							  
 							</div>
 						</div>
 						<div class="col-3">
 							<div class="card mobile-item text-center ">
-								  <img class="card-img-top mobile-item__thumbnail" src="assets/images/iphone-x-64gb-1-400x460.png" alt="mobile image">
+								  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/iphone-x-64gb-1-400x460.png" alt="mobile image">
 								  <div class="card-body mobile-item__price ">
 								  	<p class="mobile-item__name mb-0">Iphone X - 64GB</p>
 								    <p class="mobile-item__price-value">
@@ -123,13 +125,13 @@
 									<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 
 								  </div>
-								<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+								<img class="d-block mobile-item--hightlight" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/sale.svg" alt="">
 							  
 							</div>
 						</div>
 						<div class="col-3">
 							<div class="card mobile-item text-center ">
-								  <img class="card-img-top mobile-item__thumbnail" src="assets/images/iphone-6s-plus-32gb-400x450-400x450.png" alt="mobile image">
+								  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/iphone-6s-plus-32gb-400x450-400x450.png" alt="mobile image">
 								  <div class="card-body mobile-item__price ">
 								  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
 								    <p class="mobile-item__price-value">
@@ -139,13 +141,13 @@
 									<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 
 								  </div>
-								<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+								<img class="d-block mobile-item--hightlight" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/sale.svg" alt="">
 							  
 							</div>
 						</div>
 						<div class="col-3">
 							<div class="card mobile-item text-center ">
-								  <img class="card-img-top mobile-item__thumbnail" src="assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
+								  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
 								  <div class="card-body mobile-item__price ">
 								  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
 								    <p class="mobile-item__price-value">
@@ -155,7 +157,7 @@
 									<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 
 								  </div>
-								<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+								<img class="d-block mobile-item--hightlight" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/sale.svg" alt="">
 							  
 							</div>
 						</div>						
@@ -167,7 +169,7 @@
 			     	<div class="row weshop-mobiles ">					
 			     		<div class="col-3">
 			     			<div class="card mobile-item text-center ">
-			     				  <img class="card-img-top mobile-item__thumbnail" src="assets/images/oppo-f9-red-2-400x460.png" alt="mobile image">
+			     				  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/oppo-f9-red-2-400x460.png" alt="mobile image">
 			     				  <div class="card-body mobile-item__price ">
 			     				  	<p class="mobile-item__name mb-0">Opp F9</p>
 			     				    <p class="mobile-item__price-value">
@@ -177,13 +179,13 @@
 			     					<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 
 			     				  </div>
-			     				<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+			     				<img class="d-block mobile-item--hightlight" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/sale.svg" alt="">
 			     			  
 			     			</div>
 			     		</div>
 			     		<div class="col-3">
 			     			<div class="card mobile-item text-center ">
-			     				  <img class="card-img-top mobile-item__thumbnail" src="assets/images/iphone-x-64gb-1-400x460.png" alt="mobile image">
+			     				  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/iphone-x-64gb-1-400x460.png" alt="mobile image">
 			     				  <div class="card-body mobile-item__price ">
 			     				  	<p class="mobile-item__name mb-0">Iphone X - 64GB</p>
 			     				    <p class="mobile-item__price-value">
@@ -193,13 +195,13 @@
 			     					<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 
 			     				  </div>
-			     				<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+			     				<img class="d-block mobile-item--hightlight" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/sale.svg" alt="">
 			     			  
 			     			</div>
 			     		</div>
 			     		<div class="col-3">
 			     			<div class="card mobile-item text-center ">
-			     				  <img class="card-img-top mobile-item__thumbnail" src="assets/images/iphone-6s-plus-32gb-400x450-400x450.png" alt="mobile image">
+			     				  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/iphone-6s-plus-32gb-400x450-400x450.png" alt="mobile image">
 			     				  <div class="card-body mobile-item__price ">
 			     				  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
 			     				    <p class="mobile-item__price-value">
@@ -209,13 +211,13 @@
 			     					<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 
 			     				  </div>
-			     				<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+			     				<img class="d-block mobile-item--hightlight" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/sale.svg" alt="">
 			     			  
 			     			</div>
 			     		</div>
 			     		<div class="col-3">
 			     			<div class="card mobile-item text-center ">
-			     				  <img class="card-img-top mobile-item__thumbnail" src="assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
+			     				  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
 			     				  <div class="card-body mobile-item__price ">
 			     				  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
 			     				    <p class="mobile-item__price-value">
@@ -225,7 +227,7 @@
 			     					<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 
 			     				  </div>
-			     				<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+			     				<img class="d-block mobile-item--hightlight" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/sale.svg" alt="">
 			     			  
 			     			</div>
 			     		</div>						
@@ -249,11 +251,11 @@
 		<!-- begin top mobile brand -->
 		<div class="row top-brand-row  justify-content-center">					
 			<div class=" brand bg-dark">
-				<a href="#" class="brand-link"><img src="assets/images/iphone-logo.jpg" alt="Iphone logo"></a>
-				<a href="#" class="brand-link"><img src="assets/images/samsung-logo.jpg" alt="samsung logo"></a>
-				<a href="#" class="logo-link"><img src="assets/images/oppo-logo.jpg" alt="oppo logo"></a>
-				<a href="#" class="logo-link"><img src="assets/images/nokia-logo.jpg" alt="nokia logo"></a>
-				<a href="#" class="logo-link"><img src="assets/images/vivo-logo.jpg" alt="vivo logo"></a>
+				<a href="#" class="brand-link"><img src="<%=request.getServletContext().getContextPath()%>/views/assets/images/iphone-logo.jpg" alt="Iphone logo"></a>
+				<a href="#" class="brand-link"><img src="<%=request.getServletContext().getContextPath()%>/views/assets/images/samsung-logo.jpg" alt="samsung logo"></a>
+				<a href="#" class="logo-link"><img src="<%=request.getServletContext().getContextPath()%>/views/assets/images/oppo-logo.jpg" alt="oppo logo"></a>
+				<a href="#" class="logo-link"><img src="<%=request.getServletContext().getContextPath()%>/views/assets/images/nokia-logo.jpg" alt="nokia logo"></a>
+				<a href="#" class="logo-link"><img src="<%=request.getServletContext().getContextPath()%>/views/assets/images/vivo-logo.jpg" alt="vivo logo"></a>
 			</div>
 		</div>
 		
@@ -276,205 +278,34 @@
 
 		</div>
 		<!-- end pagination -->
-		<div class="row weshop-mobiles ">					
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/oppo-f9-red-2-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Opp F9</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$600 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
+		
+		<div class="row weshop-mobiles ">	
 
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
+			<s:iterator value="products" > 
+				<div class="col-sm-2">
+					<div class="card mobile-item text-center ">
+						  <img class="card-img-top mobile-item__thumbnail" src="/images/<s:property value="imageUrl"/>" alt="mobile image"/>
+						  <div class="card-body mobile-item__price ">
+						  	<p class="mobile-item__name mb-0"><s:property value="name"/> </p>
+						    <p class="mobile-item__price-value">
+						    	<span class="mobile-item__price--past"><s:property value="price"/> </span> <span class="mobile-item__price--discount">(-10%)</span>
+						    </p>
+							<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
+							<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
+	
+						  </div>
+						<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+					  
+					</div>
 			</div>
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/iphone-x-64gb-1-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone X - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/iphone-6s-plus-32gb-400x450-400x450.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>	
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>									
+			
+			</s:iterator>		
+			
+										
 			
 		</div>
 		<hr>
-		<div class="row weshop-mobiles ">					
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/oppo-f9-red-2-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Opp F9</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$600 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/iphone-x-64gb-1-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone X - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/iphone-6s-plus-32gb-400x450-400x450.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>	
-			<div class="col-sm-2">
-				<div class="card mobile-item text-center ">
-					  <img class="card-img-top mobile-item__thumbnail" src="assets/images/samsung-galaxy-note-9-black-400x460-400x460.png" alt="mobile image">
-					  <div class="card-body mobile-item__price ">
-					  	<p class="mobile-item__name mb-0">Iphone 6 - 64GB</p>
-					    <p class="mobile-item__price-value">
-					    	<span class="mobile-item__price--past">$1700 </span> <span class="mobile-item__price--discount">(-10%)</span>
-					    </p>
-						<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-						<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-
-					  </div>
-					<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
-				  
-				</div>
-			</div>									
-			
-		</div>
+		
 		<!-- end all products -->
 	<hr>
 	</div>

@@ -26,5 +26,10 @@ public interface ProductService {
 	 * @throws SQLException
 	 */
 	public List<Product> findAllProduct() throws SQLException;
-	
+		
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Product> fetchAllProducts() throws SQLException;
 }

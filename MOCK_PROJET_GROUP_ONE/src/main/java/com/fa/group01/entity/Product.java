@@ -131,4 +131,14 @@ public class Product {
 		this.manufacture = manufacture;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description
+				+ ", imageUrl=" + imageUrl + ", quantity=" + quantity + ", condition=" + condition
+				+ ", dateOfManufacture=" + dateOfManufacture + ", spec=" + spec + ", properties=" + properties
+				+ ", manufacture=" + manufacture + "]";
+	}
+	
+	
+
 }

@@ -27,6 +27,7 @@ public class ProductDAOImpl implements ProductDAO {
 	private PreparedStatement preparedStatement = null;
 	private Statement statement = null;
 	private ResultSet resultSet = null;
+
 	
 	@Override
 	public int addProduct(Product product) throws SQLException {
@@ -59,7 +60,6 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 		return affectedRow;
 	}
-
 
 	@Override
 	public List<Product> findAllProduct() throws SQLException {

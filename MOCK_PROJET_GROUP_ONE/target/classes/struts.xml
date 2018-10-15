@@ -7,9 +7,11 @@
 
     <package name="group1" extends="struts-default">
     
-    	<action name="">
-    		<result type="redirect">/views/home.jsp</result>
-    	</action> 
+    	<action name="" class="com.fa.group01.action.ProductAction" method="getAllProducts">
+			<result >
+				/views/index.jsp
+			</result>
+		</action>
     
     	<action name="user">
     		<result type="redirect">/views/pages/user.jsp</result>
@@ -62,6 +64,12 @@
     		<result name="success" type="redirect">/views/index.jsp</result>
     	</action>
     	
+    	<action name="logout" class="com.fa.group01.action.AuthenticationAction" method="logout">
+    		<result type="redirect">
+    			/views/pages/login.jsp
+    		</result>
+    	</action>
+    	
     </package>
 	
 	<package name="json" extends="json-default">
@@ -94,19 +102,21 @@
     		</interceptor-stack>
     	</interceptors>
     	<default-interceptor-ref name="sercureStack"></default-interceptor-ref>
-    	<action name="admin*">    		
-    		<result type="redirect">
+    	<action name="admin*" >
+    		<!-- If authentcated user is admin then redirect to admin page -->    		
+    		<result name="master" type="redirect">
     			/views/pages/admin-list-products.jsp
     		</result>
+    		<!-- If authentcated user is user then redirect to index page -->   
+    		<result name="user" type="redirect">
+    			/views/index.jsp
+    		</result>
+    		<!-- If user is not authenticated then redirect to  login page -->  	
     		<result name="input" type="redirect">
     			/views/pages/login.jsp
     		</result>
     	</action>
-    	<action name="logout" class="com.fa.group01.action.AuthenticationAction" method="logout">
-    		<result type="redirect">
-    			/views/pages/login.jsp
-    		</result>
-    	</action>
+    	
     
     </package>
 	

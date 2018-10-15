@@ -49,6 +49,7 @@ public class ProductAction extends ActionSupport {
 	private Manufacture manufacture;
 	private String message;
 	private String id;
+	private List<Product> products;
 	
 	public ProductAction() {
 		manufactureService = new ManufactureServiceImpl(manufactureDao);
@@ -116,6 +117,22 @@ public class ProductAction extends ActionSupport {
 		message = "Add Fail!";
 		return PageConstant.ERROR;
 	}
+	
+	
+	public String getAllProducts() {
+		try {
+			products = productService.fetchAllProducts();			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
+	
+	
+	
+	
+	
 
 	public ProductForm getProductForm() {
 		return productForm;
@@ -163,6 +180,14 @@ public class ProductAction extends ActionSupport {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 }

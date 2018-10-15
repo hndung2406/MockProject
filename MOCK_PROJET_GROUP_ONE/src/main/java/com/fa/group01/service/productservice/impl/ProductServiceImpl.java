@@ -32,4 +32,9 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.findAllProduct();
 	}
 
+	@Override
+	public List<Product> fetchAllProducts() throws SQLException {
+		return this.productDao.findAllProduct();
+	}
+
 }

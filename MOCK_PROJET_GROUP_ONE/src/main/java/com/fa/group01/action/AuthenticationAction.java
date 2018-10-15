@@ -38,9 +38,7 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 
 		JsonObject obj = new JsonParser().parse(jsonData).getAsJsonObject();
 		String email = obj.get("email").getAsString();
-		String password = obj.get("password").getAsString();
-
-		
+		String password = obj.get("password").getAsString();		
 
 		try {
 			if (userService.isAuthenticated(email, password)) {
