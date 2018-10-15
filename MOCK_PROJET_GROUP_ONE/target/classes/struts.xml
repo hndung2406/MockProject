@@ -46,6 +46,14 @@
 			<result name="error">/views/pages/admin-add-product.jsp</result>
 		</action>
 		
+		<action name="products" class="com.fa.group01.action.ProductAction" method="showProducts">
+			<result name="success">/views/pages/admin-list-products.jsp</result>
+		</action>
+		
+		<action name="showUpdateProduct" class="com.fa.group01.action.ProductAction" method="showUpdateProduct">
+			<result name="success">/views/pages/admin-update-product.jsp</result>
+		</action>
+		
 		<action name="checkOut" class="com.fa.group01.action.CheckOutAction" method="checkOut">
 			<result name="success">/views/pages/checkout.jsp</result>
 		</action>

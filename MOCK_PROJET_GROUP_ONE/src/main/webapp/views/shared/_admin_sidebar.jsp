@@ -48,7 +48,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="../pages/admin-list-products.jsp"><i class="fa fa-table fa-fw"></i> List Product</a>
+                            <a href="products"><i class="fa fa-table fa-fw"></i> List Product</a>
                         </li>
                         <li>
                             <a href="../pages/admin-list-order.jsp"><i class="fa fa-table fa-fw"></i> List Order</a>

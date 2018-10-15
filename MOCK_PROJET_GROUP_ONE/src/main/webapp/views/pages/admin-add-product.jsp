@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Bootstrap Admin Theme</title>
+<title>Add New Product</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="../assets/css/vendors/bootstrap/css/bootstrap.min.css"
@@ -56,27 +56,27 @@
 									<form role="form" class="form col-lg-11" action="addProduct" method="post" enctype="multipart/form-data">
 										<div class="form-group row">
 											<label>Product Code</label> 
-											<input class="form-control" name="productForm.id" id="productFormId" placeholder="Example P0001" required="required" pattern="(P[A-Za-z0-9]{2,4})|(p[A-Za-z0-9]{2,4})">
+											<input class="form-control" name="product.id" id="productFormId" placeholder="Example P0001" required="required" pattern="(P[A-Za-z0-9]{2,4})|(p[A-Za-z0-9]{2,4})">
 										</div>
 										<div class="form-group row">
 											<label>Product Name</label> <input class="form-control"
-												name="productForm.name" placeholder="Product Name" required="required">
+												name="product.name" placeholder="Product Name" required="required">
 
 										</div>
 										<div class="form-group row">
 											<label>Product Price</label> <input type="number" class="form-control"
-												name="productForm.price" placeholder="Product Price" required="required">
+												name="product.price" placeholder="Product Price" required="required">
 
 										</div>
 										<div class="form-group row">
 											<label>Product Description</label> <input
-												class="form-control" name="productForm.description"
+												class="form-control" name="product.description"
 												placeholder="Product Description" required="required">
 
 										</div>
 										<div class="form-group row">
 											<label>Product Image</label> <input type="file"
-												name="productForm.image" required="required">
+												name="image" required="required">
 										</div>
 										<div class="form-group row">
 											<label>Date Of Manufacture</label> <input type="date"
@@ -84,21 +84,21 @@
 										</div>
 										<div class="form-group row">
 											<label>Product Quantity</label> <input type="number" class="form-control"
-												name="productForm.quantity" placeholder="Product Quantity" required="required">
+												name="product.quantity" placeholder="Product Quantity" required="required">
 
 										</div>
 										<div class="form-group row">
 											<label>Product Condition</label> <input class="form-control"
-												name="productForm.condition" placeholder="Condition of Product" required="required">
+												name="product.condition" placeholder="Condition of Product" required="required">
 
 										</div>
 										<div class="form-group row">
 											<label>Product Spec</label> <input class="form-control"
-												name="productForm.spec" placeholder="Product Spec" required="required">
+												name="product.spec" placeholder="Product Spec" required="required">
 										</div>
 										<div class="form-group row">
 											<label>Product Properties</label>
-											<textarea class="form-control" name="productForm.properties"
+											<textarea class="form-control" name="product.properties"
 												rows="3" required="required"></textarea>
 										</div>
 
