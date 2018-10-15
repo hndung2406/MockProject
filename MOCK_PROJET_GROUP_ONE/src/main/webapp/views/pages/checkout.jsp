@@ -237,6 +237,8 @@
 	
 	<!-- Javascript -->
     <script src="<%=request.getContextPath()%>/views/assets/js/modules/checkout.js"></script>
+    <script src="<%=request.getContextPath()%>/views/assets/js/modules/header.js"></script>
+	<script src="<%=request.getContextPath()%>/views/assets/js/modules/index.js"></script>
     
 </body>
 </html>

@@ -153,5 +153,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	 crossorigin="anonymous"></script>	
 	<script src="../assets/js/modules/_cart.js"></script>
+	<script src="<%=request.getContextPath()%>/views/assets/js/modules/header.js"></script>
+	<script src="<%=request.getContextPath()%>/views/assets/js/modules/index.js"></script>
 </body>
 </html>

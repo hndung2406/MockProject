@@ -7,6 +7,10 @@ $(document).ready(function(){
 				$("#login").text("  Profile");
 				$("#login-link").attr("href", "admin");
 			}
+			if(data.user.userRole == "user") {
+				$("#login").text("  Profile");
+				$("#login-link").attr("href", "user");
+			}
 		}
 	});
 });
