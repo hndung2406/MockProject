@@ -288,3 +288,11 @@ GO
 SELECt * FROM Users
 SELECT * FROM Manufacture
 SELECT * FROM Product
+
+SELECT *
+FROM Product p
+ORDER BY p.ProductId
+OFFSET 0 ROWS
+FETCH NEXT 3 ROWS ONLY
+
+CREATE PROC usp_fetchProductByPageNumber
