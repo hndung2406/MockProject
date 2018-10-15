@@ -34,4 +34,6 @@ public interface ProductDAO {
 	 */
 	public List<Product> findAllProduct() throws SQLException;
 	
+	public int updateProduct(Product product) throws SQLException;
+	
 }

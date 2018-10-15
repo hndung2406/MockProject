@@ -51,4 +51,9 @@ public class ProductServiceImpl implements ProductService {
 		return split;
 	}
 
+	@Override
+	public int updateProduct(Product product) throws SQLException {
+		return this.productDao.updateProduct(product);
+	}
+
 }

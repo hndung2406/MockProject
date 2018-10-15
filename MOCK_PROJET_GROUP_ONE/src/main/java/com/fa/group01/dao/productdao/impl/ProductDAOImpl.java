@@ -32,7 +32,7 @@ public class ProductDAOImpl implements ProductDAO {
 	public int addProduct(Product product) throws SQLException {
 		connection = DatabaseConnect.getConnection();
 		int affectedRow = 0;
-		if(connection != null) {
+		if (connection != null) {
 			try {
 				preparedStatement = connection.prepareStatement(DbQuery.INSERT_NEW_PRODUCT);
 				preparedStatement.setString(1, product.getId());
@@ -66,11 +66,11 @@ public class ProductDAOImpl implements ProductDAO {
 		Product product = null;
 		Manufacture manufacture = null;
 		connection = DatabaseConnect.getConnection();
-		if(connection != null) {
+		if (connection != null) {
 			try {
 				statement = connection.createStatement();
 				resultSet = statement.executeQuery(DbQuery.SELECT_ALL_PRODUCT_QUERY);
-				while(resultSet.next()) {
+				while (resultSet.next()) {
 					product = new Product();
 					manufacture = new Manufacture();
 					product.setId(resultSet.getString("ProductId"));
@@ -88,13 +88,13 @@ public class ProductDAOImpl implements ProductDAO {
 					products.add(product);
 				}
 			} finally {
-				if(connection != null) {
+				if (connection != null) {
 					connection.close();
 				}
-				if(statement != null) {
+				if (statement != null) {
 					statement.close();
 				}
-				if(resultSet != null) {
+				if (resultSet != null) {
 					resultSet.close();
 				}
 			}
@@ -107,26 +107,70 @@ public class ProductDAOImpl implements ProductDAO {
 		Product product = new Product();
 		Manufacture manufacture = new Manufacture();
 		connection = DatabaseConnect.getConnection();
-		if(connection != null) {
-			preparedStatement = connection.prepareStatement(DbQuery.SELECT_PRODUCT_BY_ID);
-			preparedStatement.setString(1, productId);
-			resultSet = preparedStatement.executeQuery();
-			while(resultSet.next()) {
-				product.setId(resultSet.getString("ProductId"));
-				product.setName(resultSet.getString("ProductName"));
-				product.setPrice(resultSet.getDouble("ProductPrice"));
-				product.setDescription(resultSet.getString("Description"));
-				product.setImageUrl(resultSet.getString("Image"));
-				product.setQuantity(resultSet.getInt("Quantity"));
-				product.setCondition(resultSet.getString("Condition"));
-				product.setDateOfManufacture(resultSet.getDate("DateOfManufacture"));
-				product.setSpec(resultSet.getString("Spec"));
-				product.setProperties(resultSet.getString("Properties"));
-				manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
-				product.setManufacture(manufacture);
+		if (connection != null) {
+			try {
+				preparedStatement = connection.prepareStatement(DbQuery.SELECT_PRODUCT_BY_ID);
+				preparedStatement.setString(1, productId);
+				resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					product.setId(resultSet.getString("ProductId"));
+					product.setName(resultSet.getString("ProductName"));
+					product.setPrice(resultSet.getDouble("ProductPrice"));
+					product.setDescription(resultSet.getString("Description"));
+					product.setImageUrl(resultSet.getString("Image"));
+					product.setQuantity(resultSet.getInt("Quantity"));
+					product.setCondition(resultSet.getString("Condition"));
+					product.setDateOfManufacture(resultSet.getDate("DateOfManufacture"));
+					product.setSpec(resultSet.getString("Spec"));
+					product.setProperties(resultSet.getString("Properties"));
+					manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
+					product.setManufacture(manufacture);
+				}
+			} finally {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
 			}
 		}
 		return product;
+	}
+
+	@Override
+	public int updateProduct(Product product) throws SQLException {
+		connection = DatabaseConnect.getConnection();
+		int affectedRow = 0;
+		if (connection != null) {
+			try {
+				preparedStatement = connection.prepareStatement(DbQuery.UPDATE_PRODUCT);
+				preparedStatement.setString(1, product.getName());
+				preparedStatement.setDouble(2, product.getPrice());
+				preparedStatement.setString(3, product.getDescription());
+				preparedStatement.setString(4, product.getImageUrl());
+				preparedStatement.setInt(5, product.getQuantity());
+				preparedStatement.setString(6, product.getCondition());
+				preparedStatement.setDate(7, product.getDateOfManufacture());
+				preparedStatement.setString(8, product.getSpec());
+				preparedStatement.setString(9, product.getProperties());
+				preparedStatement.setInt(10, product.getManufacture().getManufactureId());
+				preparedStatement.setString(11, product.getId());
+
+				affectedRow = preparedStatement.executeUpdate();
+			} finally {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+		return affectedRow;
 	}
 
 }

@@ -51,7 +51,6 @@ public class ProductAction extends ActionSupport {
 	private String message;
 	private List<Product> products;
 	private String productId;
-	private Product dbProduct;
 	
 	public ProductAction() {
 		manufactureService = new ManufactureServiceImpl(manufactureDao);
@@ -60,11 +59,53 @@ public class ProductAction extends ActionSupport {
 	
 	public String showUpdateProduct() {
 		try {
-			dbProduct = productService.findById(productId);
+			
+			manufactures = manufactureService.findAll();
+			product = productService.findById(productId);
+			image = new File(StorageUtils.FEATURE_LOCATION + "/" + product.getImageUrl());
+			manufacture = manufactureService.findById(product.getManufacture().getManufactureId());
+			product.setManufacture(manufacture);
 		} catch (SQLException e) {
 			DbLogging.LOG.error("SQLException", e);
 		}
 		return PageConstant.SUCCESS;
+	}
+	
+	public String updateProduct() {
+		String randomName = "";
+		int isAddSuccess = 0;
+
+		if (image != null) {
+			try {
+				StorageUtils.removeFile(product.getImageUrl());
+				String randomCode = UUID.randomUUID().toString();
+				randomName = randomCode + StorageUtils.getFileExtension(imageFileName);
+				
+				File file = new File(StorageUtils.FEATURE_LOCATION, randomName);
+				FileUtils.copyFile(image, file);
+				product.setImageUrl(randomName);
+			} catch (IOException e) {
+				UtilsLogging.LOGGER.error("IOException", e);
+			}
+		}
+		if (dateOfManufacture != null) {
+			product.setDateOfManufacture(new java.sql.Date(dateOfManufacture.getTime()));
+		}
+		try {
+			manufacture = manufactureService.findById(manufacture.getManufactureId());
+			manufactures = manufactureService.findAll();
+			product.setManufacture(manufacture);
+			isAddSuccess = productService.updateProduct(product);
+		} catch (SQLException e) {
+			DbLogging.LOG.error("SQLException", e);
+		}
+		
+		if (isAddSuccess > 0) {
+			message = "Update Success!";
+			return PageConstant.SUCCESS;
+		}
+		message = "Update Fail!";
+		return PageConstant.ERROR;
 	}
 
 	public String showProducts() {
@@ -203,14 +244,6 @@ public class ProductAction extends ActionSupport {
 
 	public void setProductId(String productId) {
 		this.productId = productId;
-	}
-
-	public Product getDbProduct() {
-		return dbProduct;
-	}
-
-	public void setDbProduct(Product dbProduct) {
-		this.dbProduct = dbProduct;
 	}
 
 }

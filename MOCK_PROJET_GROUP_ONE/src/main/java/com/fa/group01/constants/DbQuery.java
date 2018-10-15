@@ -32,4 +32,7 @@ public class DbQuery {
 	public static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM [Product] WHERE ProductId = ?";
 	public static final String SELECT_MANUFACTURE_BY_ID = "SELECT * FROM [Manufacture] WHERE ManufactureId = ?";
 	
+	//Update Query
+	public static final String UPDATE_PRODUCT = "UPDATE Product SET ProductName = ?, ProductPrice = ?, Description = ?, Image = ?, Quantity = ?, Condition = ?, DateOfManufacture = ?, Spec = ?, Properties = ?, ManufactureId = ? WHERE ProductId = ?";
+	
 }

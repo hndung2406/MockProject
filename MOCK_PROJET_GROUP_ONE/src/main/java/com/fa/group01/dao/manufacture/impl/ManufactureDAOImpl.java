@@ -58,6 +58,7 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 
 	/**
 	 * Find All Manufacture
+	 * 
 	 * @return
 	 * @throws SQLException
 	 */

@@ -45,4 +45,12 @@ public interface ProductService {
 	 * @return
 	 */
 	public String[] splitStringProduct(String productString);
+
+	/**
+	 * @param product
+	 * @return
+	 * @throws SQLException
+	 */
+	public int updateProduct(Product product) throws SQLException;
+
 }
