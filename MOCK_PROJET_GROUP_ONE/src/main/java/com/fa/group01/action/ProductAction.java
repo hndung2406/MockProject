@@ -10,10 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.ServletContext;
-
 import org.apache.commons.io.FileUtils;
-import org.apache.struts2.util.ServletContextAware;
 
 import com.fa.group01.constants.PageConstant;
 import com.fa.group01.dao.manufacture.ManufactureDAO;
@@ -22,7 +19,6 @@ import com.fa.group01.dao.productdao.ProductDAO;
 import com.fa.group01.dao.productdao.impl.ProductDAOImpl;
 import com.fa.group01.entity.Manufacture;
 import com.fa.group01.entity.Product;
-import com.fa.group01.entity.ProductForm;
 import com.fa.group01.logging.DbLogging;
 import com.fa.group01.logging.UtilsLogging;
 import com.fa.group01.service.manufactureservice.ManufactureService;
@@ -31,7 +27,6 @@ import com.fa.group01.service.productservice.ProductService;
 import com.fa.group01.service.productservice.impl.ProductServiceImpl;
 import com.fa.group01.utils.StorageUtils;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.inject.Inject;
 
 /**
  * @author nguyenthanhlinh
