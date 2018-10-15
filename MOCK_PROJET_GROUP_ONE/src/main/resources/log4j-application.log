@@ -281,3 +281,4 @@ com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY KEY constr
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:745)
+2018-10-15 11:35:26 INFO  DbLogging:94 - SUCCESS

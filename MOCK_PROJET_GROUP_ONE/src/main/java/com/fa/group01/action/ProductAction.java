@@ -123,16 +123,10 @@ public class ProductAction extends ActionSupport {
 		try {
 			products = productService.fetchAllProducts();			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return SUCCESS;
 	}
-	
-	
-	
-	
-	
 
 	public ProductForm getProductForm() {
 		return productForm;

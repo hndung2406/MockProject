@@ -11,7 +11,8 @@ import java.io.File;
  */
 public class StorageUtils {
 	
-	public static final String FEATURE_LOCATION = "C:/upload";
+	public static final String WIN_FEATURE_LOCATION = "C:/upload";
+	public static final String FEATURE_LOCATION = "/Users/dung/Documents/image";
 	
 	
 	public static String getFileExtension(String fileName){

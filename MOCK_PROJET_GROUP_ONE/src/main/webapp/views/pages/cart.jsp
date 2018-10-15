@@ -110,7 +110,7 @@
 		<!--End row-->
 		<div class="row summary-row justify-content-end">
 			<div class="col-9">
-				<a href="index.html"><button class="button-shopping">Continue shopping</button></a>
+				<a href="<%=request.getServletContext().getContextPath()%>/views/home"><button class="button-shopping">Continue shopping</button></a>
 			</div>
 			<div class="col-3">
 				<div class="card card-summary">
