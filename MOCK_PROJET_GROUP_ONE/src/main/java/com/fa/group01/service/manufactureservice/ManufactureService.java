@@ -26,5 +26,12 @@ public interface ManufactureService {
 	 * @throws SQLException
 	 */
 	List<Manufacture> findAll() throws SQLException;
+	
+	/**
+	 * @param manufactureId
+	 * @return
+	 * @throws SQLException
+	 */
+	Manufacture findById(int manufactureId) throws SQLException;
 
 }

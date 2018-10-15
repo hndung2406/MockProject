@@ -42,4 +42,9 @@ public class ProductServiceImpl implements ProductService {
 		return this.productDao.findById(productId);
 	}
 
+	@Override
+	public int updateProduct(Product product) throws SQLException {
+		return this.productDao.updateProduct(product);
+	}
+
 }

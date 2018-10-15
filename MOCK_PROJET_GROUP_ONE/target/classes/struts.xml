@@ -64,6 +64,10 @@
 			<result name="success">/views/pages/admin-update-product.jsp</result>
 		</action>
 		
+		<action name="updateProduct" class="com.fa.group01.action.ProductAction" method="updateProduct">
+			<result name="success">/views/pages/admin-update-product.jsp</result>
+		</action>
+		
 		<action name="checkOut" class="com.fa.group01.action.CheckOutAction" method="checkOut">
 			<result name="success">/views/pages/checkout.jsp</result>
 		</action>

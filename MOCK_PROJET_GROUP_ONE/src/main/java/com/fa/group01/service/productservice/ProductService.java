@@ -39,4 +39,7 @@ public interface ProductService {
 	 * @throws SQLException
 	 */
 	public List<Product> fetchAllProducts() throws SQLException;
+	
+	public int updateProduct(Product product) throws SQLException;
+
 }

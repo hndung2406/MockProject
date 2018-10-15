@@ -56,6 +56,7 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 
 	/**
 	 * Find All Manufacture
+	 * 
 	 * @return
 	 * @throws SQLException
 	 */
@@ -86,6 +87,33 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 			}
 		}
 		return listManufacture;
+	}
+
+	@Override
+	public Manufacture findById(int manufactureId) throws SQLException {
+		Manufacture manufacture = null;
+		try {
+			connection = DatabaseConnect.getConnection();
+			prepareStatement = connection.prepareStatement(DbQuery.SELECT_MANUFACTURE_BY_ID);
+			prepareStatement.setInt(1, manufactureId);
+			resultSet = prepareStatement.executeQuery();
+			while (resultSet.next()) {
+				manufacture = new Manufacture();
+				manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
+				manufacture.setManufactureName(resultSet.getString("ManufactureName"));
+			}
+		} finally {
+			if (resultSet != null) {
+				resultSet.close();
+			}
+			if (prepareStatement != null) {
+				prepareStatement.close();
+			}
+			if (connection != null) {
+				connection.close();
+			}
+		}
+		return manufacture;
 	}
 
 }
