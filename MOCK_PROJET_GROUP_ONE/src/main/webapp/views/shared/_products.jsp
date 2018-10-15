@@ -62,7 +62,7 @@
 				       </div>
 				    </div>
 				    <div class="carousel-item">
-				      <img class="d-block mx-auto" src="<%=request.getServletContext().getContextPath()%>/views/<%=request.getServletContext().getContextPath()%>/views/assets/images/bphone-2017-gold-400x460.png" alt="Third slide">
+				      <img class="d-block mx-auto" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/bphone-2017-gold-400x460.png" alt="Third slide">
 				      <div class="carousel-caption d-none d-md-block">
 				          <h5>Iphone XI - The next generation of Nokia</h5>
 				          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, quibusdam.</p>

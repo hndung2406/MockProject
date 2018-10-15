@@ -22,7 +22,7 @@ public class ProductDAOImplTest {
 
 	@Test
 	public void CanGetListProducts() throws SQLException {
-		List<Product> products = productDAO.findAllProducts();
+		List<Product> products = productDAO.findAllProduct();
 		products.forEach(System.out::println);
 		assertNotEquals(products.size(),0);
 	}
