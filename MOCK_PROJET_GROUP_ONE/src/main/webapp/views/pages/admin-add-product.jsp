@@ -54,68 +54,75 @@
 							<div class="row">
 								<div class="col-lg-12">
 								<span><c:out value="${message}"></c:out> </span>
-									<form role="form" class="form col-lg-11" action="addProduct" method="post" enctype="multipart/form-data">
+									<form role="form" class="form" action="addProduct" method="post" enctype="multipart/form-data">
 										<div class="form-group row">
-											<label>Product Code</label> 
-											<input class="form-control" name="product.id" id="productFormId" placeholder="Example P0001" required="required" pattern="(P[A-Za-z0-9]{2,4})|(p[A-Za-z0-9]{2,4})">
+											<div class="col-md-6">
+												<label>Product Code</label> 
+												<input class="form-control" name="product.id" id="productFormId" placeholder="Example P0001" required="required" pattern="(P[A-Za-z0-9]{2,4})|(p[A-Za-z0-9]{2,4})">
+											</div>
+											<div class="col-md-6">
+												<label>Product Name</label> 
+												<input class="form-control" name="product.name" placeholder="Product Name" required="required">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Name</label> <input class="form-control"
-												name="product.name" placeholder="Product Name" required="required">
-
+											<div class="col-md-6">
+												<label>Product Price</label> <input type="number" class="form-control" name="product.price" placeholder="Product Price" required="required">
+											</div>
+											<div class="col-md-6">
+												<label>Product Quantity</label> <input type="number" class="form-control" name="product.quantity" placeholder="Product Quantity" required="required">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Price</label> <input type="number" class="form-control"
-												name="product.price" placeholder="Product Price" required="required">
-
+											<div class="col-md-12">
+												<label>Product Image</label> <input type="file" name="image" required="required">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Description</label> <input
-												class="form-control" name="product.description"
-												placeholder="Product Description" required="required">
-
+											<div class="col-md-12">
+												<label>Date Of Manufacture</label> <input type="date" name="dateOfManufacture" required="required">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Image</label> <input type="file"
-												name="image" required="required">
+											<div class="col-md-6">
+												<label>Product Condition</label> <input class="form-control" name="product.condition" placeholder="Condition of Product" required="required">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Date Of Manufacture</label> <input type="date"
-												name="dateOfManufacture" required="required">
+											<div class="col-md-12">
+												<label>Product Description</label> 
+												<textarea class="form-control" name="product.description" rows="3" required="required"></textarea>
+											</div>
+										</div>
+										
+										<div class="form-group row">
+											<div class="col-md-12">
+												<label>Product Spec</label> 
+												<textarea class="form-control" name="product.spec" rows="3" required="required"></textarea>
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Quantity</label> <input type="number" class="form-control"
-												name="product.quantity" placeholder="Product Quantity" required="required">
-
+											<div class="col-md-12">
+												<label>Product Properties</label>
+												<textarea class="form-control" name="product.properties" rows="5" required="required"></textarea>
+											</div>
 										</div>
-										<div class="form-group row">
-											<label>Product Condition</label> <input class="form-control"
-												name="product.condition" placeholder="Condition of Product" required="required">
-
-										</div>
-										<div class="form-group row">
-											<label>Product Spec</label> <input class="form-control"
-												name="product.spec" placeholder="Product Spec" required="required">
-										</div>
-										<div class="form-group row">
-											<label>Product Properties</label>
-											<textarea class="form-control" name="product.properties"
-												rows="3" required="required"></textarea>
-										</div>
-
 										<div class="form-group col-lg-2 row" style="padding-left: 0;">
-											<label>Manufacturer</label>
-											<select name="manufacture.manufactureId">
-												<c:forEach items = "${manufactures}" var = "manufacture">
-													<option value = "${manufacture.manufactureId}">${manufacture.manufactureName}</option>
-												</c:forEach>
-											</select>
+											<div class="col-md-6">
+												<label>Manufacturer</label>
+												<select name="manufacture.manufactureId">
+													<c:forEach items = "${manufactures}" var = "manufacture">
+														<option value = "${manufacture.manufactureId}">${manufacture.manufactureName}</option>
+													</c:forEach>
+												</select>
+											</div>
 										</div>
 										<div class="row col-lg-12" style="padding-left: 0;">
-											<button type="submit" class="btn btn-default" style="background-color:#FFA500;font-weight:bold;">Submit</button>
-											<button type="reset" class="btn btn-default" style="font-weight:bold;">Reset</button>
+											<div class="col-md-6">
+												<button type="submit" class="btn btn-default" style="background-color:#FFA500;font-weight:bold;">Submit</button>
+												<button type="reset" class="btn btn-default" style="font-weight:bold;">Reset</button>
+											</div>
 										</div>
-
 									</form>
 								</div>
 								<!-- /.col-lg-6 (nested) -->

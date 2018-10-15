@@ -36,6 +36,8 @@ public class ProductDetailAction extends ActionSupport {
 	private ProductService productService = new ProductServiceImpl(productDao);
 	private ManufactureDAO manufactureDao = new ManufactureDAOImpl();
 	private ManufactureService manufactureService = new ManufactureServiceImpl(manufactureDao);
+	private String[] productProperties;
+	private String[] productSpec;
 	
 	
 	public String productDetail() {
@@ -43,7 +45,8 @@ public class ProductDetailAction extends ActionSupport {
 			product = productService.findById(id);
 			int manufactureId = product.getManufacture().getManufactureId();
 			manufacture = manufactureService.findById(manufactureId);
-			String[] productSpec = product.getSpec().split("\\.+");
+			productProperties = productService.splitStringProduct(product.getProperties());
+			productSpec = productService.splitStringProduct(product.getSpec());
 		} catch (SQLException e) {
 			DbLogging.LOG.error("ERROR", e);
 		}
@@ -72,6 +75,22 @@ public class ProductDetailAction extends ActionSupport {
 
 	public void setManufacture(Manufacture manufacture) {
 		this.manufacture = manufacture;
+	}
+
+	public String[] getProductProperties() {
+		return productProperties;
+	}
+
+	public void setProductProperties(String[] productProperties) {
+		this.productProperties = productProperties;
+	}
+
+	public String[] getProductSpec() {
+		return productSpec;
+	}
+
+	public void setProductSpec(String[] productSpec) {
+		this.productSpec = productSpec;
 	}
 	
 }

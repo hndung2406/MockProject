@@ -34,7 +34,9 @@
 				<hr>
 				<p class="description">All you need to know about the new ${product.name}:</p>
 				<ul class="list-description">
-					<li>${product.properties}</li>
+					<c:forEach items = "${productProperties}" var="properties">
+						<li><c:out value="${properties}"></c:out></li>
+					</c:forEach>
 				</ul>
 				<hr>
 				<div id="wrapper">
@@ -59,9 +61,9 @@
 			</div>
 			<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 				<ul class="product-spec">
-					<li>
-						${product.spec}
-					</li>
+					<c:forEach items = "${productSpec}" var="spec">
+						<li><c:out value="${spec}"></c:out></li>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>

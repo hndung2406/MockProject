@@ -35,12 +35,12 @@
 	<div id="wrapper">
 
 		<!-- Begin navigation -->
-		<jsp:include page="../shared/_admin_sidebar.jsp"></jsp:include>
+		<jsp:include page="../shared/_user_sidebar.jsp"></jsp:include>
 		<!-- End navigation -->
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Add new Product</h1>
+					<h1 class="page-header">Update User Profile</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -48,9 +48,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading"
-							style="background-color: #7f5a83; color: orange; font-weight: bold">Input
-							Product Information</div>
+						<div class="panel-heading" style="background-color: #7f5a83; color: orange; font-weight: bold">User Information</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">

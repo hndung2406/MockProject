@@ -39,4 +39,10 @@ public interface ProductService {
 	 * @throws SQLException
 	 */
 	public List<Product> fetchAllProducts() throws SQLException;
+	
+	/**
+	 * @param product
+	 * @return
+	 */
+	public String[] splitStringProduct(String productString);
 }
