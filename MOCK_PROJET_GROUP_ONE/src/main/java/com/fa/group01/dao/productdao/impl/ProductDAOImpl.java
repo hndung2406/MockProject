@@ -22,13 +22,12 @@ import com.fa.group01.entity.Product;
  *
  */
 public class ProductDAOImpl implements ProductDAO {
-	
+
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private Statement statement = null;
 	private ResultSet resultSet = null;
 
-	
 	@Override
 	public int addProduct(Product product) throws SQLException {
 		connection = DatabaseConnect.getConnection();
@@ -101,6 +100,31 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 		}
 		return products;
+	}
+
+	@Override
+	public Product findById(String productId) throws SQLException {
+		Product product = new Product();
+		Manufacture manufacture = new Manufacture();
+		connection = DatabaseConnect.getConnection();
+		preparedStatement = connection.prepareStatement(DbQuery.SELECT_PRODUCT_BY_ID);
+		resultSet = preparedStatement.executeQuery();
+		while(resultSet.next()) {
+			product.setId(resultSet.getString("ProductId"));
+			product.setName(resultSet.getString("ProductName"));
+			product.setPrice(resultSet.getDouble("ProductPrice"));
+			product.setDescription(resultSet.getString("Description"));
+			product.setImageUrl(resultSet.getString("Image"));
+			product.setQuantity(resultSet.getInt("Quantity"));
+			product.setCondition(resultSet.getString("Condition"));
+			product.setDateOfManufacture(resultSet.getDate("DateOfManufacture"));
+			product.setSpec(resultSet.getString("Spec"));
+			product.setProperties(resultSet.getString("Properties"));
+			manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
+			product.setManufacture(manufacture);
+		}
+		
+		return product;
 	}
 
 }

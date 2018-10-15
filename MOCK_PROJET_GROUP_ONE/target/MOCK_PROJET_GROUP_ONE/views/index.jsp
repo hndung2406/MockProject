@@ -17,7 +17,7 @@
 	rel="stylesheet"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="<c:url value="assets/css/main.css"/>">
+<link rel="stylesheet" href="<c:url value="/views/assets/css/main.css"/>">
 
 </head>
 <body>
@@ -26,10 +26,12 @@
 	<!-- End header -->
 	
 	<!-- Begin main -->
+	<jsp:include page="shared/_products.jsp"></jsp:include>
 	<!-- End go  -->
 
 	
 	<!-- Begin footer -->
+	<jsp:include page="shared/_footer.jsp"></jsp:include>
 	<!-- End footer  -->
 	
 

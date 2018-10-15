@@ -19,7 +19,6 @@ import com.fa.group01.dao.productdao.ProductDAO;
 import com.fa.group01.dao.productdao.impl.ProductDAOImpl;
 import com.fa.group01.entity.Manufacture;
 import com.fa.group01.entity.Product;
-import com.fa.group01.entity.ProductForm;
 import com.fa.group01.logging.DbLogging;
 import com.fa.group01.logging.UtilsLogging;
 import com.fa.group01.service.manufactureservice.ManufactureService;
@@ -43,19 +42,42 @@ public class ProductAction extends ActionSupport {
 	private ManufactureService manufactureService;
 	private ProductDAO productDao = new ProductDAOImpl();
 	private ProductService productService;
-	private ProductForm productForm;
+	private Product product;
+	private File image;
+	private String imageFileName;
 	private Date dateOfManufacture;
 	private List<Manufacture> manufactures;
 	private Manufacture manufacture;
 	private String message;
-	private String id;
 	private List<Product> products;
+	private String productId;
+	private Product dbProduct;
 	
 	public ProductAction() {
 		manufactureService = new ManufactureServiceImpl(manufactureDao);
 		productService = new ProductServiceImpl(productDao);
 	}
 	
+	public String showUpdateProduct() {
+		try {
+			dbProduct = productService.findById(productId);
+		} catch (SQLException e) {
+			DbLogging.LOGGER.error("SQLException", e);
+		}
+		return PageConstant.SUCCESS;
+	}
+
+	public String showProducts() {
+		
+		try {
+			products = productService.findAllProduct();
+		} catch (SQLException e) {
+			DbLogging.LOGGER.error("SQLException", e);
+		}
+		return PageConstant.SUCCESS;
+
+	}
+
 	public String showAddProductPage() {
 		try {
 			manufactures = manufactureService.findAll();
@@ -68,47 +90,30 @@ public class ProductAction extends ActionSupport {
 	public String addProduct() {
 		String randomName = "";
 		int isAddSuccess = 0;
-		
-		if (productForm.getImage() != null) {
+
+		if (image != null) {
 			try {
 				String randomCode = UUID.randomUUID().toString();
-				String originFileName = productForm.getImage().getName();
-				randomName = randomCode + StorageUtils.getFileExtension(originFileName);
+				randomName = randomCode + StorageUtils.getFileExtension(imageFileName);
+				
 				File file = new File(StorageUtils.FEATURE_LOCATION, randomName);
-				
-				FileUtils.copyFile(productForm.getImage(), file);
-				
+				FileUtils.copyFile(image, file);
 			} catch (IOException e) {
 				UtilsLogging.LOGGER.error("IOException", e);
 			}
 		}
-		Product product = new Product();
-		product.setId(productForm.getId());
-		product.setName(productForm.getName());
-		product.setDescription(productForm.getDescription());
-		product.setImageUrl(productForm.getImageUrl());
-		product.setCondition(productForm.getCondition());
-		product.setSpec(productForm.getSpec());
-		product.setProperties(productForm.getProperties());
-		product.setManufacture(manufacture);
 		product.setImageUrl(randomName);
+		product.setManufacture(manufacture);
 		if (dateOfManufacture != null) {
 			product.setDateOfManufacture(new java.sql.Date(dateOfManufacture.getTime()));
 		}
-		System.out.println(productForm.getPrice());
-		if (productForm.getPrice() != null) {
-			product.setPrice(Double.parseDouble(productForm.getPrice()));
-		}
-		if (productForm.getQuantity() != null) {
-			product.setQuantity(Integer.parseInt(productForm.getQuantity()));
-		}
-		
 		try {
 			manufactures = manufactureService.findAll();
 			isAddSuccess = productService.addProduct(product);
 		} catch (SQLException e) {
 			DbLogging.LOGGER.error("SQLException", e);
 		}
+
 		
 		if (isAddSuccess > 0) {
 			message = "Add Success!";
@@ -126,14 +131,6 @@ public class ProductAction extends ActionSupport {
 			e.printStackTrace();
 		}
 		return SUCCESS;
-	}
-
-	public ProductForm getProductForm() {
-		return productForm;
-	}
-
-	public void setProductForm(ProductForm productForm) {
-		this.productForm = productForm;
 	}
 
 	public Date getDateOfManufacture() {
@@ -168,20 +165,52 @@ public class ProductAction extends ActionSupport {
 		this.message = message;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-	
 	public List<Product> getProducts() {
 		return products;
 	}
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
+	}
+
+	public File getImage() {
+		return image;
+	}
+
+	public void setImage(File image) {
+		this.image = image;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	public Product getDbProduct() {
+		return dbProduct;
+	}
+
+	public void setDbProduct(Product dbProduct) {
+		this.dbProduct = dbProduct;
 	}
 
 }

@@ -20,6 +20,7 @@ public class DbQuery {
 	//Select All Query
 	public static final String SELECT_ALL_MANUFACTURE_QUERY = "SELECT * FROM [Manufacture]";
 	public static final String SELECT_ALL_USER_QUERY = "SELECT * FROM [Users]";
+	public static final String SELECT_ALL_PRODUCT = "SELECT * FROM [Product]";
 	public static final String SELECT_ALL_STATE_QUERY = "SELECT * FROM [State]";
 	public static final String SELECT_ALL_COUNTRY_QUERY = "SELECT * FROM [Country]";
 	public static final String SELECT_ALL_PRODUCT_QUERY = "SELECT * FROM [Product]";
@@ -28,6 +29,6 @@ public class DbQuery {
 	public static final String SELECT_USER_BY_EMAIL_AND_PASSWORD = "SELECT * FROM Users WHERE Email=? AND Password=?";
 	public static final String SELECT_STATE_BY_ID = "SELECT * FROM [State] WHERE StateId = ?";
 	public static final String SELECT_COUNTRY_BY_ID = "SELECT * FROM [Country] WHERE CountryId = ?";
-	public static final String FIND_ALL_PRODUCTS = "SELECT * FROM Product";
+	public static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM [Product] WHERE ProductId = ?";
 	
 }

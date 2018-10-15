@@ -2,12 +2,16 @@
 	<div class="container site-header__container">
 		<div class="row justify-content-end site-header--top">
 			<span class="site-header__icon">
-				<a href="" class="site-header__icon--link"><i class="fa fa-users"></i> Login</a>
+				<a href="<%=request.getServletContext().getContextPath() %>/views/pages/login.jsp" class="site-header__icon--link"><i class="fa fa-users"></i> Login</a>
 			</span>					
 		</div>
 		<div class="row site-header--main">
 			<div class="col-3 site-header__brand">
-				<img class="site-header__brand-image" src="assets/images/logo.svg" alt="Logo site">
+
+				<a href="<%=request.getServletContext().getContextPath() %>/views/index.jsp">
+					<img class="site-header__brand-image" src="<%=request.getServletContext().getContextPath() %>/views/assets/images/logo.svg" alt="Logo site">
+				</a>
+				
 			</div>
 
 			<div class="col-6 site-search ">
@@ -31,7 +35,7 @@
 			<div class="col-3 d-flex flex-column justify-content-center text-center">
 				<div class="site-header__cart">
 					<span>
-						<a href=""><i class="fa fa-cart-plus" ></i> My cart</a>
+						<a href="<%=request.getServletContext().getContextPath() %>/views/pages/cart.jsp" ><i class="fa fa-cart-plus" ></i> My cart</a>
 					</span>
 					<span class="site-header__cart--text">(0 items)</span>
 				</div>

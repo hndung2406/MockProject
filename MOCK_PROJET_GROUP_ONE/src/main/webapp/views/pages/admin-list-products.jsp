@@ -1,29 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <!DOCTYPE html>
-    <html lang="en">
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>List Products</title>
+	<!-- Bootstrap Core CSS -->
+	<link href="../assets/css/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <head>
+	<!-- Custom CSS -->
+	<link href="../assets/css/admin.css" rel="stylesheet">
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+	<!-- Custom Fonts -->
+	<link href="../assets/css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-        <title>List Products</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="../assets/css/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Custom CSS -->
-        <link href="../assets/css/admin.css" rel="stylesheet">
-
-        <!-- Custom Fonts -->
-        <link href="../assets/css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script type="text/javascript">
 
@@ -35,46 +32,69 @@
     		   $("#condition").val($(that).parent().prev().text());
            	}
 
-    </script>
+	</script>
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <div id="wrapper">
+	<div id="wrapper">
 
-            <jsp:include page="../shared/_admin_sidebar.jsp"></jsp:include>
+		<jsp:include page="../shared/_admin_sidebar.jsp"></jsp:include>
 
-            <div id="page-wrapper">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Product Management</h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                DataTables Advanced Tables
-                            </div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Product Name</th>
-                                            <th>Spec</th>
-                                            <th>Desciption</th>
-                                            <th>Condition</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Product Management</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							DataTables Advanced Tables
+						</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+								<thead>
+									<tr>
+										<th>Image</th>
+										<th>Id</th>
+										<th>Name</th>
+										<th>Price</th>
+										<th>Description</th>
+										<th>Quantity</th>
+										<th>Condition</th>
+										<th>Date Of Manufacture</th>
+										<th>Spec</th>
+										<th>Properties</th>
+										<th>ManufactureId</th>
+										<th>Update</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${products}" var="product">
+										<tr>
+											<td><img width="50px" height="50px" alt="Product Image" src="/images/${product.getImageUrl()}" /> </td>
+											<td><c:out value="${product.getId()}"></c:out> </td>
+											<td><c:out value="${product.getName()}"></c:out> </td>
+                                    		<td><c:out value="${product.getPrice()}"></c:out> </td>
+                                    		<td><c:out value="${product.getDescription()}"></c:out> </td>
+                                    		<td><c:out value="${product.getQuantity()}"></c:out> </td>
+                                    		<td><c:out value="${product.getCondition()}"></c:out> </td>
+                                    		<td><c:out value="${product.getDateOfManufacture()}"></c:out> </td>
+                                    		<td><c:out value="${product.getSpec()}"></c:out> </td>
+                                    		<td><c:out value="${product.getProperties()}"></c:out> </td>
+                                    		<td><c:out value="${product.getManufacture().getManufactureId()}"></c:out> </td>
+                                    		<td><a href="showUpdateProduct?productId=${product.getId()}">Update</a> </td>
+                                    		<td></td>
+                                    	</tr>
+                                    </c:forEach>
+                                       <!--  <tr>
                                             <td>1</td>
                                             <td>IP 6</td>
                                             <td>IP Gold</td>
@@ -82,16 +102,7 @@
                                             <td>New</td>
                                             <td><button onclick='fetchOldRecord(this);' type="button" class="btn btn-primary" data-toggle='modal' data-target='#updateModal'>Edit</button></td>
                                             <td><button type="button" class="btn btn-primary">Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>SamSung</td>
-                                            <td>Galaxy</td>
-                                            <td>Made in japan</td>
-                                            <td>Old</td>
-                                            <td><button onclick='fetchOldRecord(this);' type="button" class="btn btn-primary" data-toggle='modal' data-target='#updateModal'>Edit</button></td>
-                                            <td><button type="button" class="btn btn-primary">Delete</button></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <!-- /.table-responsive -->
