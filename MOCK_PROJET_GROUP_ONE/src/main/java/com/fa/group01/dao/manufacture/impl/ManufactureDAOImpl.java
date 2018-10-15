@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +23,11 @@ import com.fa.group01.entity.Manufacture;
  */
 public class ManufactureDAOImpl implements ManufactureDAO {
 
-	Connection connection = null;
-	CallableStatement callableStatement = null;
-	PreparedStatement prepareStatement = null;
-	ResultSet resultSet = null;
+	private Connection connection = null;
+	private CallableStatement callableStatement = null;
+	private PreparedStatement prepareStatement = null;
+	private ResultSet resultSet = null;
+	private Statement statement = null;
 
 	/**
 	 * Add manufacture to the database
@@ -86,6 +88,35 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 			}
 		}
 		return listManufacture;
+	}
+
+	@Override
+	public Manufacture findById(int id) throws SQLException {
+		Manufacture manufacture = null;
+		connection = DatabaseConnect.getConnection();
+		if(connection != null) {
+			try {
+				prepareStatement = connection.prepareStatement(DbQuery.SELECT_MANUFACTURE_BY_ID);
+				prepareStatement.setInt(1, id);
+				resultSet = prepareStatement.executeQuery();
+				while(resultSet.next()) {
+					manufacture = new Manufacture();
+					manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
+					manufacture.setManufactureName(resultSet.getString("ManufactureName"));
+				}
+			} finally {
+				if(connection != null) {
+					connection.close();
+				}
+				if(prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if(resultSet != null) {
+					resultSet.close();
+				}
+			}
+		}
+		return manufacture;
 	}
 
 }

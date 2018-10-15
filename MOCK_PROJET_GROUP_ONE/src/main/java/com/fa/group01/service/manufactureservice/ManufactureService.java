@@ -19,7 +19,7 @@ public interface ManufactureService {
 	 * @return
 	 * @throws SQLException
 	 */
-	int addManufacture(Manufacture manufacture) throws SQLException;
+	public int addManufacture(Manufacture manufacture) throws SQLException;
 	
 	/**
 	 * @return
@@ -27,4 +27,10 @@ public interface ManufactureService {
 	 */
 	List<Manufacture> findAll() throws SQLException;
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
+	public Manufacture findById(int id) throws SQLException;
+	
 }

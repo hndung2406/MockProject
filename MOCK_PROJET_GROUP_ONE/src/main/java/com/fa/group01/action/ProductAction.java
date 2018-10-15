@@ -62,7 +62,7 @@ public class ProductAction extends ActionSupport {
 		try {
 			dbProduct = productService.findById(productId);
 		} catch (SQLException e) {
-			DbLogging.LOGGER.error("SQLException", e);
+			DbLogging.LOG.error("SQLException", e);
 		}
 		return PageConstant.SUCCESS;
 	}
@@ -72,7 +72,7 @@ public class ProductAction extends ActionSupport {
 		try {
 			products = productService.findAllProduct();
 		} catch (SQLException e) {
-			DbLogging.LOGGER.error("SQLException", e);
+			DbLogging.LOG.error("SQLException", e);
 		}
 		return PageConstant.SUCCESS;
 
@@ -82,7 +82,7 @@ public class ProductAction extends ActionSupport {
 		try {
 			manufactures = manufactureService.findAll();
 		} catch (SQLException e) {
-			DbLogging.LOGGER.error("SQLException", e);
+			DbLogging.LOG.error("SQLException", e);
 		}
 		return PageConstant.SUCCESS;
 	}
@@ -111,7 +111,7 @@ public class ProductAction extends ActionSupport {
 			manufactures = manufactureService.findAll();
 			isAddSuccess = productService.addProduct(product);
 		} catch (SQLException e) {
-			DbLogging.LOGGER.error("SQLException", e);
+			DbLogging.LOG.error("SQLException", e);
 		}
 
 		

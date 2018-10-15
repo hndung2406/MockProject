@@ -30,5 +30,6 @@ public class DbQuery {
 	public static final String SELECT_STATE_BY_ID = "SELECT * FROM [State] WHERE StateId = ?";
 	public static final String SELECT_COUNTRY_BY_ID = "SELECT * FROM [Country] WHERE CountryId = ?";
 	public static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM [Product] WHERE ProductId = ?";
+	public static final String SELECT_MANUFACTURE_BY_ID = "SELECT * FROM [Manufacture] WHERE ManufactureId = ?";
 	
 }

@@ -107,23 +107,25 @@ public class ProductDAOImpl implements ProductDAO {
 		Product product = new Product();
 		Manufacture manufacture = new Manufacture();
 		connection = DatabaseConnect.getConnection();
-		preparedStatement = connection.prepareStatement(DbQuery.SELECT_PRODUCT_BY_ID);
-		resultSet = preparedStatement.executeQuery();
-		while(resultSet.next()) {
-			product.setId(resultSet.getString("ProductId"));
-			product.setName(resultSet.getString("ProductName"));
-			product.setPrice(resultSet.getDouble("ProductPrice"));
-			product.setDescription(resultSet.getString("Description"));
-			product.setImageUrl(resultSet.getString("Image"));
-			product.setQuantity(resultSet.getInt("Quantity"));
-			product.setCondition(resultSet.getString("Condition"));
-			product.setDateOfManufacture(resultSet.getDate("DateOfManufacture"));
-			product.setSpec(resultSet.getString("Spec"));
-			product.setProperties(resultSet.getString("Properties"));
-			manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
-			product.setManufacture(manufacture);
+		if(connection != null) {
+			preparedStatement = connection.prepareStatement(DbQuery.SELECT_PRODUCT_BY_ID);
+			preparedStatement.setString(1, productId);
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				product.setId(resultSet.getString("ProductId"));
+				product.setName(resultSet.getString("ProductName"));
+				product.setPrice(resultSet.getDouble("ProductPrice"));
+				product.setDescription(resultSet.getString("Description"));
+				product.setImageUrl(resultSet.getString("Image"));
+				product.setQuantity(resultSet.getInt("Quantity"));
+				product.setCondition(resultSet.getString("Condition"));
+				product.setDateOfManufacture(resultSet.getDate("DateOfManufacture"));
+				product.setSpec(resultSet.getString("Spec"));
+				product.setProperties(resultSet.getString("Properties"));
+				manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
+				product.setManufacture(manufacture);
+			}
 		}
-		
 		return product;
 	}
 

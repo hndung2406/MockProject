@@ -38,7 +38,7 @@ public class CountryAction extends ActionSupport {
 		try {
 			isAddSuccess = countryService.addCountry(country);
 		} catch (SQLException e) {
-			DbLogging.LOGGER.error("SQLException", e);
+			DbLogging.LOG.error("SQLException", e);
 		}
 		if (isAddSuccess > 0) {
 			message = "Add Success!";

@@ -57,6 +57,10 @@
 		<action name="products" class="com.fa.group01.action.ProductAction" method="showProducts">
 			<result name="success">/views/pages/admin-list-products.jsp</result>
 		</action>
+		 
+		<action name="productDetail" class="com.fa.group01.action.ProductDetailAction" method="productDetail">
+			<result name="success">/views/pages/product-detail.jsp</result>
+		</action>
 		
 		<action name="showUpdateProduct" class="com.fa.group01.action.ProductAction" method="showUpdateProduct">
 			<result name="success">/views/pages/admin-update-product.jsp</result>
@@ -111,7 +115,7 @@
     	<action name="admin*" >
     		<!-- If authentcated user is admin then redirect to admin page -->    		
     		<result name="master" type="redirect">
-    			/views/pages/admin-list-products.jsp
+    			/views/pages/products
     		</result>
     		<!-- If authentcated user is user then redirect to index page -->   
     		<result name="user" type="redirect">

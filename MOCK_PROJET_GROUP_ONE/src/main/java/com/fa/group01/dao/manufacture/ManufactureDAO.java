@@ -19,12 +19,19 @@ public interface ManufactureDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	int addManufacture(Manufacture manufacture) throws SQLException;
+	public int addManufacture(Manufacture manufacture) throws SQLException;
 	
 	/**
 	 * @return
 	 * @throws SQLException
 	 */
 	List<Manufacture> findAll() throws SQLException;
+	
+	/**
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public Manufacture findById(int id) throws SQLException;
 
 }

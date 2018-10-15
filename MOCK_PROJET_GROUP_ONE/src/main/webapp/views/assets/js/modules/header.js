@@ -10,19 +10,19 @@ $(document).ready(function(){
 			success: function(data) {
 				$.each(data.products, function(){
 				    if (this.name.search(expression) != -1) {
-				    	output += "<li class='list-group-item link-class'><a href='abc?id=" + this.id +"' style='display:block;text-decoration: none;color:black;'>" + this.name + "</a></li>";
+				    	output += "<li class='list-group-item link-class' id='li-search'><a href='productDetail?id=" + this.id +"' style='display:block;text-decoration: none;color:black;'>" + this.name + "</a></li>";
 					} 
 				});
 				$("#result").html(output);
 				if(searchField == "") {
-					$("li").remove();
+					$(".link-class").remove();
 				}	
 			}
 		});
 	});
 	
 	$(document.body).click(function(){
-		$("li").remove();
+		$(".link-class").remove();
 		$("#search").val("");
 	});
 	

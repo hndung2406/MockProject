@@ -41,4 +41,4 @@ $(document).ready(function () {
 			$("#total-order").text(totalPrice);
 			$("#quantity").text(totalItem);
 
-		});
+});

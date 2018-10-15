@@ -16,7 +16,7 @@
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">Apple</a>
 							<a class="dropdown-item" href="#">BPhone</a>
-							<a class="dropdown-item" href="#">Huwei</a>
+							<a class="dropdown-item" href="#">Huawei</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Separated link</a>
 						</div>
@@ -62,7 +62,7 @@
 				       </div>
 				    </div>
 				    <div class="carousel-item">
-				      <img class="d-block mx-auto" src="<%=request.getServletContext().getContextPath()%>/views/<%=request.getServletContext().getContextPath()%>/views/assets/images/bphone-2017-gold-400x460.png" alt="Third slide">
+				      <img class="d-block mx-auto" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/bphone-2017-gold-400x460.png" alt="Third slide">
 				      <div class="carousel-caption d-none d-md-block">
 				          <h5>Iphone XI - The next generation of Nokia</h5>
 				          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, quibusdam.</p>
@@ -284,7 +284,7 @@
 			<s:iterator value="products" > 
 				<div class="col-sm-2">
 					<div class="card mobile-item text-center ">
-						  <img class="card-img-top mobile-item__thumbnail" src="/images/<s:property value="imageUrl"/>" alt="mobile image"/>
+						  <a href="productDetail?id=<s:property value="id"/>"><img class="card-img-top mobile-item__thumbnail" src="/images/<s:property value="imageUrl"/>" alt="mobile image"/></a>
 						  <div class="card-body mobile-item__price ">
 						  	<p class="mobile-item__name mb-0"><s:property value="name"/> </p>
 						    <p class="mobile-item__price-value">

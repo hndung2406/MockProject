@@ -44,7 +44,7 @@ public class ManufactureAction extends ActionSupport {
 		try {
 			isAddSuccess = manufactureService.addManufacture(manufacture);
 		} catch (SQLException e) {
-			DbLogging.LOGGER.error("SQLException", e);
+			DbLogging.LOG.error("SQLException", e);
 		}
 		if (isAddSuccess > 0) {
 			this.message = "Add Success!";
