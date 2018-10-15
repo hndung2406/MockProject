@@ -30,7 +30,7 @@
 					<div class="input-group-text "><i class="fa fa-search"></i></div>
 				</div>
 				<div class="input-group site-search__body">
-					<ul class="list-group" id="result" style="position:absolute; width:76%; margin-left:100px; box-sizing: border-box;  z-index: 1001; overflow-y: auto; max-height: 400px;"></ul>
+					<ul class="list-group" id="result" style="position:absolute; width:75%; margin-left:103px; box-sizing: border-box;  z-index: 1001; overflow-y: auto; max-height: 400px;"></ul>
 				</div>
 			</div>
 			<div class="col-3 d-flex flex-column justify-content-center text-center">
