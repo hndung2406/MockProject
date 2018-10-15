@@ -10,7 +10,7 @@ $(document).ready(function(){
 			success: function(data) {
 				$.each(data.products, function(){
 				    if (this.name.search(expression) != -1) {
-				    	output += "<li class='list-group-item link-class' id='li-search'><a href='productDetail?id=" + this.id +"' style='display:block;text-decoration: none;color:black;'>" + this.name + "</a></li>";
+				    	output += "<li class='list-group-item link-class' id='li-search'><a href='productDetail?id=" + this.id +"' style='display:block;text-decoration: none;color:black;'><img src='/images/" + this.imageUrl + "' width='50px' height='50px'><span>" + " " + this.name + "</span></a></li>";
 					} 
 				});
 				$("#result").html(output);
