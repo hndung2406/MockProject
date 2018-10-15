@@ -22,6 +22,13 @@ public interface ProductDAO {
 	public int addProduct(Product product) throws SQLException;
 
 	/**
+	 * @param productId
+	 * @return
+	 * @throws SQLException
+	 */
+	public Product findById(String productId) throws SQLException;
+
+	/**
 	 * @return
 	 * @throws SQLException
 	 */

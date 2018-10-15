@@ -37,4 +37,9 @@ public class ProductServiceImpl implements ProductService {
 		return this.productDao.findAllProduct();
 	}
 
+	@Override
+	public Product findById(String productId) throws SQLException {
+		return this.productDao.findById(productId);
+	}
+
 }
