@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fa.group01.dao.productdao.ProductDAO;
@@ -21,10 +22,26 @@ public class ProductDAOImplTest {
 	}
 
 	@Test
+	@Ignore
 	public void CanGetListProducts() throws SQLException {
 		List<Product> products = productDAO.findAllProduct();
 		products.forEach(System.out::println);
 		assertNotEquals(products.size(),0);
 	}
+	
+	@Test	
+	public void CanGetLimitNumberOfProduct() {
+		List<Product> products;
+		try {
+			products = productDAO.fetchLimitNumberOfProducts(0, 3);
+			products.forEach(System.out::println);
+			assertEquals(products.size(),0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 
 }

@@ -268,10 +268,21 @@
 			<h3 class="pagination-row__title title--orange">All mobile</h3>
 			<nav aria-label="product list pagination">
 			  <ul class="pagination product-pagination">
+			  
 			    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-			    <li class="page-item"><a class="page-link" href="#">1</a></li>
-			    <li class="page-item"><a class="page-link" href="#">2</a></li>
-			    <li class="page-item"><a class="page-link" href="#">3</a></li>
+			    
+			    <s:if test="%{maxNavigationTab > 4}">
+			    	<li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+			    	<li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+			    	<li class="page-item"><a class="page-link" href="#">...</a></li>
+			    	<li class="page-item"><a class="page-link" href="?page=<s:property value="maxNavigationTab"/>"> <s:property value="maxNavigationTab" /></a></li>
+			    </s:if>
+			    <s:else>
+			    	  <s:iterator  begin="1" end="maxNavigationTab">
+			    		<li class="page-item"><a class="page-link" href="?page=<s:property value="top"/>"> <s:property value="top" /></a></li>
+			    	  </s:iterator>
+			    </s:else>	    
+			   
 			    <li class="page-item"><a class="page-link" href="#">Next</a></li>
 			  </ul>
 			</nav>
@@ -281,7 +292,11 @@
 		
 		<div class="row weshop-mobiles ">	
 
-			<s:iterator value="products" > 
+			<s:if test="%{products.size == 0}">
+				<h3>Product page index <s:property value="page"/> has been update...</h3>
+			</s:if>
+			<s:else>
+				<s:iterator value="products" > 
 				<div class="col-sm-2">
 					<div class="card mobile-item text-center ">
 						  <a href="productDetail?id=<s:property value="id"/>"><img class="card-img-top mobile-item__thumbnail" src="/images/<s:property value="imageUrl"/>" alt="mobile image"/></a>
@@ -301,6 +316,7 @@
 			
 			</s:iterator>		
 			
+			</s:else>
 										
 			
 		</div>

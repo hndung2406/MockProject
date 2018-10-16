@@ -16,6 +16,9 @@ import com.opensymphony.xwork2.Preparable;
 
 public class AuthenticationAction extends ActionSupport implements Preparable, SessionAware {
 
+	
+	private static final long serialVersionUID = 1L;
+
 	private UserService userService;
 
 	private String errorMessage;
@@ -47,12 +50,23 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 				if (user == null) {
 					user = userService.fetchUserByEmail(email);
 					String role = user.getUserRole();
-					if ("admin".equals(role)) {
-						redirectUrl = "../home";
+					String redirectUrl = (String) userSession.get("forwardUrl");
+					System.out.println(redirectUrl);
+					// user attempt to login
+					if(redirectUrl == null) {					
+						
+						if("admin".equals(user.getUserRole())) {
+							redirectUrl = "admin";
+						} else if("user".equals(user.getUserRole())) {
+							redirectUrl = "home";
+						}
 					}
-					if ("user".equals(role)) {
-						redirectUrl = "../home";
-					}
+					// user does not attempt to login
+					else {
+						
+						this.redirectUrl = redirectUrl;
+					}				
+					
 					//add user to session
 					userSession.put("authenticatedUser", user);
 					return "success";

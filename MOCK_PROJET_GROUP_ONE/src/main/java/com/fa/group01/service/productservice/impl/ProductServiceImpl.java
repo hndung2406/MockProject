@@ -56,4 +56,13 @@ public class ProductServiceImpl implements ProductService {
 		return this.productDao.updateProduct(product);
 	}
 
+	@Override
+	public List<Product> fetchThreeProductsOnOneSinglePage(int rowIndex, int maxNumberOfRecords) throws SQLException {
+		// TODO Auto-generated method stub
+		return this.productDao.fetchLimitNumberOfProducts(rowIndex, maxNumberOfRecords);
+	}
+
+	
+	
+
 }

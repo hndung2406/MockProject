@@ -35,5 +35,9 @@ public interface ProductDAO {
 	public List<Product> findAllProduct() throws SQLException;
 	
 	public int updateProduct(Product product) throws SQLException;
+
+	public List<Product> fetchLimitNumberOfProducts(int rowIndex, int maxNumberOfRecords) throws SQLException ;
+	
+	
 	
 }

@@ -15,8 +15,11 @@
     		<result type="redirect">/views/pages/user.jsp</result>
     	</action>
     
-    	<action name="home" class="com.fa.group01.action.ProductAction" method="getAllProducts">
+    	<action name="home1" class="com.fa.group01.action.ProductAction" method="getAllProducts">
     		<result name="success">/views/index.jsp</result>
+    	</action>
+    	<action name="home" class="com.fa.group01.action.PageAction" method="fetchProductsOnCurrentPage">
+    		<result >/views/index.jsp</result>
     	</action>
     
     	<action name="registerUser" class="com.fa.group01.action.RegisterAction" method="registerUser">
@@ -122,7 +125,7 @@
     			/views/pages/products
     		</result>
     		<!-- If authentcated user is user then redirect to index page -->   
-    		<result name="user" type="redirect">
+    		<result name="home" type="redirect">
     			/views/index.jsp
     		</result>
     		<!-- If user is not authenticated then redirect to  login page -->  	
