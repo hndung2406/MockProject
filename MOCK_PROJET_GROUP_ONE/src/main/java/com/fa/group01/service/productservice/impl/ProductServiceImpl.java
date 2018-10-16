@@ -56,4 +56,9 @@ public class ProductServiceImpl implements ProductService {
 		return this.productDao.updateProduct(product);
 	}
 
+	@Override
+	public int deleteProduct(String productId) throws SQLException {
+		return this.productDao.deleteProduct(productId);
+	}
+
 }

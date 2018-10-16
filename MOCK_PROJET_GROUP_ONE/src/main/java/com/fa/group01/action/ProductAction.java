@@ -51,18 +51,42 @@ public class ProductAction extends ActionSupport {
 	private String message;
 	private List<Product> products;
 	private String productId;
-	
+
 	public ProductAction() {
 		manufactureService = new ManufactureServiceImpl(manufactureDao);
 		productService = new ProductServiceImpl(productDao);
 	}
-	
-	public String showUpdateProduct() {
+
+	public String showDeleteProductPage() {
 		try {
-			
+			product = productService.findById(productId);
+			manufacture = manufactureService.findById(product.getManufacture().getManufactureId());
+		} catch (SQLException e) {
+			DbLogging.LOG.error("SQLException", e);
+		}
+		return PageConstant.SUCCESS;
+	}
+	
+	public String deleteProduct() {
+		int isDeleted = 0;
+		try {
+			product = productService.findById(product.getId());
+			StorageUtils.removeFile(product.getImageUrl());
+			isDeleted = productService.deleteProduct(product.getId());
+		} catch (SQLException e) {
+			DbLogging.LOG.error("SQLException", e);
+		}
+		if (isDeleted > 0) {
+			return PageConstant.SUCCESS;
+		}
+		return PageConstant.ERROR;
+	}
+
+	public String showUpdateProductPage() {
+		try {
+
 			manufactures = manufactureService.findAll();
 			product = productService.findById(productId);
-			image = new File(StorageUtils.FEATURE_LOCATION + "/" + product.getImageUrl());
 			manufacture = manufactureService.findById(product.getManufacture().getManufactureId());
 			product.setManufacture(manufacture);
 		} catch (SQLException e) {
@@ -70,7 +94,7 @@ public class ProductAction extends ActionSupport {
 		}
 		return PageConstant.SUCCESS;
 	}
-	
+
 	public String updateProduct() {
 		String randomName = "";
 		int isAddSuccess = 0;
@@ -80,7 +104,7 @@ public class ProductAction extends ActionSupport {
 				StorageUtils.removeFile(product.getImageUrl());
 				String randomCode = UUID.randomUUID().toString();
 				randomName = randomCode + StorageUtils.getFileExtension(imageFileName);
-				
+
 				File file = new File(StorageUtils.FEATURE_LOCATION, randomName);
 				FileUtils.copyFile(image, file);
 				product.setImageUrl(randomName);
@@ -99,7 +123,7 @@ public class ProductAction extends ActionSupport {
 		} catch (SQLException e) {
 			DbLogging.LOG.error("SQLException", e);
 		}
-		
+
 		if (isAddSuccess > 0) {
 			message = "Update Success!";
 			return PageConstant.SUCCESS;
@@ -109,7 +133,7 @@ public class ProductAction extends ActionSupport {
 	}
 
 	public String showProducts() {
-		
+
 		try {
 			products = productService.findAllProduct();
 		} catch (SQLException e) {
@@ -136,7 +160,7 @@ public class ProductAction extends ActionSupport {
 			try {
 				String randomCode = UUID.randomUUID().toString();
 				randomName = randomCode + StorageUtils.getFileExtension(imageFileName);
-				
+
 				File file = new File(StorageUtils.FEATURE_LOCATION, randomName);
 				FileUtils.copyFile(image, file);
 			} catch (IOException e) {
@@ -155,7 +179,6 @@ public class ProductAction extends ActionSupport {
 			DbLogging.LOG.error("SQLException", e);
 		}
 
-		
 		if (isAddSuccess > 0) {
 			message = "Add Success!";
 			return PageConstant.SUCCESS;
@@ -163,11 +186,10 @@ public class ProductAction extends ActionSupport {
 		message = "Add Fail!";
 		return PageConstant.ERROR;
 	}
-	
-	
+
 	public String getAllProducts() {
 		try {
-			products = productService.fetchAllProducts();			
+			products = productService.fetchAllProducts();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -51,7 +51,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form role="form" class="form col-lg-11" action="addManufacture" method="post">
+                                        <form role="form" class="form col-lg-11" action="admin-addManufacture" method="post">
                                             <div class="form-group row">
                                                 <label>Manufacture Name</label>
                                                 <input class="form-control" name="manufacture.manufactureName" placeholder="Manufacture Name" id="manufacture">   

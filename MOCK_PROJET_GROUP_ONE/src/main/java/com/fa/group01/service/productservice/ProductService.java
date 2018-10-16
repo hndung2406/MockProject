@@ -52,5 +52,12 @@ public interface ProductService {
 	 * @throws SQLException
 	 */
 	public int updateProduct(Product product) throws SQLException;
+	
+	/**
+	 * @param productId
+	 * @return
+	 * @throws SQLException
+	 */
+	public int deleteProduct(String productId) throws SQLException;
 
 }

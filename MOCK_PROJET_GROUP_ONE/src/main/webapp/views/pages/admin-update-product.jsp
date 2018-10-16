@@ -48,77 +48,91 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading"><a href="products">Back To List Products</a></div>
+						<div class="panel-heading" style="background-color: #7f5a83; font-weight:bold"><a href="admin-products" style="color:orange;">Back To List Products</a></div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
 								<span><c:out value="${message}"></c:out> </span>
-									<form role="form" class="form col-lg-11" action="updateProduct" method="post" enctype="multipart/form-data">
+									<form role="form" class="form" action="admin-updateProduct" method="post" enctype="multipart/form-data">
 										<div class="form-group row">
-											<label>Product Code</label> 
-											<input class="form-control" name="product.id" value="${product.getId()}" id="productFormId" placeholder="Example P0001" readonly="readonly">
+											<div class="col-md-6">
+												<label>Product Code</label> 
+												<input class="form-control" name="product.id" value="${product.getId()}" id="productFormId" placeholder="Example P0001" readonly="readonly">
+											</div>
+											<div class="col-md-6">
+												<label>Product Name</label> 
+												<input class="form-control" name="product.name" value="${product.getName()}" placeholder="Product Name" required="required">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Name</label> 
-											<input class="form-control" name="product.name" value="${product.getName()}" placeholder="Product Name" required="required">
-
+											<div class="col-md-6">
+												<label>Product Price</label> 
+												<input type="number" class="form-control" name="product.price" value="${product.getPrice()}" placeholder="Product Price" required="required">
+											</div>
+											<div class="col-md-6">
+												<label>Product Quantity</label> 
+												<input type="number" class="form-control" name="product.quantity" value="${product.getQuantity()}" placeholder="Product Quantity" required="required">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Price</label> 
-											<input type="number" class="form-control" name="product.price" value="${product.getPrice()}" placeholder="Product Price" required="required">
-
-										</div>
-										<div class="form-group row">
-											<label>Product Description</label> 
-											<input class="form-control" name="product.description" value="${product.getDescription()}" placeholder="Product Description" required="required">
-
-										</div>
-										<div class="form-group row">
-											<label>Product Image</label> 
+											<div class="col-md-12">
+												<label>Product Image</label> 
 											
-											<input type="file" name="image" onchange="previewFile()"> <br>
-											<img id="uploadImage" src = "/images/${product.getImageUrl()}" width="100px" height="100px" />
-											<input type="hidden" name="product.imageUrl" value="${product.getImageUrl()}">
+												<input type="file" name="image" onchange="previewFile()"> <br>
+												<img id="uploadImage" src = "/images/${product.getImageUrl()}" width="100px" height="100px" />
+												<input type="hidden" name="product.imageUrl" value="${product.getImageUrl()}">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Date Of Manufacture</label> 
-											<input type="date" name="dateOfManufacture" value="${product.getDateOfManufacture()}" required="required">
+											<div class="col-md-12">
+												<label>Date Of Manufacture</label> 
+												<input type="date" name="dateOfManufacture" value="${product.getDateOfManufacture()}" required="required">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Quantity</label> 
-											<input type="number" class="form-control" name="product.quantity" value="${product.getQuantity()}" placeholder="Product Quantity" required="required">
-
+											<div class="col-md-6">
+												<label>Product Condition</label> 
+												<input class="form-control" name="product.condition" value="${product.getCondition()}" placeholder="Condition of Product" required="required">
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Condition</label> 
-											<input class="form-control" name="product.condition" value="${product.getCondition()}" placeholder="Condition of Product" required="required">
-
+											<div class="col-md-12">
+												<label>Product Description</label> 
+												<textarea class="form-control" name="product.description" rows="4" placeholder="Product Description" required="required">${product.getDescription()}</textarea>
+											</div>
+										</div>
+										
+										<div class="form-group row">
+											<div class="col-md-12">
+												<label>Product Spec</label> 
+												<textarea class="form-control" name="product.spec" rows="4" placeholder="Product Spec" required="required">${product.getSpec()} </textarea>
+											</div>
 										</div>
 										<div class="form-group row">
-											<label>Product Spec</label> 
-											<input class="form-control" name="product.spec" value="${product.getSpec()}" placeholder="Product Spec" required="required">
+											<div class="col-md-12">
+												<label>Product Properties</label>
+												<textarea class="form-control" name="product.properties" rows="5" required="required">${product.getProperties()}</textarea>
+											</div>
 										</div>
-										<div class="form-group row">
-											<label>Product Properties</label>
-											<textarea class="form-control" name="product.properties" rows="3" required="required">${product.getProperties()}</textarea>
-										</div>
-
 										<div class="form-group col-lg-2 row" style="padding-left: 0;">
-											<label>Manufacturer</label>
-											<select name="manufacture.manufactureId">
+											<div class="col-md-6">
+												<label>Manufacturer</label>
+												<select name="manufacture.manufactureId">
 												<option value="${product.getManufacture().getManufactureId()}" selected>${product.getManufacture().getManufactureName()}</option>
 												<c:forEach items = "${manufactures}" var = "manufacture">
 													<c:if test="${manufacture.manufactureId != product.getManufacture().getManufactureId()}">
 														<option value = "${manufacture.manufactureId}">${manufacture.manufactureName}</option>
 													</c:if>
 												</c:forEach>
-											</select>
+												</select>
+											</div>
 										</div>
 										<div class="row col-lg-12" style="padding-left: 0;">
-											<button type="submit" class="btn btn-default">Submit Button</button>
-											<button type="reset" class="btn btn-default">Reset Button</button>
+											<div class="col-md-6">
+												<button type="submit" class="btn btn-default" style="background-color:#FFA500;font-weight:bold;">Submit</button>
+												<button type="reset" class="btn btn-default" style="font-weight:bold;">Reset</button>
+											</div>
 										</div>
-
 									</form>
 								</div>
 								<!-- /.col-lg-6 (nested) -->
