@@ -111,21 +111,11 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean isAuthenticatedUser(String email, String password) throws SQLException {
-		
 		connection = DatabaseConnect.getConnection();
 		prepareStatement = connection.prepareStatement(DbQuery.SELECT_USER_BY_EMAIL_AND_PASSWORD);
 		prepareStatement.setString(1, email);
 		prepareStatement.setString(2, password);		
 		ResultSet resultSet = prepareStatement.executeQuery();
-		
-//		while(resultSet.next()) {
-//			resultSet.getInt("UserId");
-//			resultSet.getString("UserName");
-//			resultSet.getString("Password");
-//			resultSet.getString("Email");
-//			resultSet.getString("FirstName");
-//		}
-		
 		return resultSet.next();
 	}
 
@@ -134,5 +124,30 @@ public class UserDAOImpl implements UserDAO {
 		User user = findAll().stream().filter(u->u.getUserEmail().equals(email)).findFirst().get();
 		return user;
 		
+	}
+
+	@Override
+	public int updateUser(User user) throws SQLException {
+		int affectedRow = 0;
+		connection = DatabaseConnect.getConnection();
+		if(connection != null) {
+			try {
+				callabaleStatement = connection.prepareCall(DbQuery.UPDATE_USER);
+				callabaleStatement.setString(1, user.getUserName());
+				callabaleStatement.setString(2, user.getUserPassword());
+				callabaleStatement.setString(3, user.getUserFirstName());
+				callabaleStatement.setString(4, user.getUserLastName());
+				callabaleStatement.setInt(5, user.getUserId());
+				affectedRow = callabaleStatement.executeUpdate();
+			} finally {
+				if(connection != null) {
+					connection.close();
+				}
+				if(callabaleStatement != null) {
+					callabaleStatement.close();
+				}
+			}
+		}
+		return affectedRow;
 	}
 }

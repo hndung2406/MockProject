@@ -21,9 +21,8 @@
                         <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li>
+                        	<a href="userProfile"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li class="divider">
                         </li>
@@ -50,6 +49,12 @@
                             </span>
                             </div>
                             <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="userProfile"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li>
+                        	<a href="user"><i class="fa fa-edit fa-fw"></i> Edit Profile</a>
                         </li>
                     </ul>
                 </div>

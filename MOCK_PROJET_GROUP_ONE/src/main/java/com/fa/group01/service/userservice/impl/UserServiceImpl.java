@@ -64,5 +64,10 @@ public class UserServiceImpl implements UserService {
 	public User fetchUserByEmail(String email) throws SQLException {
 		return userDao.fetchUserByEmail(email);
 	}
+
+	@Override
+	public int updateUser(User user) throws SQLException {
+		return userDao.updateUser(user);
+	}
 	
 }

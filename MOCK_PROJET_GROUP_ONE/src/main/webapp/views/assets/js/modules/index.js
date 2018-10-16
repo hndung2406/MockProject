@@ -3,8 +3,6 @@ $(document).ready(function(){
 		url:"checkSession",
 		type:"GET",
 		success: function(data) {	
-		
-
 			if(data.user){
 				$("#login").text("  Profile");
 
@@ -12,7 +10,6 @@ $(document).ready(function(){
 					$("#login-link").attr("href", "admin");
 				}
 				if(data.user.userRole == "user") {
-					
 					$("#login-link").attr("href", "user");
 				}
 				//append logout hyperlink  

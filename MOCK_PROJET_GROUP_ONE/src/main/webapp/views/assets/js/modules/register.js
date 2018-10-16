@@ -22,21 +22,16 @@ $(document).ready(function() {
 			$("#password-error").show();
 			event.preventDefault();
 		}
-		console.log($("#username-error-input").text());
 		if ($("#username-error-input").text() != ""){
-			console.log("123");
 			event.preventDefault();
 		}
 		if ($("#email-error-input").text() != ""){
-			console.log("456");
 			event.preventDefault();
 		}
 		if ($("#password-error-input").text() != ""){
-			console.log("789");
 			event.preventDefault();
 		}
 		if ($("#repassword-error").text() != ""){
-			console.log("000");
 			event.preventDefault();
 		}
 	});

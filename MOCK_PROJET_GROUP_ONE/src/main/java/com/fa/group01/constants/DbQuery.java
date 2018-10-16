@@ -34,5 +34,6 @@ public class DbQuery {
 	
 	//Update Query
 	public static final String UPDATE_PRODUCT = "UPDATE Product SET ProductName = ?, ProductPrice = ?, Description = ?, Image = ?, Quantity = ?, Condition = ?, DateOfManufacture = ?, Spec = ?, Properties = ?, ManufactureId = ? WHERE ProductId = ?";
+	public static final String UPDATE_USER = "UPDATE [Users] SET UserName = ?, Password = ?, FirstName = ?, LastName = ? WHERE UserId = ?";
 	
 }

@@ -11,8 +11,16 @@
 			<result type="redirect">/views/home.jsp</result>
 		</action>
     
-    	<action name="user">
-    		<result type="redirect">/views/pages/user.jsp</result>
+    	<action name="user" class="com.fa.group01.action.UserAction" method="fetchUser">
+    		<result name="success">/views/pages/edit-user.jsp</result>
+    	</action>
+    	
+    	<action name="userProfile" class="com.fa.group01.action.UserAction" method="fetchUser">
+    		<result name="success">/views/pages/user.jsp</result>
+    	</action>
+    
+    	<action name="updateUser" class="com.fa.group01.action.UserAction" method="updateUser">
+    		<result name="success">/views/pages/edit-user.jsp</result>
     	</action>
     
     	<action name="home" class="com.fa.group01.action.ProductAction" method="getAllProducts">
