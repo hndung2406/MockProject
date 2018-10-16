@@ -42,8 +42,7 @@ public class AuthenticationInterceptor implements Interceptor {
 			
 			if(user.getUserRole().equals("admin")) {	
 				System.out.println("Master here");
-				//return "master";
-				return invocation.invoke();
+				return "master";				
 			}
 			if(user.getUserRole().equals("user")) {				
 				return "user";
