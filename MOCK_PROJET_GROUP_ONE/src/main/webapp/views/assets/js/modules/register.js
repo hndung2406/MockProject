@@ -41,7 +41,7 @@ $(document).ready(function() {
 		var username = $("#username").val();
 		var valid = false;
 		$.ajax({
-			url:"findAll",
+			url:"findAllUser",
 			type:"GET",
 			success: function(data) {
 				$.each(data.users, function(){
@@ -67,7 +67,7 @@ $(document).ready(function() {
 		var email = $("#email").val();
 		var valid = false;
 		$.ajax({
-			url:"findAll",
+			url:"findAllUser",
 			type:"GET",
 			success: function(data) {
 				$.each(data.users, function(){
