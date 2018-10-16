@@ -120,6 +120,7 @@ public class ProductAction extends ActionSupport {
 	}
 
 	public String showAddProductPage() {
+		System.out.println("I'm here");
 		try {
 			manufactures = manufactureService.findAll();
 		} catch (SQLException e) {

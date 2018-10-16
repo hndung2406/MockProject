@@ -30,15 +30,25 @@ public class AuthenticationInterceptor implements Interceptor {
 		
 		//retrieve user from session
 		User user = (User) session.get("authenticatedUser");
+		System.out.println(user);
 		if(user== null) {
+			//if user not attempt to login then store action name in session for redirecting after login success
+			String forwardUrl = invocation.getInvocationContext().getName();
+			System.out.println(forwardUrl);
+			session.put("forwardUrl", forwardUrl);
+			
 			return ActionSupport.INPUT;
 		}else {
-			if(user.getUserRole().equals("admin")) {				
-				return "master";
+			
+			if(user.getUserRole().equals("admin")) {	
+				System.out.println("Master here");
+				//return "master";
+				return invocation.invoke();
 			}
 			if(user.getUserRole().equals("user")) {				
 				return "user";
 			}
+			
 		}
 		
 		

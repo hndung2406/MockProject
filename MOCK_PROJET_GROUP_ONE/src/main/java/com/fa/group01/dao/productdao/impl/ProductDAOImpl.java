@@ -3,6 +3,7 @@
  */
 package com.fa.group01.dao.productdao.impl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +28,7 @@ public class ProductDAOImpl implements ProductDAO {
 	private PreparedStatement preparedStatement = null;
 	private Statement statement = null;
 	private ResultSet resultSet = null;
+	private CallableStatement callableStatement;
 
 	@Override
 	public int addProduct(Product product) throws SQLException {
@@ -73,18 +75,9 @@ public class ProductDAOImpl implements ProductDAO {
 				while (resultSet.next()) {
 					product = new Product();
 					manufacture = new Manufacture();
-					product.setId(resultSet.getString("ProductId"));
-					product.setName(resultSet.getString("ProductName"));
-					product.setPrice(resultSet.getDouble("ProductPrice"));
-					product.setDescription(resultSet.getString("Description"));
-					product.setImageUrl(resultSet.getString("Image"));
-					product.setQuantity(resultSet.getInt("Quantity"));
-					product.setCondition(resultSet.getString("Condition"));
-					product.setDateOfManufacture(resultSet.getDate("DateOfManufacture"));
-					product.setSpec(resultSet.getString("Spec"));
-					product.setProperties(resultSet.getString("Properties"));
-					manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
-					product.setManufacture(manufacture);
+					
+					fetchOneProduct(product, manufacture);
+					
 					products.add(product);
 				}
 			} finally {
@@ -113,18 +106,7 @@ public class ProductDAOImpl implements ProductDAO {
 				preparedStatement.setString(1, productId);
 				resultSet = preparedStatement.executeQuery();
 				while (resultSet.next()) {
-					product.setId(resultSet.getString("ProductId"));
-					product.setName(resultSet.getString("ProductName"));
-					product.setPrice(resultSet.getDouble("ProductPrice"));
-					product.setDescription(resultSet.getString("Description"));
-					product.setImageUrl(resultSet.getString("Image"));
-					product.setQuantity(resultSet.getInt("Quantity"));
-					product.setCondition(resultSet.getString("Condition"));
-					product.setDateOfManufacture(resultSet.getDate("DateOfManufacture"));
-					product.setSpec(resultSet.getString("Spec"));
-					product.setProperties(resultSet.getString("Properties"));
-					manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
-					product.setManufacture(manufacture);
+					fetchOneProduct(product, manufacture);
 				}
 			} finally {
 				if (resultSet != null) {
@@ -139,6 +121,26 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 		}
 		return product;
+	}
+
+	/**
+	 * @param product
+	 * @param manufacture
+	 * @throws SQLException
+	 */
+	private void fetchOneProduct(Product product, Manufacture manufacture) throws SQLException {
+		product.setId(resultSet.getString("ProductId"));
+		product.setName(resultSet.getString("ProductName"));
+		product.setPrice(resultSet.getDouble("ProductPrice"));
+		product.setDescription(resultSet.getString("Description"));
+		product.setImageUrl(resultSet.getString("Image"));
+		product.setQuantity(resultSet.getInt("Quantity"));
+		product.setCondition(resultSet.getString("Condition"));
+		product.setDateOfManufacture(resultSet.getDate("DateOfManufacture"));
+		product.setSpec(resultSet.getString("Spec"));
+		product.setProperties(resultSet.getString("Properties"));
+		manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
+		product.setManufacture(manufacture);
 	}
 
 	@Override
@@ -171,6 +173,38 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 		}
 		return affectedRow;
+	}
+
+	@Override
+	public List<Product> fetchLimitNumberOfProducts(int rowIndex, int maxNumberOfRecords) throws SQLException {
+		List<Product> products = new ArrayList<>();
+		Product product = null;
+		Manufacture manufacture =null;
+		
+		connection = DatabaseConnect.getConnection();
+		if(connection != null) {
+			try {
+				callableStatement = connection.prepareCall(DbQuery.FETCH_LIMIT_PRODUCS);
+				callableStatement.setInt(1, rowIndex);
+				callableStatement.setInt(2, maxNumberOfRecords);
+				resultSet = callableStatement.executeQuery();
+				while(resultSet.next()) {
+					product = new Product();
+					manufacture = new Manufacture();
+					fetchOneProduct(product, manufacture);
+					products.add(product);
+				}
+			} finally {
+				if(callableStatement != null) {
+					callableStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+		
+		return products;
 	}
 
 }

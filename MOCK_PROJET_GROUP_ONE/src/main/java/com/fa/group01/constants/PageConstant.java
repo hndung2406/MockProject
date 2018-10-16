@@ -13,5 +13,6 @@ public class PageConstant {
 	public static final String ERROR = "error";
 	public static final String REPORT = "report";
 	public static final String SUCCESS = "success";
+	public static final int LIMIT_PRODUCTS_PER_PAGE = 2;
 	
 }

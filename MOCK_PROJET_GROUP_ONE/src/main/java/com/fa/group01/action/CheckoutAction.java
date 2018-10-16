@@ -37,9 +37,6 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class CheckOutAction extends ActionSupport {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4621243169647973548L;
 	private StateDAO stateDao = new StateDAOImpl();
 	private CountryDAO countryDao = new CountryDAOImpl();

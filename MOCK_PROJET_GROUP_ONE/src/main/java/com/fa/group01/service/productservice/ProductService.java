@@ -53,4 +53,10 @@ public interface ProductService {
 	 */
 	public int updateProduct(Product product) throws SQLException;
 
+	public List<Product> fetchThreeProductsOnOneSinglePage(int rowIndex, int maxNumberOfRecords) throws SQLException;
+
+	
+
+	
+
 }
