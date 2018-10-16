@@ -7,17 +7,16 @@ $(document).ready(function(){
 				$("#login").text("  Profile");
 
 				if(data.user.userRole == "admin"){
-					$("#login-link").attr("href", "admin");
+					$("#login-link").attr("href", "pages/admin-products");
 				}
 				if(data.user.userRole == "user") {
-					$("#login-link").attr("href", "user");
+					$("#login-link").attr("href", "userProfile");
 				}
 				//append logout hyperlink  
 				var $logoutLink = "<span class='site-header__icon'>"
 								+ "<a href='logout' class='site-header__icon--link'>"
 								+ "<i class='fa fa-sign-out'></i><span>Logout</span></a>"
 								+ "</span>";
-
 				$(".site-header--top").append($logoutLink);
 			} else {
 				$("#login").text(" Login");

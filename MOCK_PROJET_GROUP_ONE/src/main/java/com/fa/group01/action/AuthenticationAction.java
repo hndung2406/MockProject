@@ -42,7 +42,6 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 		JsonObject obj = new JsonParser().parse(jsonData).getAsJsonObject();
 		String email = obj.get("email").getAsString();
 		String password = obj.get("password").getAsString();		
-
 		try {
 			if (userService.isAuthenticated(email, password)) {
 				// check role of user
@@ -51,10 +50,8 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 					user = userService.fetchUserByEmail(email);
 					String role = user.getUserRole();
 					String redirectUrl = (String) userSession.get("forwardUrl");
-					System.out.println(redirectUrl);
 					// user attempt to login
 					if(redirectUrl == null) {					
-						
 						if("admin".equals(user.getUserRole())) {
 							redirectUrl = "admin";
 						} else if("user".equals(user.getUserRole())) {
@@ -63,7 +60,6 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 					}
 					// user does not attempt to login
 					else {
-						
 						this.redirectUrl = redirectUrl;
 					}				
 					

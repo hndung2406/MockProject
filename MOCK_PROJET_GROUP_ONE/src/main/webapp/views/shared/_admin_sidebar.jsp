@@ -55,7 +55,7 @@
                             <a href="admin-products"><i class="fa fa-table fa-fw"></i> List Product</a>
                         </li>
                         <li>
-                            <a href="../pages/admin-list-order.jsp"><i class="fa fa-table fa-fw"></i> List Order</a>
+                            <a href="<%=request.getServletContext().getContextPath()%>/views/pages/admin-list-order.jsp"><i class="fa fa-table fa-fw"></i> List Order</a>
                         </li>
                        	<li>
 	                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-table fa-fw"></i> Content</a>
@@ -65,13 +65,13 @@
                         			     <a href="admin-showAddProduct"><i class="fa fa-edit fa-fw"></i> Add Product</a>
                         			</li>
                         			<li>
-  										<a href="../pages/admin-add-state.jsp"><i class="fa fa-edit fa-fw"></i> Add State</a>
+  										<a href="<%=request.getServletContext().getContextPath()%>/views/pages/admin-add-state.jsp"><i class="fa fa-edit fa-fw"></i> Add State</a>
                         			</li>
                         			<li>
-										<a href="../pages/admin-add-manufacture.jsp"><i class="fa fa-edit fa-fw"></i> Add Manufacture</a>
+										<a href="<%=request.getServletContext().getContextPath()%>/views/pages/admin-add-manufacture.jsp"><i class="fa fa-edit fa-fw"></i> Add Manufacture</a>
                         			</li>
                         			<li>
-										<a href="../pages/admin-add-country.jsp"><i class="fa fa-edit fa-fw"></i> Add Country</a>
+										<a href="<%=request.getServletContext().getContextPath()%>/views/pages/admin-add-country.jsp"><i class="fa fa-edit fa-fw"></i> Add Country</a>
                         			</li>
                         		</ul>
                         	</div>

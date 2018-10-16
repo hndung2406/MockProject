@@ -14,13 +14,13 @@
     <title>List Order</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../assets/css/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="../assets/css/admin.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="<%=request.getServletContext().getContextPath()%>/views/assets/css/admin.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="../assets/css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!-- Custom Fonts -->
+	<link href="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -92,24 +92,25 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../assets/css/vendors/jquery/jquery.min.js"></script>
-
+    <script src="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/jquery/jquery.min.js"></script>
+    
     <!-- Bootstrap Core JavaScript -->
-    <script src="../assets/css/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/bootstrap/js/bootstrap.min.js"></script>
 
-     <!-- DataTables JavaScript -->
-     <script src="../assets/css/vendors/datatables/js/jquery.dataTables.min.js"></script>
-     <script src="../assets/css/vendors/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/datatables/js/jquery.dataTables.min.js"></script>
+         
+    <script src="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/datatables-plugins/dataTables.bootstrap.min.js"></script>
+	
  
- 
-     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-     <script>
-     $(document).ready(function() {
-         $('#dataTables-example').DataTable({
-             responsive: true
-         });
-     });
-     </script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
 
 </body>
 
