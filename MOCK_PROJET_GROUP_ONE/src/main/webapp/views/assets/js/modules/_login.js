@@ -53,24 +53,20 @@ $(function(){
 							})
 							.text(data.errorMessage)
 							.appendTo($(this).parent());
-						$(".loading-img").hide()
-					}
+						$(".loading-img").hide();						
+					};
+					
 					if(data.redirectUrl){
+						console.log("anything" + data);
 						window.location = data.redirectUrl;
-					}
+					};
+					
 				}, 3000);
 
 			});
 			
 		}
 	});
-	// $(document).ajaxStart(function(){
- //        $(".loading-img").show();
- //    });
- //    $(document).ajaxComplete(function(){
- //        $(".loading-img").hide();
- //    });
-
 
 	// serializeObjec function utility
 	  	jQuery.fn.serializeObject = function(){

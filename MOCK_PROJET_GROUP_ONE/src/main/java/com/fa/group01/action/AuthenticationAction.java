@@ -47,19 +47,16 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 				// check role of user
 				User user = (User) userSession.get("authenticatedUser");
 				if (user == null) {
-					user = userService.fetchUserByEmail(email);
-					String role = user.getUserRole();
+					user = userService.fetchUserByEmail(email);					
 					String redirectUrl = (String) userSession.get("forwardUrl");
+					String userRole = user.getUserRole();
 					// user attempt to login
-					if(redirectUrl == null) {					
-						if("admin".equals(user.getUserRole())) {
-							redirectUrl = "admin";
-						} else if("user".equals(user.getUserRole())) {
-							redirectUrl = "home";
-						}
+					if(redirectUrl == null) {	
+						
+						this.redirectUrl = "home";
 					}
 					// user does not attempt to login
-					else {
+					else {						
 						this.redirectUrl = redirectUrl;
 					}				
 					
@@ -81,8 +78,14 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 	public String logout() {
 		//remove session user
 		User user = (User) userSession.get("authenticatedUser");
-		if(user!= null) {
-			userSession.remove("authenticatedUser");
+		String forwardUrl = (String) userSession.get("forwardUrl");
+		if(user!= null ) {
+			userSession.remove("authenticatedUser");//remove user 
+			
+		}
+		if(forwardUrl!= null ) {
+			userSession.remove("forwardUrl");//remove user 
+			
 		}
 		return SUCCESS;
 	}

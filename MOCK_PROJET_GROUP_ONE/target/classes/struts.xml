@@ -32,72 +32,19 @@
     		<result name="input">/views/pages/register.jsp</result>
     	</action>
     	
-    	<action name="admin-addManufacture" class="com.fa.group01.action.ManufactureAction" method="addManufacture">
-			<result name="success">/views/pages/admin-add-manufacture.jsp</result>
-			<result name="error">/views/pages/admin-add-manufacture.jsp</result>
-		</action>
-		
-		<action name="admin-addState" class="com.fa.group01.action.StateAction" method="addState">
-			<result name="success">/views/pages/admin-add-state.jsp</result>
-			<result name="error">/views/pages/admin-add-state.jsp</result>
-		</action>
-		
-		<action name="admin-addCountry" class="com.fa.group01.action.CountryAction" method="addCountry">
-			<result name="success">/views/pages/admin-add-country.jsp</result>
-			<result name="error">/views/pages/admin-add-country.jsp</result>
-		</action>
-		
-		<action name="admin-showAddProduct" class="com.fa.group01.action.ProductAction" method="showAddProductPage">
-			<result name="success">/views/pages/admin-add-product.jsp</result>
-		</action>
-		
-		<action name="admin-addProduct" class="com.fa.group01.action.ProductAction" method="addProduct">
-			<interceptor-ref name="fileUpload">
-				<param name="allowedTypes">
-					image/png,image/gif,image/jpeg,image/jpg
-				</param>
-			</interceptor-ref>
-			<interceptor-ref name="basicStack"/>
-			<result name="success">/views/pages/admin-add-product.jsp</result>
-			<result name="error">/views/pages/admin-add-product.jsp</result>
-		</action>
-		
-		<action name="admin-products" class="com.fa.group01.action.ProductAction" method="showProducts">
-			<result name="success">/views/pages/admin-list-products.jsp</result>
-		</action>
-		 
 		<action name="productDetail" class="com.fa.group01.action.ProductDetailAction" method="productDetail">
 			<result name="success">/views/pages/product-detail.jsp</result>
 		</action>
-		
-		<action name="admin-showDeleteProduct" class="com.fa.group01.action.ProductAction" method="showDeleteProductPage">
-			<result name="success">/views/pages/admin-delete-product.jsp</result>
-		</action>
-		
-		<action name="admin-deleteProduct" class="com.fa.group01.action.ProductAction" method="deleteProduct">
-			<result name="success" type="redirect">/views/pages/admin-products</result>
-			<result name="error" type="redirect">/views/pages/admin-showDeleteProduct</result>
-		</action>
-		
-		<action name="admin-showUpdateProduct" class="com.fa.group01.action.ProductAction" method="showUpdateProductPage">
-			<result name="success">/views/pages/admin-update-product.jsp</result>
-		</action>
-		
-		<action name="admin-updateProduct" class="com.fa.group01.action.ProductAction" method="updateProduct">
-			<result name="success">/views/pages/admin-update-product.jsp</result>
-		</action>
-		
-		<action name="checkOut" class="com.fa.group01.action.CheckOutAction" method="checkOut">
-			<result name="success">/views/pages/checkout.jsp</result>
-		</action>
-    	
-    	<action name="checkOutCart" class="com.fa.group01.action.CheckOutAction" method="checkOutCart">
-    		<result name="success" type="redirect">/views/index.jsp</result>
-    	</action>
-    	
+		    	
     	<action name="logout" class="com.fa.group01.action.AuthenticationAction" method="logout">
     		<result type="redirect">
     			/views/pages/login.jsp
+    		</result>
+    	</action>
+    	
+    	<action name="error" class="com.fa.group01.action.ErrorAction" method="unauthorize">
+    		<result name="403">
+    			/WEB-INF/403.jsp
     		</result>
     	</action>
     	
@@ -131,20 +78,73 @@
     			<interceptor-ref name="authenticationInterceptor"></interceptor-ref>
     			<interceptor-ref name="defaultStack"></interceptor-ref>
     		</interceptor-stack>
-    	</interceptors>
-    	<default-interceptor-ref name="sercureStack"></default-interceptor-ref>
-    	<action name="admin*" >
-    		<!-- If authentcated user is user then redirect to index page -->   
-    		<result name="home" type="redirect">
-    			/home
-    		</result>
-    		<!-- If user is not authenticated then redirect to  login page -->  	
-    		<result name="input" type="redirect">
-    			/views/pages/login.jsp
-    		</result>
-    	</action>
+    	</interceptors>    	
     	
+    	<default-interceptor-ref name="sercureStack"></default-interceptor-ref>    	
+    	<global-results>
+    		<result name="input" type="redirect">/views/pages/login.jsp</result>
+    		<result name="error" type="redirect">/error</result>        		
+    	</global-results>  
+		
+		<!--#### Begin check out cart business #### -->	
+		<action name="checkOut" class="com.fa.group01.action.CheckOutAction" method="checkOut">
+			<result name="success" type="redirect">/views/pages/checkout.jsp</result>
+		</action>
+		<action name="checkOutCart" class="com.fa.group01.action.CheckOutAction" method="checkOutCart">
+    		<result name="success" type="redirect">/views/index.jsp</result>
+    	</action>
+    	<!--##### End check out cart business #####-->
+    	
+    	<!--##### Begin admin business ###### -->	
     
+		<action name="admin-addManufacture" class="com.fa.group01.action.ManufactureAction" method="addManufacture">
+			<result name="success">/views/pages/admin-add-manufacture.jsp</result>
+			<result name="error">/views/pages/admin-add-manufacture.jsp</result>
+		</action>
+		
+		<action name="admin-addState" class="com.fa.group01.action.StateAction" method="addState">
+			<result name="success">/views/pages/admin-add-state.jsp</result>
+			<result name="error">/views/pages/admin-add-state.jsp</result>
+		</action>
+		
+		<action name="admin-addCountry" class="com.fa.group01.action.CountryAction" method="addCountry">
+			<result name="success">/views/pages/admin-add-country.jsp</result>
+			<result name="error">/views/pages/admin-add-country.jsp</result>
+		</action>
+		
+		<action name="admin-products" class="com.fa.group01.action.ProductAction" method="showProducts">
+			<result name="success">/views/pages/admin-list-products.jsp</result>
+		</action>
+		<action name="admin-addProduct" class="com.fa.group01.action.ProductAction" method="addProduct">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/jpg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="basicStack"/>
+			<result name="success">/views/pages/admin-add-product.jsp</result>
+			<result name="error">/views/pages/admin-add-product.jsp</result>
+		</action>
+		<action name="admin-showAddProduct" class="com.fa.group01.action.ProductAction" method="showAddProductPage">
+			<result name="success" type="redirect">/views/pages/admin-add-product.jsp</result>
+		</action>
+		
+		<action name="admin-showDeleteProduct" class="com.fa.group01.action.ProductAction" method="showDeleteProductPage">
+			<result name="success">/views/pages/admin-delete-product.jsp</result>
+		</action>				
+		<action name="admin-deleteProduct" class="com.fa.group01.action.ProductAction" method="deleteProduct">
+			<result name="success" type="redirect">/views/pages/admin-products</result>
+			<result name="error" type="redirect">/views/pages/admin-showDeleteProduct</result>
+		</action>
+				
+		<action name="admin-showUpdateProduct" class="com.fa.group01.action.ProductAction" method="showUpdateProductPage">
+			<result name="success">/views/pages/admin-update-product.jsp</result>
+		</action>				
+		<action name="admin-updateProduct" class="com.fa.group01.action.ProductAction" method="updateProduct">
+			<result name="success">/views/pages/admin-update-product.jsp</result>
+		</action>
+		
+    	<!-- End admin business  -->	
     </package>
 	
 </struts>

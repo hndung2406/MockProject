@@ -21,6 +21,7 @@ import com.fa.group01.entity.Country;
 import com.fa.group01.entity.Order;
 import com.fa.group01.entity.State;
 import com.fa.group01.entity.User;
+import com.fa.group01.interceptor.UserAware;
 import com.fa.group01.logging.DbLogging;
 import com.fa.group01.service.countryservice.CountryService;
 import com.fa.group01.service.countryservice.impl.CountryServiceImpl;
@@ -35,7 +36,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author DungHN2
  *
  */
-public class CheckOutAction extends ActionSupport {
+public class CheckOutAction extends ActionSupport implements UserAware {
 
 	private static final long serialVersionUID = 4621243169647973548L;
 	private StateDAO stateDao = new StateDAOImpl();
