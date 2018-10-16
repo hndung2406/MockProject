@@ -54,7 +54,7 @@
 							<div class="row">
 								<div class="col-lg-12">
 								<span><c:out value="${message}"></c:out> </span>
-									<form role="form" class="form" action="addProduct" method="post" enctype="multipart/form-data">
+									<form role="form" class="form" action="admin-addProduct" method="post" enctype="multipart/form-data">
 										<div class="form-group row">
 											<div class="col-md-6">
 												<label>Product Code</label> 

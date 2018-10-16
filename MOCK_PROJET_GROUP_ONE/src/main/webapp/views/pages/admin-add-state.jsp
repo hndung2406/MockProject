@@ -51,7 +51,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form role="form" class="form col-lg-11" action="addState" method="post">
+                                        <form role="form" class="form col-lg-11" action="admin-addState" method="post">
                                             <div class="form-group row">
                                                 <label>State Name</label>
                                                 <input class="form-control" name="state.stateName" placeholder="State Name" id="state">        

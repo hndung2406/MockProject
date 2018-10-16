@@ -58,11 +58,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> fetchThreeProductsOnOneSinglePage(int rowIndex, int maxNumberOfRecords) throws SQLException {
-		// TODO Auto-generated method stub
 		return this.productDao.fetchLimitNumberOfProducts(rowIndex, maxNumberOfRecords);
 	}
 
-	
-	
+	@Override
+	public int deleteProduct(String productId) throws SQLException {
+		return this.productDao.deleteProduct(productId);
+	}
 
 }

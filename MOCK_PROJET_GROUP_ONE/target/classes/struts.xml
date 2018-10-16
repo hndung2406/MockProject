@@ -35,26 +35,26 @@
     		<result name="input">/views/pages/register.jsp</result>
     	</action>
     	
-    	<action name="addManufacture" class="com.fa.group01.action.ManufactureAction" method="addManufacture">
+    	<action name="admin-addManufacture" class="com.fa.group01.action.ManufactureAction" method="addManufacture">
 			<result name="success">/views/pages/admin-add-manufacture.jsp</result>
 			<result name="error">/views/pages/admin-add-manufacture.jsp</result>
 		</action>
 		
-		<action name="addState" class="com.fa.group01.action.StateAction" method="addState">
+		<action name="admin-addState" class="com.fa.group01.action.StateAction" method="addState">
 			<result name="success">/views/pages/admin-add-state.jsp</result>
 			<result name="error">/views/pages/admin-add-state.jsp</result>
 		</action>
 		
-		<action name="addCountry" class="com.fa.group01.action.CountryAction" method="addCountry">
+		<action name="admin-addCountry" class="com.fa.group01.action.CountryAction" method="addCountry">
 			<result name="success">/views/pages/admin-add-country.jsp</result>
 			<result name="error">/views/pages/admin-add-country.jsp</result>
 		</action>
 		
-		<action name="showAddProduct" class="com.fa.group01.action.ProductAction" method="showAddProductPage">
+		<action name="admin-showAddProduct" class="com.fa.group01.action.ProductAction" method="showAddProductPage">
 			<result name="success">/views/pages/admin-add-product.jsp</result>
 		</action>
 		
-		<action name="addProduct" class="com.fa.group01.action.ProductAction" method="addProduct">
+		<action name="admin-addProduct" class="com.fa.group01.action.ProductAction" method="addProduct">
 			<interceptor-ref name="fileUpload">
 				<param name="allowedTypes">
 					image/png,image/gif,image/jpeg,image/jpg
@@ -65,7 +65,7 @@
 			<result name="error">/views/pages/admin-add-product.jsp</result>
 		</action>
 		
-		<action name="products" class="com.fa.group01.action.ProductAction" method="showProducts">
+		<action name="admin-products" class="com.fa.group01.action.ProductAction" method="showProducts">
 			<result name="success">/views/pages/admin-list-products.jsp</result>
 		</action>
 		 
@@ -73,11 +73,20 @@
 			<result name="success">/views/pages/product-detail.jsp</result>
 		</action>
 		
-		<action name="showUpdateProduct" class="com.fa.group01.action.ProductAction" method="showUpdateProduct">
+		<action name="admin-showDeleteProduct" class="com.fa.group01.action.ProductAction" method="showDeleteProductPage">
+			<result name="success">/views/pages/admin-delete-product.jsp</result>
+		</action>
+		
+		<action name="admin-deleteProduct" class="com.fa.group01.action.ProductAction" method="deleteProduct">
+			<result name="success" type="redirect">/views/pages/admin-products</result>
+			<result name="error" type="redirect">/views/pages/admin-showDeleteProduct</result>
+		</action>
+		
+		<action name="admin-showUpdateProduct" class="com.fa.group01.action.ProductAction" method="showUpdateProductPage">
 			<result name="success">/views/pages/admin-update-product.jsp</result>
 		</action>
 		
-		<action name="updateProduct" class="com.fa.group01.action.ProductAction" method="updateProduct">
+		<action name="admin-updateProduct" class="com.fa.group01.action.ProductAction" method="updateProduct">
 			<result name="success">/views/pages/admin-update-product.jsp</result>
 		</action>
 		

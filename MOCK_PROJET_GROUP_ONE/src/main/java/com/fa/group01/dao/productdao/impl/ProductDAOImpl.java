@@ -203,8 +203,30 @@ public class ProductDAOImpl implements ProductDAO {
 				}
 			}
 		}
-		
 		return products;
+	}
+		
+	public int deleteProduct(String productId) throws SQLException {
+		connection = DatabaseConnect.getConnection();
+		int affectedRow = 0;
+		if (connection != null) {
+			try {
+				preparedStatement = connection.prepareStatement(DbQuery.DELETE_PRODUCT);
+				preparedStatement.setString(1, productId);
+				
+				affectedRow = preparedStatement.executeUpdate();
+			} finally {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+		
+		
+		return affectedRow;
 	}
 
 }

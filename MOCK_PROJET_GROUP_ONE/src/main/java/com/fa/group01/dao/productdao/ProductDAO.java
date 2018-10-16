@@ -34,10 +34,22 @@ public interface ProductDAO {
 	 */
 	public List<Product> findAllProduct() throws SQLException;
 	
+	/**
+	 * @param product
+	 * @return
+	 * @throws SQLException
+	 */
 	public int updateProduct(Product product) throws SQLException;
 
 	public List<Product> fetchLimitNumberOfProducts(int rowIndex, int maxNumberOfRecords) throws SQLException ;
 	
 	
+	
+	/**
+	 * @param productId
+	 * @return
+	 * @throws SQLException
+	 */
+	public int deleteProduct(String productId) throws SQLException;
 	
 }

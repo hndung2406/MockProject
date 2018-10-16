@@ -51,7 +51,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form role="form" class="form col-lg-11" action="addCountry"
+									<form role="form" class="form col-lg-11" action="admin-addCountry"
 										method="post">
 										<div class="form-group row">
 											<label>Country Name</label> <input class="form-control"

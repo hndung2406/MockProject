@@ -52,7 +52,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="products"><i class="fa fa-table fa-fw"></i> List Product</a>
+                            <a href="admin-products"><i class="fa fa-table fa-fw"></i> List Product</a>
                         </li>
                         <li>
                             <a href="../pages/admin-list-order.jsp"><i class="fa fa-table fa-fw"></i> List Order</a>
@@ -62,7 +62,7 @@
                     		<div id="collapseOne" class="panel-collapse collapse">
                         		<ul class="nav" id="side-menu">
                         			<li>
-                        			     <a href="showAddProduct"><i class="fa fa-edit fa-fw"></i> Add Product</a>
+                        			     <a href="admin-showAddProduct"><i class="fa fa-edit fa-fw"></i> Add Product</a>
                         			</li>
                         			<li>
   										<a href="../pages/admin-add-state.jsp"><i class="fa fa-edit fa-fw"></i> Add State</a>
