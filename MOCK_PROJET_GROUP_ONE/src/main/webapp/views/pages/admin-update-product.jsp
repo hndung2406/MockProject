@@ -17,16 +17,14 @@
 
 <title>Update Product</title>
 
-<!-- Bootstrap Core CSS -->
-<link href="../assets/css/vendors/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+	<!-- Bootstrap Core CSS -->
+	<link href="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link href="../assets/css/admin.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="<%=request.getServletContext().getContextPath()%>/views/assets/css/admin.css" rel="stylesheet">
 
-<!-- Custom Fonts -->
-<link href="../assets/css/vendors/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+	<!-- Custom Fonts -->
+	<link href="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -154,10 +152,10 @@
 	<!-- /#wrapper -->
 
 	<!-- jQuery -->
-	<script src="../assets/css/vendors/jquery/jquery.min.js"></script>
-	<script src="../assets/js/modules/admin-update-product.js"></script>
+	<script src="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/jquery/jquery.min.js"></script>
+	<script src="<%=request.getServletContext().getContextPath()%>/views/assets/js/modules/admin-update-product.js"></script>
 	<!-- Bootstrap Core JavaScript -->
-	<script src="../assets/css/vendors/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 

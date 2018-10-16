@@ -51,6 +51,9 @@ public class ProductAction extends ActionSupport {
 	private String message;
 	private List<Product> products;
 	private String id;
+	private String[] productProperties;
+	private String[] productSpec;
+	private String[] productDescription;
 
 	public ProductAction() {
 		manufactureService = new ManufactureServiceImpl(manufactureDao);
@@ -61,6 +64,9 @@ public class ProductAction extends ActionSupport {
 		try {
 			product = productService.findById(id);
 			manufacture = manufactureService.findById(product.getManufacture().getManufactureId());
+			productProperties = productService.splitStringProduct(product.getProperties());
+			productSpec = productService.splitStringProduct(product.getSpec());
+			productDescription = productService.splitStringProduct(product.getDescription());
 		} catch (SQLException e) {
 			DbLogging.LOG.error("SQLException", e);
 		}
@@ -98,7 +104,6 @@ public class ProductAction extends ActionSupport {
 	public String updateProduct() {
 		String randomName = "";
 		int isAddSuccess = 0;
-
 		if (image != null) {
 			try {
 				StorageUtils.removeFile(product.getImageUrl());
@@ -268,4 +273,28 @@ public class ProductAction extends ActionSupport {
 		this.id = id;
 	}
 
+	public String[] getProductProperties() {
+		return productProperties;
+	}
+
+	public void setProductProperties(String[] productProperties) {
+		this.productProperties = productProperties;
+	}
+
+	public String[] getProductSpec() {
+		return productSpec;
+	}
+
+	public void setProductSpec(String[] productSpec) {
+		this.productSpec = productSpec;
+	}
+
+	public String[] getProductDescription() {
+		return productDescription;
+	}
+
+	public void setProductDescription(String[] productDescription) {
+		this.productDescription = productDescription;
+	}
+	
 }

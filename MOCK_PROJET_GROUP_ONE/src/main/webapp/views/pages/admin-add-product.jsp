@@ -18,16 +18,15 @@
 
 <title>Add New Product</title>
 
-<!-- Bootstrap Core CSS -->
-<link href="../assets/css/vendors/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+	<!-- Bootstrap Core CSS -->
+	<link href="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link href="../assets/css/admin.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="<%=request.getServletContext().getContextPath()%>/views/assets/css/admin.css" rel="stylesheet">
 
-<!-- Custom Fonts -->
-<link href="../assets/css/vendors/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+	<!-- Custom Fonts -->
+	<link href="<%=request.getServletContext().getContextPath()%>/views/assets/css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 	
 </head>
 
