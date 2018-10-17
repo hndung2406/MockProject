@@ -301,13 +301,13 @@
 					<div class="card mobile-item text-center ">
 						  <a href="productDetail?id=<s:property value="id"/>"><img class="card-img-top mobile-item__thumbnail" src="/images/<s:property value="imageUrl"/>" alt="mobile image"/></a>
 						  <div class="card-body mobile-item__price ">
+						  	<span hidden><s:property value="id"/></span>
 						  	<p class="mobile-item__name mb-0"><s:property value="name"/> </p>
 						    <p class="mobile-item__price-value">
 						    	<span class="mobile-item__price--past"><s:property value="price"/> </span> <span class="mobile-item__price--discount">(-10%)</span>
 						    </p>
 							<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
-							<button class="btn btn-warning text-light w-50"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
-	
+							<button class="btn btn-warning text-light w-50" id="add-button"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 						  </div>
 						<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
 					  

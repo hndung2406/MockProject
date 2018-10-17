@@ -1,7 +1,11 @@
 package com.fa.group01.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.fa.group01.constants.PageConstant;
 import com.fa.group01.dao.productdao.impl.ProductDAOImpl;
@@ -30,12 +34,10 @@ public class PageAction extends ActionSupport implements Preparable {
 	}
 
 	public String fetchProductsOnCurrentPage() {
-
 		int rowIndexOfResultSet = (page - 1) * PageConstant.LIMIT_PRODUCTS_PER_PAGE;// default rowIndexOfResultSet = 0
 		try {
 			products = pageService.getLimitProductsPerPage(rowIndexOfResultSet, PageConstant.LIMIT_PRODUCTS_PER_PAGE);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

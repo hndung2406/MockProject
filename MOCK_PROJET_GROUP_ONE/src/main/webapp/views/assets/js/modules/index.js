@@ -24,4 +24,19 @@ $(document).ready(function(){
 				
 		}
 	});
+	
+	$(".btn-warning").click(function() {
+		//alert($(this).prev().prev().prev().prev().text());
+		$.ajax({
+			url:"addToCart",
+			type:"POST",
+			data: {
+				"id": $(this).prev().prev().prev().prev().text()
+			},
+			success: function(data) {
+				
+			}
+		});
+	});
+	
 });

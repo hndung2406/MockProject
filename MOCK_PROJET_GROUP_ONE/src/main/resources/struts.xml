@@ -11,6 +11,10 @@
 			<result type="redirect">/views/home.jsp</result>
 		</action>
     
+    	<action name="addToCart" class="com.fa.group01.action.Cart" method="addToCart">
+    		<result name="success"></result>
+    	</action>
+    
     	<action name="user" class="com.fa.group01.action.UserAction" method="fetchUser">
     		<result name="success">/views/pages/edit-user.jsp</result>
     	</action>
