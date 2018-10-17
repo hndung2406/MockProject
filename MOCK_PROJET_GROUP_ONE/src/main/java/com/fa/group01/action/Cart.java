@@ -35,6 +35,7 @@ public class Cart extends ActionSupport implements Preparable, SessionAware {
 	private ProductDAO productDao;
 	private Product product;
 	private int quantity;
+	private int totalQuantity;
 
 	@Override
 	public void prepare() throws Exception {
@@ -65,9 +66,10 @@ public class Cart extends ActionSupport implements Preparable, SessionAware {
 
 	public String showCartSession() {
 		cart = getCart();
+		totalQuantity = 0;
 		if(!cart.isEmpty() && cart != null) {
 			for(int val: cart.values()) {
-				quantity += val;
+				totalQuantity += val;
 			}
 		}
 		return PageConstant.SUCCESS;
@@ -80,9 +82,9 @@ public class Cart extends ActionSupport implements Preparable, SessionAware {
 			cartSession.put("cart", cart);
 		}
 		cart = (Map<Product, Integer>) cartSession.get("cart");
-		Product product = null;
-		product = productService.findById(id);
-		if (cart.containsKey(product)) {
+		Product product = productService.findById(id);
+		
+		if (!cart.isEmpty() && cart.containsKey(product)) {
 			int quantity = cart.get(product);
 			quantity += 1;
 			cart.put(product, quantity);
@@ -134,5 +136,12 @@ public class Cart extends ActionSupport implements Preparable, SessionAware {
 	public void setCart(Map<Product, Integer> cart) {
 		this.cart = cart;
 	}
-	
+
+	public int getTotalQuantity() {
+		return totalQuantity;
+	}
+
+	public void setTotalQuantity(int totalQuantity) {
+		this.totalQuantity = totalQuantity;
+	}
 }

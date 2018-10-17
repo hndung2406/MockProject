@@ -113,7 +113,7 @@
 		<action name="cartSession" class="com.fa.group01.action.Cart" method="showCartSession"> 
 			<result name="success" type="json"></result>
 		</action>
-		
+
 	</package>
 	
 	<package name="sercurity" extends="struts-default">

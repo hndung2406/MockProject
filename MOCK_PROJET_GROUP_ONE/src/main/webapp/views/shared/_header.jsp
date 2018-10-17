@@ -38,8 +38,8 @@
 					<span>
 						<a href="showCart"><i class="fa fa-cart-plus"></i>
 							My cart</a>
-					</span>
-					<span id="number-product-in-cart" class="site-header__cart--text">(<span id="quantity">0</span> items)</span>
+					</span> 
+					<span class="site-header__cart--text">(<span class="quantity">0</span> items)</span>
 				</div>
 
 			</div>
