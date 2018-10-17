@@ -133,8 +133,7 @@
 			<result name="success">/views/pages/admin-delete-product.jsp</result>
 		</action>				
 		<action name="admin-deleteProduct" class="com.fa.group01.action.ProductAction" method="deleteProduct">
-			<result name="success" type="redirect">/views/pages/admin-products</result>
-			<result name="error" type="redirect">/views/pages/admin-showDeleteProduct</result>
+			<result name="success" type="redirect">/views/pages/admin-products</result>			
 		</action>
 				
 		<action name="admin-showUpdateProduct" class="com.fa.group01.action.ProductAction" method="showUpdateProductPage">
