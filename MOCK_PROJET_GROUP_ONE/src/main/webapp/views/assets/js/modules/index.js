@@ -26,9 +26,25 @@ $(document).ready(function(){
 		}
 	});
 	
+	$.ajax({
+		url:"cartSession",
+		type:"GET",
+		success: function(data) {
+			$("#quantity").text(data.quantity);
+		}
+	});
+	
 	$(".btn-warning").click(function() {
-		//alert($(this).prev().prev().prev().prev().text());
-		count += 1;
+		var test = 0;
+		$.ajax({
+			url:"cartSession",
+			type:"GET",
+			success: function(data) {
+				test = data.quantity + 1;
+				$("#quantity").text(test);
+			}
+		});
+		
 		$.ajax({
 			url:"addToCart",
 			type:"POST",
@@ -40,14 +56,6 @@ $(document).ready(function(){
 			}
 		});
 		
-//		$.ajax({
-//			url:"cartSession",
-//			type:"GET",
-//			success: function(data) {
-//				console.log(data.cart);
-//			}
-//		})
-		$("#quantity").text(count);
 	});
 	
 });

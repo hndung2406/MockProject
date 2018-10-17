@@ -66,6 +66,11 @@ public class Cart extends ActionSupport implements Preparable, SessionAware {
 
 	public String showCartSession() {
 		cart = getCart();
+		if(!cart.isEmpty() && cart != null) {
+			for(int val: cart.values()) {
+				quantity += val;
+			}
+		}
 		return PageConstant.SUCCESS;
 	}
 
@@ -130,5 +135,5 @@ public class Cart extends ActionSupport implements Preparable, SessionAware {
 	public void setCart(Map<Product, Integer> cart) {
 		this.cart = cart;
 	}
-
+	
 }
