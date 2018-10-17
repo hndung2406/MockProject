@@ -36,10 +36,10 @@
 			<div class="col-3 d-flex flex-column justify-content-center text-center">
 				<div class="site-header__cart">
 					<span>
-						<a href="<%=request.getServletContext().getContextPath() %>/views/pages/cart.jsp"><i class="fa fa-cart-plus"></i>
+						<a href="showCart"><i class="fa fa-cart-plus"></i>
 							My cart</a>
-					</span>
-					<span class="site-header__cart--text">(0 items)</span>
+					</span> 
+					<span class="site-header__cart--text">(<span class="quantity">0</span> items)</span>
 				</div>
 
 			</div>

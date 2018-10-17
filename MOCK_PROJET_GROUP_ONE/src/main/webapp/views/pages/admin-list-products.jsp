@@ -70,8 +70,8 @@
                                     		<td><c:out value="${product.getCondition()}"></c:out> </td>
                                     		<td><c:out value="${product.getDateOfManufacture()}"></c:out> </td>
                                     		<td><c:out value="${product.getManufacture().getManufactureId()}"></c:out> </td>
-                                    		<td><a href="admin-showUpdateProduct?id=${product.getId()}">Update</a> </td>
-                                    		<td><a href="admin-showDeleteProduct?id=${product.getId()}">Delete</a></td>
+                                    		<td><a href="admin-showUpdateProduct?id=${product.getId()}"><button class="btn btn-primary">Update</button></a> </td>
+                                    		<td><a href="admin-showDeleteProduct?id=${product.getId()}"><button class="btn btn-danger">Delete</button></a></td>
                                     	</tr>
                                     </c:forEach>
                                     </tbody>

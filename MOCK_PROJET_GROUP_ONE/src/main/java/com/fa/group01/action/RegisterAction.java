@@ -3,7 +3,6 @@
  */
 package com.fa.group01.action;
 
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -17,12 +16,13 @@ import com.fa.group01.service.userservice.UserService;
 import com.fa.group01.service.userservice.impl.UserServiceImpl;
 import com.fa.group01.utils.DateUtils;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 
 /**
  * @author nguyenthanhlinh
  *
  */
-public class RegisterAction extends ActionSupport {
+public class RegisterAction extends ActionSupport implements Preparable {
 
 	/**
 	 * 
@@ -30,36 +30,38 @@ public class RegisterAction extends ActionSupport {
 	private static final long serialVersionUID = -975855527019561906L;
 	private String userrepassword;
 	private User user;
-	private UserDAO userDao = new UserDAOImpl();
-	private UserService userService = new UserServiceImpl(userDao);
+	private UserDAO userDao;
+	private UserService userService;
 	private List<User> users;
 
+	@Override
+	public void prepare() throws Exception {
+		userDao = new UserDAOImpl();
+		userService = new UserServiceImpl(userDao);
+	}
+	
 	/**
 	 * Register User with the input
+	 * 
 	 * @return
 	 */
 	public String registerUser() {
 		Date out = DateUtils.getDate();
-		java.sql.Timestamp createdDate = new java.sql.Timestamp(out.getTime());
-		user.setUserCreateDate(createdDate);
-		user.setUserRole("user");
-		try {
-			String msg = userService.registerUser(user);
-			if(msg.equals("Update Successful")) {
-				DbLogging.LOG.info("REGISTERED");
-				return PageConstant.REGISTER;
-			} else {
-				DbLogging.LOG.error("ERROR REGISTERED");
-				return PageConstant.ERROR;
-			}
-		} catch (SQLException e) {
-			DbLogging.LOG.error("ERROR!", e);
+		userService.setUser(user, out, "user");
+		String msg = userService.registerUser(user);
+		if (msg.equals("Update Successful")) {
+			DbLogging.LOG.info("REGISTERED");
+			return PageConstant.REGISTER;
+		} else {
+			DbLogging.LOG.error("ERROR REGISTERED");
+			return PageConstant.ERROR;
 		}
-		return PageConstant.ERROR;
+
 	}
-	
+
 	/**
 	 * Validate the input
+	 * 
 	 * @return
 	 */
 	@Override
@@ -102,5 +104,5 @@ public class RegisterAction extends ActionSupport {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-	
+
 }

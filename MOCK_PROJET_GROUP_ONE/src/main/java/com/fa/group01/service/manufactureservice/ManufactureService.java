@@ -13,24 +13,24 @@ import com.fa.group01.entity.Manufacture;
  *
  */
 public interface ManufactureService {
-	
+
 	/**
 	 * @param manufacture
 	 * @return
 	 * @throws SQLException
 	 */
-	public int addManufacture(Manufacture manufacture) throws SQLException;
-	
-	/**
-	 * @return
-	 * @throws SQLException
-	 */
-	List<Manufacture> findAll() throws SQLException;
+	public int addManufacture(Manufacture manufacture);
 
 	/**
 	 * @return
 	 * @throws SQLException
 	 */
-	public Manufacture findById(int id) throws SQLException;
-	
+	List<Manufacture> findAll();
+
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
+	public Manufacture findById(int id);
+
 }

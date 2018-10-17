@@ -19,19 +19,19 @@ public interface CountryDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int addCountry(Country country) throws SQLException;
+	public int addCountry(Country country);
 	
 	/**
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Country> findAll() throws SQLException;
+	public List<Country> findAll();
 	
 	/**
 	 * @param country
 	 * @return
 	 * @throws SQLException
 	 */
-	public Country findById(Country country) throws SQLException;
+	public Country findById(Country country);
 	
 }

@@ -3,7 +3,6 @@
  */
 package com.fa.group01.entity;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 /**

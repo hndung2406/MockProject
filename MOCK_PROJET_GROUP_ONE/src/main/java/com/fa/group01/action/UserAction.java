@@ -3,7 +3,6 @@
  */
 package com.fa.group01.action;
 
-import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -17,45 +16,48 @@ import com.fa.group01.service.userservice.UserService;
 import com.fa.group01.service.userservice.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 
 /**
  * @author DungHN2
  *
  */
-public class UserAction extends ActionSupport implements SessionAware {
+public class UserAction extends ActionSupport implements SessionAware, Preparable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5031124201182742786L;
 	private User user;
-	private UserDAO userDao = new UserDAOImpl();
-	private UserService userService = new UserServiceImpl(userDao);
+	private UserDAO userDao;
+	private UserService userService;
 	private String message;
 	private Map<String, Object> userSession;
-	
+
+	@Override
+	public void prepare() throws Exception {
+		userDao = new UserDAOImpl();
+		userService = new UserServiceImpl(userDao);
+	}
+
 	public String fetchUser() {
 		user = (User) ActionContext.getContext().getSession().get("authenticatedUser");
 		return PageConstant.SUCCESS;
 	}
-	
+
 	public String updateUser() {
 		user.setUserRole("user");
-		try {
-			int affectedRow = userService.updateUser(user);
-			if(affectedRow > 0) {
-				message = "Update Successful!";
-				DbLogging.LOG.info("Update Successful!");
-				userSession.put("authenticatedUser", user);
-			} else {
-				message = "Update Fail!";
-				DbLogging.LOG.error("Update Fail!");
-			}
-		} catch (SQLException e) {
-			DbLogging.LOG.error("Error", e);
+		int affectedRow = userService.updateUser(user);
+		if (affectedRow > 0) {
+			message = "Update Successful!";
+			DbLogging.LOG.info("Update Successful!");
+			userSession.put("authenticatedUser", user);
+			return PageConstant.SUCCESS;
+		} else {
+			message = "Update Fail!";
+			DbLogging.LOG.error("Update Fail!");
 			return PageConstant.ERROR;
 		}
-		return PageConstant.SUCCESS;
 	}
 
 	public User getUser() {
@@ -77,6 +79,6 @@ public class UserAction extends ActionSupport implements SessionAware {
 	@Override
 	public void setSession(Map<String, Object> session) {
 		userSession = session;
-	}	
-	
+	}
+
 }

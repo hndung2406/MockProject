@@ -17,6 +17,7 @@ import com.fa.group01.constants.DbQuery;
 import com.fa.group01.dao.productdao.ProductDAO;
 import com.fa.group01.entity.Manufacture;
 import com.fa.group01.entity.Product;
+import com.fa.group01.logging.DbLogging;
 
 /**
  * @author nguyenthanhlinh
@@ -31,7 +32,7 @@ public class ProductDAOImpl implements ProductDAO {
 	private CallableStatement callableStatement;
 
 	@Override
-	public int addProduct(Product product) throws SQLException {
+	public int addProduct(Product product) {
 		connection = DatabaseConnect.getConnection();
 		int affectedRow = 0;
 		if (connection != null) {
@@ -48,14 +49,19 @@ public class ProductDAOImpl implements ProductDAO {
 				preparedStatement.setString(9, product.getSpec());
 				preparedStatement.setString(10, product.getProperties());
 				preparedStatement.setInt(11, product.getManufacture().getManufactureId());
-
 				affectedRow = preparedStatement.executeUpdate();
+			} catch (SQLException e) {
+				DbLogging.LOG.error("Error Database exception", e);
 			} finally {
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					DbLogging.LOG.error("Error Database exception", e);
 				}
 			}
 		}
@@ -63,7 +69,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<Product> findAllProduct() throws SQLException {
+	public List<Product> findAllProduct() {
 		List<Product> products = new ArrayList<>();
 		Product product = null;
 		Manufacture manufacture = null;
@@ -75,20 +81,26 @@ public class ProductDAOImpl implements ProductDAO {
 				while (resultSet.next()) {
 					product = new Product();
 					manufacture = new Manufacture();
-					
+
 					fetchOneProduct(product, manufacture);
-					
+
 					products.add(product);
 				}
+			} catch (SQLException e) {
+				DbLogging.LOG.error("Error Database exception");
 			} finally {
-				if (connection != null) {
-					connection.close();
-				}
-				if (statement != null) {
-					statement.close();
-				}
-				if (resultSet != null) {
-					resultSet.close();
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (statement != null) {
+						statement.close();
+					}
+					if (resultSet != null) {
+						resultSet.close();
+					}
+				} catch (Exception e2) {
+					DbLogging.LOG.error("Error Database exception");
 				}
 			}
 		}
@@ -96,7 +108,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public Product findById(String productId) throws SQLException {
+	public Product findById(String productId) {
 		Product product = new Product();
 		Manufacture manufacture = new Manufacture();
 		connection = DatabaseConnect.getConnection();
@@ -108,15 +120,21 @@ public class ProductDAOImpl implements ProductDAO {
 				while (resultSet.next()) {
 					fetchOneProduct(product, manufacture);
 				}
+			} catch (SQLException e) {
+				DbLogging.LOG.error("Error Database Exception", e);
 			} finally {
-				if (resultSet != null) {
-					resultSet.close();
-				}
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
+				try {
+					if (resultSet != null) {
+						resultSet.close();
+					}
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					DbLogging.LOG.error("Error Database Exception", e);
 				}
 			}
 		}
@@ -144,7 +162,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public int updateProduct(Product product) throws SQLException {
+	public int updateProduct(Product product) {
 		connection = DatabaseConnect.getConnection();
 		int affectedRow = 0;
 		if (connection != null) {
@@ -163,12 +181,18 @@ public class ProductDAOImpl implements ProductDAO {
 				preparedStatement.setString(11, product.getId());
 
 				affectedRow = preparedStatement.executeUpdate();
-			} finally {
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
+			} catch(SQLException e) { 
+				DbLogging.LOG.error("Error Database exception", e);
+			}finally {
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					DbLogging.LOG.error("Error Database exception", e);
 				}
 			}
 		}
@@ -176,56 +200,68 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<Product> fetchLimitNumberOfProducts(int rowIndex, int maxNumberOfRecords) throws SQLException {
+	public List<Product> fetchLimitNumberOfProducts(int rowIndex, int maxNumberOfRecords) {
 		List<Product> products = new ArrayList<>();
 		Product product = null;
-		Manufacture manufacture =null;
-		
+		Manufacture manufacture = null;
+
 		connection = DatabaseConnect.getConnection();
-		if(connection != null) {
+		if (connection != null) {
 			try {
 				callableStatement = connection.prepareCall(DbQuery.FETCH_LIMIT_PRODUCS);
 				callableStatement.setInt(1, rowIndex);
 				callableStatement.setInt(2, maxNumberOfRecords);
 				resultSet = callableStatement.executeQuery();
-				while(resultSet.next()) {
+				while (resultSet.next()) {
 					product = new Product();
 					manufacture = new Manufacture();
 					fetchOneProduct(product, manufacture);
 					products.add(product);
 				}
+			} catch (SQLException e) {
+				DbLogging.LOG.error("Error Database exception", e);
 			} finally {
-				if(callableStatement != null) {
-					callableStatement.close();
+				try {
+					if (callableStatement != null) {
+						callableStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					DbLogging.LOG.error("Error Database exception", e);
 				}
-				if (connection != null) {
-					connection.close();
-				}
+
 			}
 		}
 		return products;
 	}
-		
-	public int deleteProduct(String productId) throws SQLException {
+
+	public int deleteProduct(String productId) {
 		connection = DatabaseConnect.getConnection();
 		int affectedRow = 0;
 		if (connection != null) {
 			try {
 				preparedStatement = connection.prepareStatement(DbQuery.DELETE_PRODUCT);
 				preparedStatement.setString(1, productId);
-				
+
 				affectedRow = preparedStatement.executeUpdate();
+			} catch (SQLException e) {
+				DbLogging.LOG.error("Error Database exception", e);
 			} finally {
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					DbLogging.LOG.error("Error Database exception", e);
 				}
 			}
 		}
-		
-		
+
 		return affectedRow;
 	}
 

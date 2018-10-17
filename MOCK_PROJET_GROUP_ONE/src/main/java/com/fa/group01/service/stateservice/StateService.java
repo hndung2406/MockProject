@@ -19,19 +19,19 @@ public interface StateService {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int addState(State state) throws SQLException;
+	public int addState(State state);
 
 	/**
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<State> findAll() throws SQLException;
-	
+	public List<State> findAll();
+
 	/**
 	 * @param state
 	 * @return
 	 * @throws SQLException
 	 */
-	public State findById(State state) throws SQLException;
-	
+	public State findById(State state);
+
 }

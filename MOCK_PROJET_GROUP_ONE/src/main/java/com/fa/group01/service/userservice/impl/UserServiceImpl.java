@@ -4,6 +4,7 @@
 package com.fa.group01.service.userservice.impl;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import com.fa.group01.dao.userdao.UserDAO;
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
 	 * @throws SQLException
 	 */
 	@Override
-	public String registerUser(User user) throws SQLException {
+	public String registerUser(User user) {
 		return userDao.registerUser(user);
 	}
 
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	 * @throws SQLException
 	 */
 	@Override
-	public List<User> findAll() throws SQLException {
+	public List<User> findAll() {
 		return userDao.findAll();
 	}
 	
@@ -51,7 +52,7 @@ public class UserServiceImpl implements UserService {
 	 * @throws SQLException
 	 */
 	@Override
-	public boolean isAuthenticated(String email, String password) throws SQLException {
+	public boolean isAuthenticated(String email, String password) {
 		return userDao.isAuthenticatedUser(email, password);
 	}
 	
@@ -61,13 +62,21 @@ public class UserServiceImpl implements UserService {
 	 * @throws SQLException
 	 */
 	@Override
-	public User fetchUserByEmail(String email) throws SQLException {
+	public User fetchUserByEmail(String email) {
 		return userDao.fetchUserByEmail(email);
 	}
 
 	@Override
-	public int updateUser(User user) throws SQLException {
+	public int updateUser(User user) {
 		return userDao.updateUser(user);
+	}
+
+	@Override
+	public User setUser(User user, Date date, String role) {
+		java.sql.Timestamp createdDate = new java.sql.Timestamp(date.getTime());
+		user.setUserCreateDate(createdDate);
+		user.setUserRole(role);
+		return user;
 	}
 	
 }

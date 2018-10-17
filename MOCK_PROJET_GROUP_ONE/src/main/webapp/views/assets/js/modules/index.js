@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var count = 0;
+	
 	$.ajax({
 		url:"checkSession",
 		type:"GET",
@@ -24,9 +26,17 @@ $(document).ready(function(){
 				
 		}
 	});
+	var quantity = 0;
+	$.ajax({
+		url:"cartSession",
+		type:"GET",
+		success: function(data) {
+			quantity = data.totalQuantity;
+			$(".quantity").text(quantity);
+		}
+	});
 	
 	$(".btn-warning").click(function() {
-		//alert($(this).prev().prev().prev().prev().text());
 		$.ajax({
 			url:"addToCart",
 			type:"POST",
@@ -37,6 +47,9 @@ $(document).ready(function(){
 				
 			}
 		});
+
+		quantity += 1;
+		$(".quantity").text(quantity);
 	});
 	
 });

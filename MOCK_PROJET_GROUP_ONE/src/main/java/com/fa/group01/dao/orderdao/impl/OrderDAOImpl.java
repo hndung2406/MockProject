@@ -11,6 +11,7 @@ import com.fa.group01.connect.DatabaseConnect;
 import com.fa.group01.constants.DbQuery;
 import com.fa.group01.dao.orderdao.OrderDAO;
 import com.fa.group01.entity.Order;
+import com.fa.group01.logging.DbLogging;
 
 /**
  * @author DungHN2
@@ -28,7 +29,7 @@ public class OrderDAOImpl implements OrderDAO {
 	 * @throws SQLException
 	 */
 	@Override
-	public int addOrder(Order order) throws SQLException {
+	public int addOrder(Order order) {
 		int affectedRow = 0;
 		connection = DatabaseConnect.getConnection();
 		if(connection != null) {
@@ -45,12 +46,18 @@ public class OrderDAOImpl implements OrderDAO {
 				callableStatement.setString(9, order.getOrderAddress1());
 				callableStatement.setString(10, order.getOrderAddress2());
 				affectedRow = callableStatement.executeUpdate();
-			} finally {
-				if(connection != null) {
-					connection.close();
-				}
-				if(callableStatement != null) {
-					callableStatement.close();
+			} catch (SQLException e) {
+				DbLogging.LOG.error("Error Database exception", e);
+			}finally {
+				try {
+					if(connection != null) {
+						connection.close();
+					}
+					if(callableStatement != null) {
+						callableStatement.close();
+					}
+				} catch (Exception e) {
+					DbLogging.LOG.error("Error Database exception", e);
 				}
 			}
 		}

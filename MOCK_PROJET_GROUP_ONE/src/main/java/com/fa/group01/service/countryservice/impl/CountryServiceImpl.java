@@ -22,37 +22,40 @@ public class CountryServiceImpl implements CountryService {
 		super();
 		this.countryDao = countryDao;
 	}
-	
+
 	/**
 	 * Add country to the database
+	 * 
 	 * @param country
 	 * @return
 	 * @throws SQLException
 	 */
 	@Override
-	public int addCountry(Country country) throws SQLException {
+	public int addCountry(Country country) {
 		return countryDao.addCountry(country);
 	}
 
 	/**
 	 * Find all countries in the database
+	 * 
 	 * @return
 	 * @throws SQLException
 	 */
 	@Override
-	public List<Country> findAll() throws SQLException {
+	public List<Country> findAll() {
 		return countryDao.findAll();
 	}
 
 	/**
 	 * Find country by id
+	 * 
 	 * @param country
 	 * @return
 	 * @throws SQLException
 	 */
 	@Override
-	public Country findByID(Country country) throws SQLException {
+	public Country findByID(Country country) {
 		return countryDao.findById(country);
 	}
-	
+
 }

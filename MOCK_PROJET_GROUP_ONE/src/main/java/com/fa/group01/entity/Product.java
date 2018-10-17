@@ -138,7 +138,19 @@ public class Product {
 				+ ", dateOfManufacture=" + dateOfManufacture + ", spec=" + spec + ", properties=" + properties
 				+ ", manufacture=" + manufacture + "]";
 	}
-	
-	
 
+	@Override
+	public int hashCode() {
+		return this.id.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Product product = (Product) obj;
+		if (this.id.equals(product.getId())) {
+			return true;
+		}
+		return false;
+	}
+	
 }

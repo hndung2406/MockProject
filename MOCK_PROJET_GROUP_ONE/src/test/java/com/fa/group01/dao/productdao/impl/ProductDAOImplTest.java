@@ -15,7 +15,7 @@ import com.fa.group01.entity.Product;
 public class ProductDAOImplTest {
 
 	private ProductDAO productDAO;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		productDAO = new ProductDAOImpl();
@@ -26,22 +26,16 @@ public class ProductDAOImplTest {
 	public void CanGetListProducts() throws SQLException {
 		List<Product> products = productDAO.findAllProduct();
 		products.forEach(System.out::println);
-		assertNotEquals(products.size(),0);
+		assertNotEquals(products.size(), 0);
 	}
-	
-	@Test	
+
+	@Test
 	public void CanGetLimitNumberOfProduct() {
 		List<Product> products;
-		try {
-			products = productDAO.fetchLimitNumberOfProducts(0, 3);
-			products.forEach(System.out::println);
-			assertEquals(products.size(),0);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		products = productDAO.fetchLimitNumberOfProducts(0, 3);
+		products.forEach(System.out::println);
+		assertEquals(products.size(), 0);
+
 	}
-	
 
 }

@@ -3,7 +3,6 @@
  */
 package com.fa.group01.action;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,45 +13,48 @@ import com.fa.group01.dao.userdao.UserDAO;
 import com.fa.group01.dao.userdao.impl.UserDAOImpl;
 import com.fa.group01.entity.Product;
 import com.fa.group01.entity.User;
-import com.fa.group01.logging.DbLogging;
 import com.fa.group01.service.productservice.ProductService;
 import com.fa.group01.service.productservice.impl.ProductServiceImpl;
 import com.fa.group01.service.userservice.UserService;
 import com.fa.group01.service.userservice.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 
 /**
  * @author DungHN2
  *
  */
-public class ReportAction extends ActionSupport {
+public class ReportAction extends ActionSupport implements Preparable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6726901906485612157L;
-	private UserDAO userDao = new UserDAOImpl();
-	private ProductDAO productDao = new ProductDAOImpl();
-	private UserService userService = new UserServiceImpl(userDao);
-	private ProductService productService = new ProductServiceImpl(productDao);
-	private List<User> users = new ArrayList<>();
-	private List<Product> products = new ArrayList<>();
+	private UserDAO userDao;
+	private ProductDAO productDao;
+	private UserService userService;
+	private ProductService productService;
+	private List<User> users;
+	private List<Product> products;
 
-	public String findAllUser() {
-		try {
-			users = userService.findAll();
-		} catch (SQLException e) {
-			DbLogging.LOG.error("ERROR!", e);
-		}
-		return PageConstant.REPORT;
+
+	@Override
+	public void prepare() throws Exception {
+		userDao = new UserDAOImpl();
+		productDao = new ProductDAOImpl();
+		userService = new UserServiceImpl(userDao);
+		productService = new ProductServiceImpl(productDao);
+		users = new ArrayList<>();
+		products = new ArrayList<>();
 	}
 	
+	public String findAllUser() {
+		users = userService.findAll();
+		return PageConstant.REPORT;
+	}
+
 	public String findAllProduct() {
-		try {
-			products = productService.findAllProduct();
-		} catch (SQLException e) {
-			DbLogging.LOG.error("ERROR!", e);
-		}
+		products = productService.findAllProduct();
 		return PageConstant.REPORT;
 	}
 
@@ -71,5 +73,6 @@ public class ReportAction extends ActionSupport {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
-	
+
+
 }
