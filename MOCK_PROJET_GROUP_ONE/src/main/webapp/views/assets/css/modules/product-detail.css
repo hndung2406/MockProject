@@ -2,9 +2,6 @@
 	margin-top: 10px
 }
 
-.product-detail-container .image {
-	margin-left: 200px;
-}
 
 .product-detail-container .description {
 	font-weight: bold;
@@ -33,6 +30,11 @@
 	width: 150px;
 }
 
+.product-detail-container .product-image {
+	display: flex;
+	justify-content: center;
+}
+
 .product-detail-container #wrapper {
 	display: flex;
 	align-items: center;
@@ -54,3 +56,4 @@
 .product-detail-container .mobile-specification {
 	height: 20rem;
 }
+

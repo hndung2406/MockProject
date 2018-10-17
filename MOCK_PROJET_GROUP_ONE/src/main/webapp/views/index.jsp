@@ -20,7 +20,7 @@
 	crossorigin="anonymous">
 
 <link rel="stylesheet" href="<%=request.getServletContext().getContextPath()%>/views/assets/css/main.css">
-
+<link rel="shortcut icon" href="<%=request.getServletContext().getContextPath()%>/views/assets/images/logo.ico"> 
 </head>
 <body>
 	<!--Begin header -->

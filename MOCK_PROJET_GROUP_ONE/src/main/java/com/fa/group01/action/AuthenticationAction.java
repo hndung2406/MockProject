@@ -63,15 +63,21 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 					//add user to session
 					userSession.put("authenticatedUser", user);
 					return "success";
+				} 
+				//user has already authenticated
+				else {
+					this.redirectUrl = "home";
 				}
 
-			}
+			}else {
+				// response to clien error message
+				errorMessage = "Email or address is not exist. Please try again";
+			}			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// response to clien error message
-		errorMessage = "Email or address is not exist. Please try again";
 		return "fail";
 	}
 

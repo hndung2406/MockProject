@@ -96,7 +96,7 @@
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
 			     
-					<div class="row weshop-mobiles ">					
+					<div class="row weshop-mobiles weshop-mobiles__slide">					
 						<div class="col-3">
 							<div class="card mobile-item text-center ">
 								  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/oppo-f9-red-2-400x460.png" alt="mobile image">
@@ -166,7 +166,7 @@
 
 			    </div>
 			    <div class="carousel-item">
-			     	<div class="row weshop-mobiles ">					
+			     	<div class="row weshop-mobiles__trending ">					
 			     		<div class="col-3">
 			     			<div class="card mobile-item text-center ">
 			     				  <img class="card-img-top mobile-item__thumbnail" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/oppo-f9-red-2-400x460.png" alt="mobile image">
@@ -265,7 +265,9 @@
 		
 		<!-- begin pagination -->
 		<div class="row pagination-row justify-content-between mt-3">
-			<h3 class="pagination-row__title title--orange">All mobile</h3>
+			<div class="d-flex">
+				<h3 class="pagination-row__title title--orange">All mobile </h3><span class="text-muted" style="transform: translateY(10%)">(${totalProductRecord} items)</span>
+			</div>
 			<nav aria-label="product list pagination">
 			  <ul class="pagination product-pagination">
 			  
@@ -290,29 +292,29 @@
 		</div>
 		<!-- end pagination -->
 		
-		<div class="row weshop-mobiles ">	
+		<div class="row weshop-mobiles weshop-mobiles-pagination  ">	
 
 			<s:if test="%{products.size == 0}">
 				<h3>Product page index <s:property value="page"/> has been update...</h3>
 			</s:if>
 			<s:else>
 				<s:iterator value="products" > 
-				<div class="col-sm-2">
+				<div class="col-sm-2 mb-3">
 					<div class="card mobile-item text-center ">
 						  <a href="productDetail?id=<s:property value="id"/>"><img class="card-img-top mobile-item__thumbnail" src="/images/<s:property value="imageUrl"/>" alt="mobile image"/></a>
 						  <div class="card-body mobile-item__price ">
 						  	<span hidden><s:property value="id"/></span>
-						  	<p class="mobile-item__name mb-0"><s:property value="name"/> </p>
+						  	<p class="mobile-item__name mb-0"><s:property value="name"/></p>
 						    <p class="mobile-item__price-value">
 						    	<span class="mobile-item__price--past"><s:property value="price"/> </span> <span class="mobile-item__price--discount">(-10%)</span>
 						    </p>
-							<p class="mobile-item__price-value mobile-item__price--promo">$550</p>
+							<p class="mobile-item__price-value mobile-item__price--promo">$<span>${price * (0.9)}</span></p>
 							<button class="btn btn-warning text-light w-50" id="add-button"><i class="fa fa-cart-plus" style="font-size: 1.3rem"></i></button>
 						  </div>
-						<img class="d-block mobile-item--hightlight" src="assets/images/sale.svg" alt="">
+						<img class="d-block mobile-item--hightlight" src="<%=request.getServletContext().getContextPath()%>/views/assets/images/sale.svg" alt="">
 					  
 					</div>
-			</div>
+				</div>
 			
 			</s:iterator>		
 			
@@ -320,10 +322,10 @@
 										
 			
 		</div>
-		<hr>
+		
 		
 		<!-- end all products -->
-	<hr>
+	
 	</div>
 	<!-- End wrapper-container -->
 

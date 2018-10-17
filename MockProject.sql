@@ -67,7 +67,7 @@ CREATE TABLE [Users](
     [Email] VARCHAR(155) NOT NULL UNIQUE,
     [FirstName] NVARCHAR(155),
     [LastName] NVARCHAR(155),
-    [Role] VARCHAR(35),
+    [Role] VARCHAR(35) DEFAULT 'user',
     [CreateDate] DATETIME NOT NULL,
 );
 GO
@@ -93,13 +93,13 @@ CREATE TABLE [Product](
     [ProductId] VARCHAR(6) PRIMARY KEY,
     [ProductName] NVARCHAR(155),
     [ProductPrice] FLOAT,
-    [Description] NVARCHAR(355),
+    [Description] NVARCHAR(MAX),
     [Image] VARCHAR(255),
     [Quantity] INT,
     [Condition] VARCHAR(15),
     [DateOfManufacture] DATE,
-    [Spec] NVARCHAR(255),
-    [Properties] NVARCHAR(255),
+    [Spec] NVARCHAR(MAX),
+    [Properties] NVARCHAR(MAX),
     [ManufactureId] INT,
     FOREIGN KEY ([ManufactureId]) REFERENCES [Manufacture]([ManufactureId]) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -179,7 +179,9 @@ INSERT INTO Users (UserName, Password, Email, FirstName, LastName, Role, CreateD
 VALUES ('linhlatoi','Linh@123','group03@domain.com','Nguyen','Thanh Linh', 'admin', GETDATE())
 GO
 
-
+INSERT INTO Users (UserName, Password, Email, FirstName, LastName, CreateDate)
+VALUES ('conga','hoangday','demo@gmail.com','Nguyen','Hung Son',GETDATE())
+GO
 
 INSERT INTO Manufacture
 VALUES ('Apple')
@@ -196,6 +198,14 @@ GO
 INSERT INTO Manufacture
 VALUES ('BPhone')
 GO
+INSERT INTO Manufacture
+VALUES ('Realme')
+GO
+
+INSERT INTO Manufacture
+VALUES ('Huawei')
+GO
+
 
 INSERT INTO Product
 VALUES('P1011',
@@ -281,6 +291,164 @@ VALUES('P1088',
 	  3)
 GO
 
+INSERT INTO Product
+VALUES('P1098',
+	  'OPPO A3s', 
+	  550, 
+	  'The Oppo A3s has all the good features that makes it an all-round budget smartphone. The long battery life and overall configuration will give a positive reviews in terms of smooth performance',
+	  'oppo-a3s-red-400x460.png',
+	  300,
+	  'New',
+	  '2018-10-10',
+	  'he Oppo A3s comes with a thin bezel provided at both side. It has a 6.2inch IPS LCD display having a resolution of 720 x 1,520 pixels and a pixel density of 271ppi.',
+	  'The Oppo A3s has all the good features that makes it an all-round budget smartphone. The long battery life and overall configuration will give a positive reviews in terms of smooth performance.',
+	  3)
+GO
+
+INSERT INTO Product
+VALUES('P2011',
+	  'iPhone X 64GB Gray', 
+	  1250, 
+	  'The Apple iPhone X is one of the most groundbreaking launches from Apple as far as both technology and design are concerned. Each and every department is richly fed with the most that you could get. And since the new iPhone X loses the home button and the fingerprint scanner on it, the FaceID is what replaces it, big time.',
+	  'iphone-x-64gb-1-400x460.png',
+	  200,
+	  'New',
+	  GETDATE(),
+	  'The Apple iPhone X, launched alongside the iPhone 8, has a stunning display that eventually turns out to be the stand-out feature with an edge-cutting super Retina, bezel-less 5.8-inch screen. The sharp resolution of 1,125 x 2,436 pixels enhances the crystal-clear ',
+	  'The iPhone X is possibly the biggest innovation from Apple since the original iPhone',
+	  1)
+GO
+
+INSERT INTO Product
+VALUES('P2012',
+	  'Samsung Galaxy Tab A 10.5', 
+	  950, 
+	  'The Samsung Galaxy Tab A 10.5 LTE with its vast screen real estate is definitely an appropriate device for your productivity needs. However, the screen is not very flattering to the eyes for long periods. The configuration underneath is also sufficient to deliver a smooth day to day experience for basic tasks and surfing. The cameras are decent. The battery is enormous, which is highly appreciated. Now, the hiccups, for what the tablet offers, we feel for the price that it is a bit too expensive.',
+	  'samsung-galaxy-tab-a-105-inch-chitietblue-400x460.png',
+	  250,
+	  'New',
+	  GETDATE(),
+	  'The Apple iPhone X, launched alongside the iPhone 8, has a stunning display that eventually turns out to be the stand-out feature with an edge-cutting super Retina, bezel-less 5.8-inch screen. The sharp resolution of 1,125 x 2,436 pixels enhances the crystal-clear ',
+	  'The iPhone X is possibly the biggest innovation from Apple since the original iPhone',
+	  2)
+GO
+
+INSERT INTO Product
+VALUES('P2023',
+	  'Realme 2 Pro', 
+	  650, 
+	  'The Realme 2 Pro is a mid-range smartphone that has a lot of impressive features. The device holds one of the strongest configurations which makes it the perfect gadget for gaming, multitasking and multimedia purposes. The cameras are perfect for clicking pictures under any condition. ',
+	  'realme-2-4gb-64gb-docquyen-400x400.jpg',
+	  20,
+	  'New',
+	  GETDATE(),
+	  'The Realme 2 Pro styles a stunning IPS LCD display of 6.3-inch with a screen resolution of 1,080 x 2,340 pixels with a pixel density of 409ppi which can render decent viewing experience.',
+	  'The Realme 2 Pro runs by a powerful Li-ion battery of 3,500mAh capacity that promises a long power backup for the users. It supports 4G VoLTE services. Other connectivity features offered by the device are WiFi 802.11, Mobile Hotspot, Bluetooth, A-GPS, etc.',
+	  6)
+GO
+
+INSERT INTO Product
+VALUES('P2013',
+	  'Realme 2 Pro ', 
+	  1150, 
+	  'The Realme 2 Pro is a mid-range smartphone that has a lot of impressive features. The device holds one of the strongest configurations which makes it the perfect gadget for gaming, multitasking and multimedia purposes. The cameras are perfect for clicking pictures under any condition. ',
+	  'realme-2-4gb-64gb-docquyen-400x400.jpg',
+	  10,
+	  'New',
+	  GETDATE(),
+	  'The Realme 2 Pro styles a stunning IPS LCD display of 6.3-inch with a screen resolution of 1,080 x 2,340 pixels with a pixel density of 409ppi which can render decent viewing experience.',
+	  'The Realme 2 Pro runs by a powerful Li-ion battery of 3,500mAh capacity that promises a long power backup for the users. It supports 4G VoLTE services. Other connectivity features offered by the device are WiFi 802.11, Mobile Hotspot, Bluetooth, A-GPS, etc.',
+	  6)
+GO
+
+INSERT INTO Product
+VALUES('P2014',
+	  ' iPhone Xs 256GB', 
+	  1750, 
+	  'The Apple iPhone XS is one of the finest smartphones ever by the most trusted brand in the world. It has everything one can imagine in a phone, a classy look, extremely superior display with widescreen, fast charging capability as well as wireless charging support which is a great relief indeed. It uses the iPhone latest iOS v11.2 operation system which has a lot of improvements over its predecessor. The body is  both dustproof and water resistance.',
+	  'iphone-xs-256gb-white-400x460.png',
+	  10,
+	  'New',
+	  GETDATE(),
+	  'The iPhone XS comes up with 5.8-inch OLED display having a screen resolution of 1,125 x 2,436 pixels and a sharp 463-PPI that delivers a clear viewing experience with a great colour reproduction. It is operated by a combination of hexa-core (a 2.49 GHz Vortex .',
+	  'For photography and videography, this device can prove out to be one of the best with a dual rear setup of 12MP + 12MP lens and a 7MP front lens with retina flash that can capture bright selfies with impressive effects. The iPhone XS get its power from 2,685mAh Li-ion battery which can suffice the power requirement of the device throughout the day. It can support fast charging feature as well as wireless charging feature that can fill the battery while on the move.',
+	  1)
+GO
+
+INSERT INTO Product
+VALUES('P2015',
+	  'Samsung Galaxy S9+ 128GB', 
+	  850, 
+	  'The Samsung Galaxy S9 128GB is a good smartphone and comes with plenty of attractive features. It has several protective features like water resistance and screen protection, which helps to avoid any damages. It also assures smooth multi-tasking and switching between application.',
+	  'samsung-galaxy-s9-plus-128gb-400x460-400x460.png',
+	  20,
+	  'New',
+	  GETDATE(),
+	  'The Samsung Galaxy S9 128GB holds a 5.8 inch super AMOLED display that exhibits a screen resolution of 1,440 x 2,960 pixels resulting in a pixel density of 568 PPI. The device comes with three different body colour option - Midnight Black, Coral Blue and Lilac Purple. In addition, the smartphone is capable enough to be water and dust resistance. The display is protected by a Corning Gorilla Glass v5 which is layered over the screen to avoid scratches.',
+	  'The Samsung Galaxy S9 128GB boots on Android v8.0 (Oreo) operating system. Under the hood, it is powered by dual quad-core processors, which is a 2.7Ghz M2 Mongoose and a 1.7Ghz Cortex A53. To deliver a good performance, the dual set of processors is paired with a 4GB RAM. For the graphical requirements, a Mali-G72 MP18 is present in the device. This combination is seated on Samsung Exynos 9 Octa 9810 chipset.',
+	  2)
+GO
+
+INSERT INTO Product
+VALUES('P2016',
+	  'Huawei Nova 3', 
+	  650, 
+	  'The Huawei Nova 3i presents all the features of a mid-range smartphone. It has a great set of dual cameras at both the ends. The screen will also feel good while watching videos. However, the need for a bigger battery capacity is felt since the provided power seems short for a day of heavy usage.',
+	  'huawei-nova-3-purple-400x460.png',
+	  100,
+	  'New',
+	  GETDATE(),
+	  'The Huawei Nova 3i has come with a 6.3inches IPS LCD display with a high resolution of 4,616 x 3,464 Pixels and a pixel density is around 409ppi that defines sharpness in the vision. The mid-range device features a stylish aspect ratio of 19.5:9 that will take the HD+ experience to another level.',
+	  'The Huawei Nova 3i derives its power from a 3,340mAh Li-ion battery that can last for almost a day with a single charge. The Hybrid SIM slot device supports 4G VoLTE so you may hardly face connectivity issue. In terms of connectivity with other devices, it features Wi-Fi 802.11, Mobile Hotspot, Bluetooth v4.2. In the location department, it supports features like A-GPS and Glonass. ',
+	  7)
+GO
+
+INSERT INTO Product
+VALUES('P2017',
+	  'Huawei Nova 3', 
+	  450, 
+	  'The Huawei Nova 3i presents all the features of a mid-range smartphone. It has a great set of dual cameras at both the ends. The screen will also feel good while watching videos. However, the need for a bigger battery capacity is felt since the provided power seems short for a day of heavy usage.',
+	  'huawei-nova-3-purple-400x460.png',
+	  100,
+	  'New',
+	  GETDATE(),
+	  'The Huawei Nova 3i has come with a 6.3inches IPS LCD display with a high resolution of 4,616 x 3,464 Pixels and a pixel density is around 409ppi that defines sharpness in the vision. The mid-range device features a stylish aspect ratio of 19.5:9 that will take the HD+ experience to another level.',
+	  'The Huawei Nova 3i derives its power from a 3,340mAh Li-ion battery that can last for almost a day with a single charge. The Hybrid SIM slot device supports 4G VoLTE so you may hardly face connectivity issue. In terms of connectivity with other devices, it features Wi-Fi 802.11, Mobile Hotspot, Bluetooth v4.2. In the location department, it supports features like A-GPS and Glonass. ',
+	  7)
+GO
+
+INSERT INTO Product
+VALUES('P2018',
+	  'Huawei Y7 Pro', 
+	  850, 
+	  'The Huawei Y7 Prime 2018 is a good smartphone which equipped with lots of features. It has one of the best designed body in the price range and is a treat to the eyes. It has quality lenses, which help to give you quality photographs. For storage purpose, the device offers a good storage capacity in which you can store lot of files and documents. To keep maintain the privacy of your phone and the content you keep in it, the Huawei Y7 Prime 2018.',
+	  'huawei-y7-pro-2018-400x460.png',
+	  150,
+	  'New',
+	  GETDATE(),
+	  'The Huawei Y7 Prime 2018 sports a 5.99 inch IPS LCD display which exhibits a screen resolution of 720 x 1,440 pixels, resulting in a pixel density of 269 PPI. The smartphone comes with three different body colour option - Black, Blue and Gold. For security purpose, the device is aided with a rear-mounted fingerprint sensor. In addition to this, the smartphone has a face unlock system as well. ',
+	  'The Huawei Y7 Prime 2018 boots up on Android v8.0 (Oreo) operating system. Under the hood, the device is equipped with a 1.4Ghz Cortex A53 octa-core processor which is coupled with a 3GB RAM. To fulfill the graphical requirement, an Adreno 505 GPU is present in the device. This combination is placed on a Qualcomm Snapdragon 430 MSM8937 chipset.',
+	  7)
+GO
+
+INSERT INTO Product
+VALUES('P2019',
+	  'Huawei Y7 Prime 2018', 
+	  850, 
+	  'The Huawei Y7 Prime 2018 sports a 5.99 inch IPS LCD display which exhibits a screen resolution of 720 x 1,440 pixels, resulting in a pixel density of 269 PPI. The smartphone comes with three different body colour option - Black, Blue and Gold. For security purpose, the device is aided with a rear-mounted fingerprint sensor. In addition to this, the smartphone has a face unlock system as well. ',
+	  'huawei-y7-pro-2018-400x460.png',
+	  50,
+	  'New',
+	  GETDATE(),
+	  'The Huawei Y7 Prime 2018 boots up on Android v8.0 (Oreo) operating system. Under the hood, the device is equipped with a 1.4Ghz Cortex A53 octa-core processor which is coupled with a 3GB RAM. To fulfill the graphical requirement, an Adreno 505 GPU is present in the device. This combination is placed on a Qualcomm Snapdragon 430 MSM8937 chipset. ',
+	  'The Huawei Y7 Prime 2018 is armed with a dual primary camera setup of 13MP and 2MP. The primary lenses are capable of capturing images of 4,128 x 3,096 pixels resolution. For selfie needs, it offers an 8MP lens. When it comes to the connectivity, the smartphone offers 4G with VoLTE, WiFi, Mobile Hotspot, Bluetooth, GPS and a microUSB as well.   ',
+	  7)
+GO
+
+
+
+
+SELECT * FROM Manufacture
 
 
 
@@ -289,13 +457,15 @@ SELECt * FROM Users
 SELECT * FROM Manufacture
 SELECT * FROM Product
 GO
-SELECT *
-FROM Product p
-ORDER BY p.ProductId
-OFFSET 2 ROWS
-FETCH NEXT 3 ROWS ONLY
 
+
+--STORE PROCEDURE--
+
+
+IF OBJECT_ID('usp_FetchProductsInCurrentPage', 'P') IS NOT NULL
+DROP PROC usp_FetchProductsInCurrentPage
 GO
+
 CREATE PROC usp_FetchProductsInCurrentPage
 @fromRowIndex INT,
 @maxResultPerPage INT
@@ -307,5 +477,5 @@ AS
 	OFFSET @fromRowIndex ROWS
 	FETCH NEXT @maxResultPerPage ROWS ONLY
 	END
+GO
 
-EXEC usp_FetchProductsInCurrentPage 0,3

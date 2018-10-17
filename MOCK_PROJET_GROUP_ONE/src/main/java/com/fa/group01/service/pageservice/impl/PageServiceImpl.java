@@ -29,7 +29,7 @@ public class PageServiceImpl implements PageService {
 	@Override
 	public int getMaxNavigationTabForProductPage(int maxNumberOfRecords) throws SQLException {
 		int totalProductRecord = getTotalProductRecord();
-		return Math.round(totalProductRecord/maxNumberOfRecords);
+		return Math.round(totalProductRecord/maxNumberOfRecords) + 1;
 	}
 
 
