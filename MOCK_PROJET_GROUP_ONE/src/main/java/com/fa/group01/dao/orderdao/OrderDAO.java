@@ -18,6 +18,6 @@ public interface OrderDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int addOrder(Order order) throws SQLException;
+	public int addOrder(Order order);
 	
 }

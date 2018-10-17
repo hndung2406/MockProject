@@ -13,43 +13,47 @@ import com.fa.group01.entity.Product;
  *
  */
 public interface ProductDAO {
-	
+
 	/**
 	 * @param product
 	 * @return
 	 * @throws SQLException
 	 */
-	public int addProduct(Product product) throws SQLException;
+	public int addProduct(Product product);
 
 	/**
 	 * @param productId
 	 * @return
 	 * @throws SQLException
 	 */
-	public Product findById(String productId) throws SQLException;
+	public Product findById(String productId);
 
 	/**
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Product> findAllProduct() throws SQLException;
-	
+	public List<Product> findAllProduct();
+
 	/**
 	 * @param product
 	 * @return
 	 * @throws SQLException
 	 */
-	public int updateProduct(Product product) throws SQLException;
+	public int updateProduct(Product product);
 
-	public List<Product> fetchLimitNumberOfProducts(int rowIndex, int maxNumberOfRecords) throws SQLException ;
-	
-	
-	
+	/**
+	 * @param rowIndex
+	 * @param maxNumberOfRecords
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Product> fetchLimitNumberOfProducts(int rowIndex, int maxNumberOfRecords);
+
 	/**
 	 * @param productId
 	 * @return
 	 * @throws SQLException
 	 */
-	public int deleteProduct(String productId) throws SQLException;
-	
+	public int deleteProduct(String productId);
+
 }

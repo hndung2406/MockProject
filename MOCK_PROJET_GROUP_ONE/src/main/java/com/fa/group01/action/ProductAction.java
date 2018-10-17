@@ -4,13 +4,8 @@
 package com.fa.group01.action;
 
 import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
-
-import org.apache.commons.io.FileUtils;
 
 import com.fa.group01.constants.PageConstant;
 import com.fa.group01.dao.manufacture.ManufactureDAO;
@@ -19,8 +14,6 @@ import com.fa.group01.dao.productdao.ProductDAO;
 import com.fa.group01.dao.productdao.impl.ProductDAOImpl;
 import com.fa.group01.entity.Manufacture;
 import com.fa.group01.entity.Product;
-import com.fa.group01.logging.DbLogging;
-import com.fa.group01.logging.UtilsLogging;
 import com.fa.group01.service.manufactureservice.ManufactureService;
 import com.fa.group01.service.manufactureservice.impl.ManufactureServiceImpl;
 import com.fa.group01.service.productservice.ProductService;
@@ -56,145 +49,75 @@ public class ProductAction extends ActionSupport {
 		manufactureService = new ManufactureServiceImpl(manufactureDao);
 		productService = new ProductServiceImpl(productDao);
 	}
-	
+
 	public String showDeleteProductPage() {
-		try {
-			product = productService.findById(id);
-			manufacture = manufactureService.findById(product.getManufacture().getManufactureId());
-		} catch (SQLException e) {
-			DbLogging.LOG.error("SQLException", e);
-		}
+		product = productService.findById(id);
+		manufacture = manufactureService.findById(product.getManufacture().getManufactureId());
 		return PageConstant.SUCCESS;
 	}
-	
+
 	public String deleteProduct() {
 		int isDeleted = 0;
-		try {
-			product = productService.findById(product.getId());
-			StorageUtils.removeFile(product.getImageUrl());
-			isDeleted = productService.deleteProduct(product.getId());
-		} catch (SQLException e) {
-			DbLogging.LOG.error("SQLException", e);
-		}
+		product = productService.findById(product.getId());
+		StorageUtils.removeFile(product.getImageUrl());
+		isDeleted = productService.deleteProduct(product.getId());
 		if (isDeleted > 0) {
 			return PageConstant.SUCCESS;
+		} else {
+			return PageConstant.ERROR;
 		}
-		return PageConstant.ERROR;
 	}
 
 	public String showUpdateProductPage() {
-		try {
-
-			manufactures = manufactureService.findAll();
-			product = productService.findById(id);
-			manufacture = manufactureService.findById(product.getManufacture().getManufactureId());
-			product.setManufacture(manufacture);
-		} catch (SQLException e) {
-			DbLogging.LOG.error("SQLException", e);
-		}
+		manufactures = manufactureService.findAll();
+		product = productService.findById(id);
+		manufacture = manufactureService.findById(product.getManufacture().getManufactureId());
+		product.setManufacture(manufacture);
 		return PageConstant.SUCCESS;
 	}
 
 	public String updateProduct() {
 		String randomName = "";
 		int isAddSuccess = 0;
-		if (image != null) {
-			try {
-				StorageUtils.removeFile(product.getImageUrl());
-				String randomCode = UUID.randomUUID().toString();
-				randomName = randomCode + StorageUtils.getFileExtension(imageFileName);
-
-				File file = new File(StorageUtils.FEATURE_LOCATION, randomName);
-				FileUtils.copyFile(image, file);
-				product.setImageUrl(randomName);
-			} catch (IOException e) {
-				UtilsLogging.LOGGER.error("IOException", e);
-			}
-		}
-		if (dateOfManufacture != null) {
-			product.setDateOfManufacture(new java.sql.Date(dateOfManufacture.getTime()));
-		}
-		try {
-			manufacture = manufactureService.findById(manufacture.getManufactureId());
-			manufactures = manufactureService.findAll();
-			product.setManufacture(manufacture);
-			isAddSuccess = productService.updateProduct(product);
-		} catch (SQLException e) {
-			DbLogging.LOG.error("SQLException", e);
-		}
-
+		randomName = productService.getRandomName(randomName, image, imageFileName);
+		manufacture = manufactureService.findById(manufacture.getManufactureId());
+		manufactures = manufactureService.findAll();
+		productService.setProduct(product, randomName, manufacture, dateOfManufacture);
+		isAddSuccess = productService.updateProduct(product);
 		if (isAddSuccess > 0) {
 			message = "Update Success!";
 			return PageConstant.SUCCESS;
+		} else {
+			message = "Update Fail!";
+			return PageConstant.ERROR;
 		}
-		message = "Update Fail!";
-		return PageConstant.ERROR;
-	}
-
-	public String showProducts() {
-
-		try {
-			products = productService.findAllProduct();
-		} catch (SQLException e) {
-			DbLogging.LOG.error("SQLException", e);
-		}
-		return PageConstant.SUCCESS;
-
 	}
 
 	public String showAddProductPage() {
-		try {
-			manufactures = manufactureService.findAll();
-		} catch (SQLException e) {
-			DbLogging.LOG.error("SQLException", e);
-		}
+		manufactures = manufactureService.findAll();
 		return PageConstant.SUCCESS;
 	}
 
 	public String addProduct() {
 		String randomName = "";
-		int isAddSuccess = 0;
-
-		if (image != null) {
-			try {
-				String randomCode = UUID.randomUUID().toString();
-				randomName = randomCode + StorageUtils.getFileExtension(imageFileName);
-
-				File file = new File(StorageUtils.FEATURE_LOCATION, randomName);
-				FileUtils.copyFile(image, file);
-			} catch (IOException e) {
-				UtilsLogging.LOGGER.error("IOException", e);
-			}
-		}
-		product.setImageUrl(randomName);
-		product.setManufacture(manufacture);
-		if (dateOfManufacture != null) {
-			product.setDateOfManufacture(new java.sql.Date(dateOfManufacture.getTime()));
-		}
-		try {
-			manufactures = manufactureService.findAll();
-			isAddSuccess = productService.addProduct(product);
-		} catch (SQLException e) {
-			DbLogging.LOG.error("SQLException", e);
-		}
-
+		randomName = productService.getRandomName(randomName, image, imageFileName);
+		productService.setProduct(product, randomName, manufacture, dateOfManufacture);
+		manufactures = manufactureService.findAll();
+		int isAddSuccess = productService.addProduct(product);
 		if (isAddSuccess > 0) {
 			message = "Add Success!";
 			return PageConstant.SUCCESS;
+		} else {
+			message = "Add Fail!";
+			return PageConstant.ERROR;
 		}
-		message = "Add Fail!";
-		return PageConstant.ERROR;
 	}
 
-	public String getAllProducts() {
-		try {
-			products = productService.fetchAllProducts();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return SUCCESS;
+	public String showProducts() {
+		products = productService.findAllProduct();
+		return PageConstant.SUCCESS;
 	}
-
+	
 	public Date getDateOfManufacture() {
 		return dateOfManufacture;
 	}
@@ -266,5 +189,5 @@ public class ProductAction extends ActionSupport {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 }

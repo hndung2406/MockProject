@@ -3,7 +3,6 @@
  */
 package com.fa.group01.action;
 
-import java.sql.SQLException;
 
 import com.fa.group01.constants.PageConstant;
 import com.fa.group01.dao.manufacture.ManufactureDAO;
@@ -12,7 +11,6 @@ import com.fa.group01.dao.productdao.ProductDAO;
 import com.fa.group01.dao.productdao.impl.ProductDAOImpl;
 import com.fa.group01.entity.Manufacture;
 import com.fa.group01.entity.Product;
-import com.fa.group01.logging.DbLogging;
 import com.fa.group01.service.manufactureservice.ManufactureService;
 import com.fa.group01.service.manufactureservice.impl.ManufactureServiceImpl;
 import com.fa.group01.service.productservice.ProductService;
@@ -38,18 +36,13 @@ public class ProductDetailAction extends ActionSupport {
 	private ManufactureService manufactureService = new ManufactureServiceImpl(manufactureDao);
 	private String[] productProperties;
 	private String[] productSpec;
-	
-	
+
 	public String productDetail() {
-		try {
-			product = productService.findById(id);
-			int manufactureId = product.getManufacture().getManufactureId();
-			manufacture = manufactureService.findById(manufactureId);
-			productProperties = productService.splitStringProduct(product.getProperties());
-			productSpec = productService.splitStringProduct(product.getSpec());
-		} catch (SQLException e) {
-			DbLogging.LOG.error("ERROR", e);
-		}
+		product = productService.findById(id);
+		int manufactureId = product.getManufacture().getManufactureId();
+		manufacture = manufactureService.findById(manufactureId);
+		productProperties = productService.splitStringProduct(product.getProperties());
+		productSpec = productService.splitStringProduct(product.getSpec());
 		return PageConstant.SUCCESS;
 	}
 
@@ -92,5 +85,5 @@ public class ProductDetailAction extends ActionSupport {
 	public void setProductSpec(String[] productSpec) {
 		this.productSpec = productSpec;
 	}
-	
+
 }

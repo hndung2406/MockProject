@@ -19,13 +19,13 @@ public interface UserDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public String registerUser(User user) throws SQLException;
+	public String registerUser(User user);
 	
 	/**
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<User> findAll() throws SQLException;
+	public List<User> findAll();
 	
 	/**
 	 * @param email
@@ -33,19 +33,19 @@ public interface UserDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean isAuthenticatedUser(String email, String password) throws SQLException;
+	public boolean isAuthenticatedUser(String email, String password);
 	
 	/**
 	 * @param email
 	 * @return
 	 */
-	public User fetchUserByEmail(String email) throws SQLException;
+	public User fetchUserByEmail(String email);
 	
 	/**
 	 * @param user
 	 * @return
 	 * @throws SQLException
 	 */
-	public int updateUser(User user) throws SQLException;
+	public int updateUser(User user);
 	
 }

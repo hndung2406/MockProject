@@ -3,22 +3,21 @@
  */
 package com.fa.group01.action;
 
-import java.sql.SQLException;
 
 import com.fa.group01.constants.PageConstant;
 import com.fa.group01.dao.manufacture.ManufactureDAO;
 import com.fa.group01.dao.manufacture.impl.ManufactureDAOImpl;
 import com.fa.group01.entity.Manufacture;
-import com.fa.group01.logging.DbLogging;
 import com.fa.group01.service.manufactureservice.ManufactureService;
 import com.fa.group01.service.manufactureservice.impl.ManufactureServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 
 /**
  * @author nguyenthanhlinh
  *
  */
-public class ManufactureAction extends ActionSupport {
+public class ManufactureAction extends ActionSupport implements Preparable {
 
 	/**
 	 * 
@@ -27,31 +26,27 @@ public class ManufactureAction extends ActionSupport {
 	private ManufactureService manufactureService;
 	private Manufacture manufacture;
 	private String message;
-	private ManufactureDAO manufactureDao = new ManufactureDAOImpl();
+	private ManufactureDAO manufactureDao;
 
-	/**
-	 * 
-	 */
-	public ManufactureAction() {
-		this.manufactureService = new ManufactureServiceImpl(manufactureDao);
+	
+	@Override
+	public void prepare() throws Exception {
+		manufactureDao = new ManufactureDAOImpl();
+		manufactureService = new ManufactureServiceImpl(manufactureDao);
 	}
 
 	/**
 	 * @return
 	 */
 	public String addManufacture() {
-		int isAddSuccess = 0;
-		try {
-			isAddSuccess = manufactureService.addManufacture(manufacture);
-		} catch (SQLException e) {
-			DbLogging.LOG.error("SQLException", e);
-		}
+		int isAddSuccess = manufactureService.addManufacture(manufacture);
 		if (isAddSuccess > 0) {
 			this.message = "Add Success!";
 			return PageConstant.SUCCESS;
+		} else {
+			this.message = "Add Fail!";
+			return PageConstant.ERROR;
 		}
-		this.message = "Add Fail!";
-		return PageConstant.ERROR;
 	}
 
 	/**

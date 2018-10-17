@@ -16,6 +16,7 @@ import com.fa.group01.connect.DatabaseConnect;
 import com.fa.group01.constants.DbQuery;
 import com.fa.group01.dao.userdao.UserDAO;
 import com.fa.group01.entity.User;
+import com.fa.group01.logging.DbLogging;
 
 /**
  * @author nguyenthanhlinh
@@ -37,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
 	 * @throws SQLException
 	 */
 	@Override
-	public String registerUser(User user) throws SQLException {
+	public String registerUser(User user) {
 		int affectedRow = 0;
 		String insertUserQuery = DbQuery.INSERT_NEW_USER_QUERY;
 		connection = DatabaseConnect.getConnection();
@@ -55,12 +56,18 @@ public class UserDAOImpl implements UserDAO {
 				if(affectedRow > 0) {
 					return "Update Successful";
 				}
-			} finally {
-				if(connection != null) {
-					connection.close();
-				}
-				if(callabaleStatement != null) {
-					callabaleStatement.close();
+			} catch(SQLException e) {
+				DbLogging.LOG.error("Error Database exception", e);
+			}finally {
+				try {
+					if(connection != null) {
+						connection.close();
+					}
+					if(callabaleStatement != null) {
+						callabaleStatement.close();
+					}
+				} catch (Exception e) {
+					DbLogging.LOG.error("Error Database exception", e);
 				}
 			}
 		}
@@ -73,7 +80,7 @@ public class UserDAOImpl implements UserDAO {
 	 * @throws SQLException
 	 */
 	@Override
-	public List<User> findAll() throws SQLException {
+	public List<User> findAll() {
 		List<User> users = new ArrayList<>();
 		User user = null;
 		String getUserQuery = DbQuery.SELECT_ALL_USER_QUERY;
@@ -94,15 +101,21 @@ public class UserDAOImpl implements UserDAO {
 					user.setUserCreateDate(resultSet.getTimestamp("CreateDate"));
 					users.add(user);
 				}
-			} finally {
-				if(connection != null) {
-					connection.close();
-				}
-				if(statement != null) {
-					statement.close();
-				}
-				if(resultSet != null) {
-					resultSet.close();
+			} catch(SQLException e) { 
+				DbLogging.LOG.error("Error Database exception", e);
+			}finally {
+				try {
+					if(connection != null) {
+						connection.close();
+					}
+					if(statement != null) {
+						statement.close();
+					}
+					if(resultSet != null) {
+						resultSet.close();
+					}
+				} catch (Exception e) {
+					DbLogging.LOG.error("Error Database exception", e);
 				}
 			}
 		}
@@ -110,24 +123,32 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean isAuthenticatedUser(String email, String password) throws SQLException {
+	public boolean isAuthenticatedUser(String email, String password) {
 		connection = DatabaseConnect.getConnection();
-		prepareStatement = connection.prepareStatement(DbQuery.SELECT_USER_BY_EMAIL_AND_PASSWORD);
-		prepareStatement.setString(1, email);
-		prepareStatement.setString(2, password);		
-		ResultSet resultSet = prepareStatement.executeQuery();
-		return resultSet.next();
+		boolean isAuthenticated = false;
+		try {
+			prepareStatement = connection.prepareStatement(DbQuery.SELECT_USER_BY_EMAIL_AND_PASSWORD);
+			prepareStatement.setString(1, email);
+			prepareStatement.setString(2, password);		
+			ResultSet resultSet = prepareStatement.executeQuery();
+			while(resultSet.next()) {
+				isAuthenticated = true;
+			}
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Erro Database exception", e);
+		}
+		return isAuthenticated;
 	}
 
 	@Override
-	public User fetchUserByEmail(String email) throws SQLException {
+	public User fetchUserByEmail(String email) {
 		User user = findAll().stream().filter(u->u.getUserEmail().equals(email)).findFirst().get();
 		return user;
 		
 	}
 
 	@Override
-	public int updateUser(User user) throws SQLException {
+	public int updateUser(User user) {
 		int affectedRow = 0;
 		connection = DatabaseConnect.getConnection();
 		if(connection != null) {
@@ -139,12 +160,18 @@ public class UserDAOImpl implements UserDAO {
 				callabaleStatement.setString(4, user.getUserLastName());
 				callabaleStatement.setInt(5, user.getUserId());
 				affectedRow = callabaleStatement.executeUpdate();
-			} finally {
-				if(connection != null) {
-					connection.close();
-				}
-				if(callabaleStatement != null) {
-					callabaleStatement.close();
+			} catch(SQLException e) { 
+				DbLogging.LOG.error("Error Database exception", e);
+			}finally {
+				try {
+					if(connection != null) {
+						connection.close();
+					}
+					if(callabaleStatement != null) {
+						callabaleStatement.close();
+					}
+				} catch (Exception e) {
+					DbLogging.LOG.error("Error Database exception", e);
 				}
 			}
 		}

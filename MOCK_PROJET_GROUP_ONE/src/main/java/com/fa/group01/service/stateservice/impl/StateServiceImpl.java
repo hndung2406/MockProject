@@ -3,11 +3,9 @@
  */
 package com.fa.group01.service.stateservice.impl;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.fa.group01.dao.statedao.StateDAO;
-import com.fa.group01.dao.statedao.impl.StateDAOImpl;
 import com.fa.group01.entity.State;
 import com.fa.group01.service.stateservice.StateService;
 
@@ -24,17 +22,17 @@ public class StateServiceImpl implements StateService {
 	}
 
 	@Override
-	public int addState(State state) throws SQLException {
+	public int addState(State state) {
 		return stateDao.addState(state);
 	}
-	
+
 	@Override
-	public List<State> findAll() throws SQLException {
+	public List<State> findAll() {
 		return stateDao.findAll();
 	}
 
 	@Override
-	public State findById(State state) throws SQLException {
+	public State findById(State state) {
 		return stateDao.findByID(state);
 	}
 

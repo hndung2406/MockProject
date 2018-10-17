@@ -140,8 +140,7 @@
 					</div>
 				</div>
 			</div>
-			<p style="font-weight: bold" class="credit-information">Billing
-				Information:</p>
+			<p style="font-weight: bold" class="credit-information">Billing Information:</p>
 			<div class="row">
 				<div class="col-8">
 					<div class="row justify-content-center row-max">
