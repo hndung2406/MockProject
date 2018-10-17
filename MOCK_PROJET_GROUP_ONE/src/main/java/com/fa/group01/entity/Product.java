@@ -141,7 +141,7 @@ public class Product {
 
 	@Override
 	public int hashCode() {
-		return id.hashCode();
+		return this.id.hashCode();
 	}
 
 	@Override
