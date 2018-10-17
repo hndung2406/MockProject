@@ -104,3 +104,5 @@ com.microsoft.sqlserver.jdbc.SQLServerException: String or binary data would be 
 	at java.lang.Thread.run(Thread.java:745)
 2018-10-17 10:47:48 INFO  DbLogging:90 - Check Out Success
 2018-10-17 10:53:46 INFO  DbLogging:78 - Check Out Success
+2018-10-17 13:38:22 INFO  DbLogging:53 - REGISTERED
+2018-10-17 13:38:52 INFO  DbLogging:53 - Update Successful!
