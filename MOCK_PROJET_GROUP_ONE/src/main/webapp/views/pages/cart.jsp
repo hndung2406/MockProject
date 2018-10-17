@@ -92,7 +92,7 @@
 								<p>Quantity:</p>
 							</div>
 							<div class="col-6">
-								<p><span id="quantity2">3</span> <span>items</span></p>
+								<p><span class="quantity">3</span> <span>items</span></p>
 							</div>
 						</div>
 						<hr>

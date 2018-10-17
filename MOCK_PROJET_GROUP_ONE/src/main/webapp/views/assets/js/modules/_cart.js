@@ -53,7 +53,7 @@ $(document).ready(function () {
 				});
 				totalPrice = sumTotal;
 				$("#total-order").text(totalPrice);
-				$("#quantity").text(totalItem);
+				$(".quantity").text(totalItem);
 				$("#quantity2").text(totalItem);
 			});
 
@@ -65,7 +65,7 @@ $(document).ready(function () {
 			})
 			
 			$("#total-order").text(totalPrice);
-			$("#quantity").text(totalItem);
+			$(".quantity").text(totalItem);
 			$("#quantity2").text(totalItem);
 
 });
