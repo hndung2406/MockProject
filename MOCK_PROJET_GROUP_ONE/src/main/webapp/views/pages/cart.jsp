@@ -16,7 +16,7 @@
 	rel="stylesheet"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="<c:url value="../assets/css/main.css"/>">
+<link rel="stylesheet" href="<c:url value="../views/assets/css/main.css"/>">
 </head>
 <body>	
 	
@@ -39,66 +39,35 @@
 							<th scope="col"></th>
 						</thead>
 						<tbody>
-							<tr>
+							<c:forEach items="${cart}" var="entry">
+								Key: ${entry.key.getId()}, Value:${entry.value}
+								<tr>
 								<td>
 									<div class="row">
 										<div class="col-4">
-											<img src="../assets/images/xs_6.png">
+											<img src="/images/${entry.key.getImageUrl()}" width="150px" height="150px">
 										</div>
 										<div class="col-6">
-											<p><a href="product-detail.jsp">Apple iPhone X, Fully Unlocked 5.8", 64 GB - Silver</a></p>
-											<p class=" short-description">Some short description here</p>
-											<span class="span-instock">Instock</span>
+											<p><a href="product-detail.jsp">${entry.key.getName()}</a></p>
+											<p class=" short-description">${entry.key.getDescription()}</p>
+											
 										</div>
 									</div>
 								</td>
-								<td><span>$</span><span>1300</span></td>
+								<td><span>$</span><span>${entry.key.getPrice()}</span></td>
 								<td>
-									<input type="number" name="quantity" min="1" max="5" value="1" class="input-drop-down">
+									<span hidden="hidden">${entry.key.getId()}</span>
+									<input type="number" name="quantity" min="1" max="5" value="${entry.value}" class="input-drop-down">
 								</td>
-								<td><span>$</span><span class="price">1300</span></td>
-								<td><button type="button" class="btn btn-danger btn-remove"><img src="../assets/images/trash-2x.png"></button></td>
+								<td><span>$</span><span class="price">${entry.key.getPrice() * entry.value}</span></td>
+								<td>
+									<input type="hidden" value="${entry.key.getId()}">
+									<button type="button" class="btn btn-danger btn-remove"><img src="../views/assets/images/trash-2x.png"></button>
+								</td>
 							</tr>
-							<tr>
-								<td>
-									<div class="row">
-										<div class="col-4">
-											<img src="../assets/images/bphone.png">
-										</div>
-										<div class="col-6">
-											<p><a href="">Bphone</a></p>
-											<p class=" short-description">Some short description here</p>
-											<span class="span-instock">Instock</span>
-										</div>
-									</div>
-								</td>
-								<td><span>$</span><span>1300</span></td>
-								<td>
-									<input type="number" name="quantity" min="1" max="5" value="1" class="input-drop-down">
-								</td>
-								<td><span>$</span><span class="price">1300</span></td>
-								<td><button type="button" class="btn btn-danger btn-remove"><img src="../assets/images/trash-2x.png"></button></td>
-							</tr>
-							<tr>
-								<td>
-									<div class="row">
-										<div class="col-4">
-											<img src="../assets/images/huawei.jpg">
-										</div>
-										<div class="col-6">
-											<p><a href="">Huawei</a></p>
-											<p class=" short-description">Some short description here</p>
-											<span class="span-instock">Instock</span>
-										</div>
-									</div>
-								</td>
-								<td><span>$</span><span>1300</span></td>
-								<td>
-									<input type="number" name="quantity" min="1" max="5" value="1" class="input-drop-down">
-								</td>
-								<td><span>$</span><span class="price">1300</span></td>
-								<td><button type="button" class="btn btn-danger btn-remove"><img src="../assets/images/trash-2x.png"></button></td>
-							</tr>
+							</c:forEach>
+							
+							
 						</tbody>
 					</table>
 					<!--End table-->
@@ -123,7 +92,7 @@
 								<p>Quantity:</p>
 							</div>
 							<div class="col-6">
-								<p><span id="quantity">3</span> <span>items</span></p>
+								<p><span id="quantity2">3</span> <span>items</span></p>
 							</div>
 						</div>
 						<hr>
@@ -152,8 +121,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	 crossorigin="anonymous"></script>	
-	<script src="../assets/js/modules/_cart.js"></script>
+	<script src="<%=request.getContextPath()%>/views/assets/js/modules/_cart.js"></script>
 	<script src="<%=request.getContextPath()%>/views/assets/js/modules/header.js"></script>
 	<script src="<%=request.getContextPath()%>/views/assets/js/modules/index.js"></script>
+	<script src="<%=request.getContextPath()%>/views/assets/js/modules/delete-product-from-cart.js"></script>
 </body>
 </html>

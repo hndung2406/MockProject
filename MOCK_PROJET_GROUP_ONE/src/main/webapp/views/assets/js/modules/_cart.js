@@ -3,6 +3,17 @@ $(document).ready(function () {
 			var totalPrice = 0;
 
 			$(".btn-remove").click(function () {
+				var id = $(this).closest("td").find("input").val();
+				$.ajax({
+					url : "deleteProductFromCart",
+					type : "POST",
+					data : {
+						"id" : id
+					},
+					success : function(data) {
+
+					}
+				});
 				$(this).closest("tr").fadeOut('slow', function (c) {
 					var subTotal = $(this).closest("tr").find("td:nth-child(4)").find("span:nth-child(2)").text();
 					var quantityTotal = $(this).closest("tr").find("td:nth-child(3)").find("input").val();
@@ -19,6 +30,20 @@ $(document).ready(function () {
 				var sumQuantity = 0;
 				var sumTotal = 0;
 				$(this).parent().next().children().next().text($(this).parent().prev().children().next().text() * $(this).val());
+				var id = $(this).closest("td").find("span").text();
+				var quantity = $(this).closest("td").find("input").val();
+				$.ajax({
+					url : "changeQuantity",
+					type : "POST",
+					data : {
+						"id" : id,
+						"quantity" : quantity
+					},
+					success : function(data) {
+
+					}
+				});
+				
 				$(".input-drop-down").each(function(){
 					sumQuantity += parseInt($(this).val());
 				});
@@ -29,6 +54,7 @@ $(document).ready(function () {
 				totalPrice = sumTotal;
 				$("#total-order").text(totalPrice);
 				$("#quantity").text(totalItem);
+				$("#quantity2").text(totalItem);
 			});
 
 			$("tbody tr").each(function() {
@@ -40,5 +66,6 @@ $(document).ready(function () {
 			
 			$("#total-order").text(totalPrice);
 			$("#quantity").text(totalItem);
+			$("#quantity2").text(totalItem);
 
 });

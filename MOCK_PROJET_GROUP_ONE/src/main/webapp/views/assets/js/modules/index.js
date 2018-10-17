@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	var count = 0;
 	$.ajax({
 		url:"checkSession",
 		type:"GET",
@@ -27,6 +28,7 @@ $(document).ready(function(){
 	
 	$(".btn-warning").click(function() {
 		//alert($(this).prev().prev().prev().prev().text());
+		count += 1;
 		$.ajax({
 			url:"addToCart",
 			type:"POST",
@@ -37,6 +39,15 @@ $(document).ready(function(){
 				
 			}
 		});
+		
+//		$.ajax({
+//			url:"cartSession",
+//			type:"GET",
+//			success: function(data) {
+//				console.log(data.cart);
+//			}
+//		})
+		$("#quantity").text(count);
 	});
 	
 });
