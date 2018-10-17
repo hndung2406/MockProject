@@ -54,7 +54,6 @@ public class Cart extends ActionSupport implements Preparable, SessionAware {
 	}
 
 	public String deleteProductFromCart() {
-		System.out.println(id);
 		product = productService.findById(id);
 		cart = getCart();
 		if (!cart.isEmpty()) {

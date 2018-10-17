@@ -32,7 +32,6 @@
 						</thead>
 						<tbody>
 							<c:forEach items="${cart}" var="entry">
-								Key: ${entry.key.getId()}, Value:${entry.value}
 								<tr>
 								<td>
 									<div class="row">
@@ -84,7 +83,7 @@
 								<p>Quantity:</p>
 							</div>
 							<div class="col-6">
-								<p><span id="quantity2">3</span> <span>items</span></p>
+								<p><span id="totalQuantity"></span> <span>items</span></p>
 							</div>
 						</div>
 						<hr>

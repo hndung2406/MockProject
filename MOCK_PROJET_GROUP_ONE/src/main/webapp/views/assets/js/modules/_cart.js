@@ -19,9 +19,10 @@ $(document).ready(function () {
 					var quantityTotal = $(this).closest("tr").find("td:nth-child(3)").find("input").val();
 					totalItem -= parseInt(quantityTotal);
 					totalPrice -= parseInt(subTotal);
-					$(this).closest("tr").remove();
 					$("#total-order").text(totalPrice);
 					$("#quantity").text(totalItem);
+					$("#totalQuantity2").text(totalItem);
+					$(this).closest("tr").remove();
 				});
 				
 			});
@@ -54,7 +55,7 @@ $(document).ready(function () {
 				totalPrice = sumTotal;
 				$("#total-order").text(totalPrice);
 				$("#quantity").text(totalItem);
-				$("#quantity2").text(totalItem);
+				$("#totalQuantity2").text(totalItem);
 			});
 
 			$("tbody tr").each(function() {
@@ -66,6 +67,6 @@ $(document).ready(function () {
 			
 			$("#total-order").text(totalPrice);
 			$("#quantity").text(totalItem);
-			$("#quantity2").text(totalItem);
+			$("#totalQuantity2").text(totalItem);
 
 });
