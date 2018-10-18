@@ -40,6 +40,7 @@
 				</ul>
 				<hr>
 				<div id="wrapper">
+					<p hidden id="product-id">${product.id}</p>
 					<button class="button-cart">Add to cart</button>
 				</div>
 			</div>

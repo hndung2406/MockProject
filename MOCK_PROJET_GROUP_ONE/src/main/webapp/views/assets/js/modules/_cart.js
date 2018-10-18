@@ -70,4 +70,5 @@ $(document).ready(function () {
 			$("#quantity").text(totalItem);
 			$("#totalQuantity").text(totalItem);
 
+			$("#number").disabled = true;
 });

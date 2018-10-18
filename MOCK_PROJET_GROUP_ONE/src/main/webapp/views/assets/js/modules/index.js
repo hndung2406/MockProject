@@ -1,6 +1,4 @@
 $(document).ready(function(){
-	var count = 0;
-	
 	$.ajax({
 		url:"checkSession",
 		type:"GET",
@@ -26,13 +24,12 @@ $(document).ready(function(){
 				
 		}
 	});
-	var quantity = 0;
+	
 	$.ajax({
 		url:"cartSession",
 		type:"GET",
 		success: function(data) {
-			quantity = data.totalQuantity;
-			$(".quantity").text(quantity);
+			$("#cartQuantity").text(data.totalQuantity);
 		}
 	});
 	
@@ -47,9 +44,33 @@ $(document).ready(function(){
 				
 			}
 		});
-
-		quantity += 1;
-		$(".quantity").text(quantity);
+		$.ajax({
+			url:"cartSession",
+			type:"GET",
+			success: function(data) {
+				$("#cartQuantity").text(data.totalQuantity + 1);
+			}
+		});
+	});
+	
+	$(".button-cart").click(function() {
+		$.ajax({
+			url:"addToCart",
+			type:"POST",
+			data: {
+				"id": $("#product-id").text()
+			},
+			success: function(data) {
+				
+			}
+		});
+		$.ajax({
+			url:"cartSession",
+			type:"GET",
+			success: function(data) {
+				$("#cartQuantity").text(data.totalQuantity + 1);
+			}
+		});
 	});
 	
 });

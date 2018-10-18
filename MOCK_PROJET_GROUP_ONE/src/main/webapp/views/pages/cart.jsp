@@ -36,10 +36,10 @@
 								<td>
 									<div class="row">
 										<div class="col-4">
-											<img src="/images/${entry.key.getImageUrl()}" width="150px" height="150px">
+											<img src="/images/${entry.key.getImageUrl()}" width="150px" height="180px">
 										</div>
 										<div class="col-6">
-											<p><a href="productDetail?id=${entry.key.getId()}">${entry.key.getName()}</a></p>
+											<a href="productDetail?id=${entry.key.getId()}">${entry.key.getName()}</a>
 											<p class=" short-description">${entry.key.getDescription()}</p>
 											
 										</div>
@@ -48,7 +48,7 @@
 								<td><span>$</span><span>${entry.key.getPrice()}</span></td>
 								<td>
 									<span hidden="hidden">${entry.key.getId()}</span>
-									<input type="number" name="quantity" min="1" max="5" value="${entry.value}" class="input-drop-down">
+									<input type="number" name="quantity" min="1" max="5" value="${entry.value}" class="input-drop-down" id="number">
 								</td>
 								<td><span>$</span><span class="price">${entry.key.getPrice() * entry.value}</span></td>
 								<td>
@@ -83,7 +83,7 @@
 								<p>Quantity:</p>
 							</div>
 							<div class="col-6">
-								<p><span id="totalQuantity"></span> <span>items</span></p>
+								<p><span id="quantity"></span></p>
 							</div>
 						</div>
 						<hr>
@@ -92,7 +92,7 @@
 								<p>Total order:</p>
 							</div>
 							<div class="col-6">
-								<h5><span>$</span><span id="total-order">3900</span></h5>
+								<h5><span>$</span><span id="total-order"></span></h5>
 							</div>
 						</div>
 						<hr>

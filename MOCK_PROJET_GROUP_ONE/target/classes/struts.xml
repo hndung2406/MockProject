@@ -78,7 +78,11 @@
     	<action name="checkSession" class="com.fa.group01.action.HomeAction" method="checkSession">
     		<result name="success" type="json"></result>
     	</action>
-				
+
+		<action name="cartSession" class="com.fa.group01.action.CartAction" method="showCartSession">
+			<result name="success" type="json"></result>
+		</action>
+
 	</package>
 	
 	<package name="cart-business" extends="struts-default">

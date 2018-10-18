@@ -9,8 +9,7 @@
 		<div class="row site-header--main">
 			<div class="col-3 site-header__brand">
 				<a href="<%=request.getServletContext().getContextPath() %>/views/home">
-					<img class="site-header__brand-image" src="<%=request.getServletContext().getContextPath() %>/views/assets/images/logo.svg"
-					 alt="Logo site">
+					<img class="site-header__brand-image" src="<%=request.getServletContext().getContextPath() %>/views/assets/images/logo.svg" alt="Logo site">
 				</a>
 			</div>
 
@@ -39,7 +38,7 @@
 						<a href="showCart"><i class="fa fa-cart-plus"></i>
 							My cart</a>
 					</span> 
-					<span class="site-header__cart--text">(<span class="quantity">0</span> items)</span>
+					<span class="site-header__cart--text">(<span id="cartQuantity">0</span> items)</span>
 				</div>
 
 			</div>
