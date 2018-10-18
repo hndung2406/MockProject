@@ -3,13 +3,19 @@
  */
 package com.fa.group01.action;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.fa.group01.constants.PageConstant;
 import com.fa.group01.dao.countrydao.impl.CountryDAOImpl;
 import com.fa.group01.dao.orderdao.impl.OrderDAOImpl;
 import com.fa.group01.dao.statedao.impl.StateDAOImpl;
 import com.fa.group01.entity.Country;
 import com.fa.group01.entity.Order;
+import com.fa.group01.entity.Product;
 import com.fa.group01.entity.State;
 import com.fa.group01.entity.User;
 import com.fa.group01.interceptor.UserAware;
@@ -25,7 +31,7 @@ import com.opensymphony.xwork2.Preparable;
  * @author DungHN2
  *
  */
-public class CheckOutAction extends ActionSupport implements UserAware, Preparable {
+public class CheckOutAction extends ActionSupport implements UserAware, Preparable, SessionAware {
 
 	private static final long serialVersionUID = 4621243169647973548L;
 	private List<State> states;
@@ -40,7 +46,13 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 	private CountryServiceImpl countryService;
 	private OrderDAOImpl orderDao;
 	private OrderServiceImpl orderService;
+	
+	private Map<String, Object> cartSession;
+	private Map<Product, Integer> cart;
+	private int totalQuantity;
+	private double totalAmout;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void prepare() throws Exception {
 		stateDao = new StateDAOImpl();
@@ -49,6 +61,7 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 		countryService = new CountryServiceImpl(countryDao);
 		orderDao = new OrderDAOImpl();
 		orderService = new OrderServiceImpl(orderDao);
+		this.cart = (Map<Product, Integer>) cartSession.get("cart");
 	}
 
 	/**
@@ -59,6 +72,15 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 	public String checkOut() {
 		countries = countryService.findAll();
 		states = stateService.findAll();
+		totalQuantity = 0;
+		totalAmout = 0;
+		if(!cart.isEmpty() && cart != null) {
+			for(Product product: cart.keySet()) {
+				totalQuantity += cart.get(product);
+				double amount = cart.get(product) * product.getPrice();
+				totalAmout += amount;
+			}
+		}
 		return PageConstant.SUCCESS;
 	}
 
@@ -71,8 +93,11 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 		state = stateService.findById(state);
 		country = countryService.findByID(country);
 		user = (User) ActionContext.getContext().getSession().get("authenticatedUser");
-		orderService.setOrder(order, state, country, user);
+		order = orderService.setOrder(order, state, country, user);
 		int affectedRow = orderService.addOrder(order);
+		
+		
+		
 		if (affectedRow > 0) {
 			DbLogging.LOG.info("Check Out Success");
 			return PageConstant.SUCCESS;
@@ -128,6 +153,27 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 
 	public void setCountries(List<Country> countries) {
 		this.countries = countries;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.cartSession = session;
+	}
+
+	public int getTotalQuantity() {
+		return totalQuantity;
+	}
+
+	public void setTotalQuantity(int totalQuantity) {
+		this.totalQuantity = totalQuantity;
+	}
+
+	public double getTotalAmout() {
+		return totalAmout;
+	}
+
+	public void setTotalAmout(double totalAmout) {
+		this.totalAmout = totalAmout;
 	}
 
 }

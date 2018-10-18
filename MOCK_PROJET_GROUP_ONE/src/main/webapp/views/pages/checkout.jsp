@@ -113,7 +113,8 @@
 								</div>
 								<div class="col-6">
 									<p>
-										<span id="quantity">3</span> <span>items</span>
+										<span id="quantity">${totalQuantity}</span><span> items</span>
+										<input type="hidden" name="totalQuantity" value="${totalQuantity}">
 									</p>
 								</div>
 							</div>
@@ -124,7 +125,8 @@
 								</div>
 								<div class="col-6">
 									<h5>
-										<span>$</span><span id="total-order">3900</span>
+										<span>$</span><span id="total-order">${totalAmout}</span>
+										<input type="hidden" name="totalAmout" value="${totalAmout}">
 									</h5>
 								</div>
 							</div>
