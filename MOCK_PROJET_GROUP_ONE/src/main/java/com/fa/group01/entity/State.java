@@ -3,12 +3,18 @@
  */
 package com.fa.group01.entity;
 
+import java.io.Serializable;
+
 /**
  * @author DungHN2
  *
  */
-public class State {
+public class State implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7901983893355022112L;
 	private int stateId;
 	private String stateName;
 

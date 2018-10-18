@@ -3,12 +3,18 @@
  */
 package com.fa.group01.entity;
 
+import java.io.Serializable;
+
 /**
  * @author nguyenthanhlinh
  *
  */
-public class Manufacture {
+public class Manufacture implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5496976169080978889L;
 	private int manufactureId;
 	private String manufactureName;
 

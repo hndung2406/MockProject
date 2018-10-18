@@ -58,7 +58,6 @@ public class CartAction extends ActionSupport implements Preparable, SessionAwar
 	}
 
 	public String showCartSession() {
-		
 		totalQuantity = 0;
 		if(!cart.isEmpty() && cart != null) {
 			for(int val: cart.values()) {
@@ -70,17 +69,14 @@ public class CartAction extends ActionSupport implements Preparable, SessionAwar
 
 	
 	public String addToCart() {
-		
 		Product product = productService.findById(id);	
 		if (!cart.isEmpty() && cart.containsKey(product)) {
 			int quantity = cart.get(product);
 			quantity += 1;
 			cart.put(product, quantity);
-			
 		} else {
 			cart.put(product, 1);
 		}
-		
 		return PageConstant.SUCCESS;
 	}	
 	
