@@ -33,36 +33,34 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public int addProduct(Product product) {
-		connection = DatabaseConnect.getConnection();
 		int affectedRow = 0;
-		if (connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(DbQuery.INSERT_NEW_PRODUCT);
+			preparedStatement.setString(1, product.getId());
+			preparedStatement.setString(2, product.getName());
+			preparedStatement.setDouble(3, product.getPrice());
+			preparedStatement.setString(4, product.getDescription());
+			preparedStatement.setString(5, product.getImageUrl());
+			preparedStatement.setInt(6, product.getQuantity());
+			preparedStatement.setString(7, product.getCondition());
+			preparedStatement.setDate(8, product.getDateOfManufacture());
+			preparedStatement.setString(9, product.getSpec());
+			preparedStatement.setString(10, product.getProperties());
+			preparedStatement.setInt(11, product.getManufacture().getManufactureId());
+			affectedRow = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database exception", e);
+		} finally {
 			try {
-				preparedStatement = connection.prepareStatement(DbQuery.INSERT_NEW_PRODUCT);
-				preparedStatement.setString(1, product.getId());
-				preparedStatement.setString(2, product.getName());
-				preparedStatement.setDouble(3, product.getPrice());
-				preparedStatement.setString(4, product.getDescription());
-				preparedStatement.setString(5, product.getImageUrl());
-				preparedStatement.setInt(6, product.getQuantity());
-				preparedStatement.setString(7, product.getCondition());
-				preparedStatement.setDate(8, product.getDateOfManufacture());
-				preparedStatement.setString(9, product.getSpec());
-				preparedStatement.setString(10, product.getProperties());
-				preparedStatement.setInt(11, product.getManufacture().getManufactureId());
-				affectedRow = preparedStatement.executeUpdate();
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
 			} catch (SQLException e) {
 				DbLogging.LOG.error("Error Database exception", e);
-			} finally {
-				try {
-					if (preparedStatement != null) {
-						preparedStatement.close();
-					}
-					if (connection != null) {
-						connection.close();
-					}
-				} catch (SQLException e) {
-					DbLogging.LOG.error("Error Database exception", e);
-				}
 			}
 		}
 		return affectedRow;
@@ -73,35 +71,33 @@ public class ProductDAOImpl implements ProductDAO {
 		List<Product> products = new ArrayList<>();
 		Product product = null;
 		Manufacture manufacture = null;
-		connection = DatabaseConnect.getConnection();
-		if (connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(DbQuery.SELECT_ALL_PRODUCT_QUERY);
+			while (resultSet.next()) {
+				product = new Product();
+				manufacture = new Manufacture();
+
+				fetchOneProduct(product, manufacture);
+
+				products.add(product);
+			}
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database exception");
+		} finally {
 			try {
-				statement = connection.createStatement();
-				resultSet = statement.executeQuery(DbQuery.SELECT_ALL_PRODUCT_QUERY);
-				while (resultSet.next()) {
-					product = new Product();
-					manufacture = new Manufacture();
-
-					fetchOneProduct(product, manufacture);
-
-					products.add(product);
+				if (connection != null) {
+					connection.close();
 				}
-			} catch (SQLException e) {
+				if (statement != null) {
+					statement.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch (Exception e2) {
 				DbLogging.LOG.error("Error Database exception");
-			} finally {
-				try {
-					if (connection != null) {
-						connection.close();
-					}
-					if (statement != null) {
-						statement.close();
-					}
-					if (resultSet != null) {
-						resultSet.close();
-					}
-				} catch (Exception e2) {
-					DbLogging.LOG.error("Error Database exception");
-				}
 			}
 		}
 		return products;
@@ -111,31 +107,29 @@ public class ProductDAOImpl implements ProductDAO {
 	public Product findById(String productId) {
 		Product product = new Product();
 		Manufacture manufacture = new Manufacture();
-		connection = DatabaseConnect.getConnection();
-		if (connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(DbQuery.SELECT_PRODUCT_BY_ID);
+			preparedStatement.setString(1, productId);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				fetchOneProduct(product, manufacture);
+			}
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database Exception", e);
+		} finally {
 			try {
-				preparedStatement = connection.prepareStatement(DbQuery.SELECT_PRODUCT_BY_ID);
-				preparedStatement.setString(1, productId);
-				resultSet = preparedStatement.executeQuery();
-				while (resultSet.next()) {
-					fetchOneProduct(product, manufacture);
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
 				}
 			} catch (SQLException e) {
 				DbLogging.LOG.error("Error Database Exception", e);
-			} finally {
-				try {
-					if (resultSet != null) {
-						resultSet.close();
-					}
-					if (preparedStatement != null) {
-						preparedStatement.close();
-					}
-					if (connection != null) {
-						connection.close();
-					}
-				} catch (SQLException e) {
-					DbLogging.LOG.error("Error Database Exception", e);
-				}
 			}
 		}
 		return product;
@@ -163,37 +157,34 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public int updateProduct(Product product) {
-		connection = DatabaseConnect.getConnection();
 		int affectedRow = 0;
-		if (connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(DbQuery.UPDATE_PRODUCT);
+			preparedStatement.setString(1, product.getName());
+			preparedStatement.setDouble(2, product.getPrice());
+			preparedStatement.setString(3, product.getDescription());
+			preparedStatement.setString(4, product.getImageUrl());
+			preparedStatement.setInt(5, product.getQuantity());
+			preparedStatement.setString(6, product.getCondition());
+			preparedStatement.setDate(7, product.getDateOfManufacture());
+			preparedStatement.setString(8, product.getSpec());
+			preparedStatement.setString(9, product.getProperties());
+			preparedStatement.setInt(10, product.getManufacture().getManufactureId());
+			preparedStatement.setString(11, product.getId());
+			affectedRow = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database exception", e);
+		} finally {
 			try {
-				preparedStatement = connection.prepareStatement(DbQuery.UPDATE_PRODUCT);
-				preparedStatement.setString(1, product.getName());
-				preparedStatement.setDouble(2, product.getPrice());
-				preparedStatement.setString(3, product.getDescription());
-				preparedStatement.setString(4, product.getImageUrl());
-				preparedStatement.setInt(5, product.getQuantity());
-				preparedStatement.setString(6, product.getCondition());
-				preparedStatement.setDate(7, product.getDateOfManufacture());
-				preparedStatement.setString(8, product.getSpec());
-				preparedStatement.setString(9, product.getProperties());
-				preparedStatement.setInt(10, product.getManufacture().getManufactureId());
-				preparedStatement.setString(11, product.getId());
-
-				affectedRow = preparedStatement.executeUpdate();
-			} catch(SQLException e) { 
-				DbLogging.LOG.error("Error Database exception", e);
-			}finally {
-				try {
-					if (preparedStatement != null) {
-						preparedStatement.close();
-					}
-					if (connection != null) {
-						connection.close();
-					}
-				} catch (SQLException e) {
-					DbLogging.LOG.error("Error Database exception", e);
+				if (preparedStatement != null) {
+					preparedStatement.close();
 				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				DbLogging.LOG.error("Error Database exception", e);
 			}
 		}
 		return affectedRow;
@@ -204,64 +195,57 @@ public class ProductDAOImpl implements ProductDAO {
 		List<Product> products = new ArrayList<>();
 		Product product = null;
 		Manufacture manufacture = null;
-
-		connection = DatabaseConnect.getConnection();
-		if (connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			callableStatement = connection.prepareCall(DbQuery.FETCH_LIMIT_PRODUCS);
+			callableStatement.setInt(1, rowIndex);
+			callableStatement.setInt(2, maxNumberOfRecords);
+			resultSet = callableStatement.executeQuery();
+			while (resultSet.next()) {
+				product = new Product();
+				manufacture = new Manufacture();
+				fetchOneProduct(product, manufacture);
+				products.add(product);
+			}
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database exception", e);
+		} finally {
 			try {
-				callableStatement = connection.prepareCall(DbQuery.FETCH_LIMIT_PRODUCS);
-				callableStatement.setInt(1, rowIndex);
-				callableStatement.setInt(2, maxNumberOfRecords);
-				resultSet = callableStatement.executeQuery();
-				while (resultSet.next()) {
-					product = new Product();
-					manufacture = new Manufacture();
-					fetchOneProduct(product, manufacture);
-					products.add(product);
+				if (callableStatement != null) {
+					callableStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
 				}
 			} catch (SQLException e) {
 				DbLogging.LOG.error("Error Database exception", e);
-			} finally {
-				try {
-					if (callableStatement != null) {
-						callableStatement.close();
-					}
-					if (connection != null) {
-						connection.close();
-					}
-				} catch (SQLException e) {
-					DbLogging.LOG.error("Error Database exception", e);
-				}
-
 			}
+
 		}
 		return products;
 	}
 
 	public int deleteProduct(String productId) {
-		connection = DatabaseConnect.getConnection();
 		int affectedRow = 0;
-		if (connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(DbQuery.DELETE_PRODUCT);
+			preparedStatement.setString(1, productId);
+			affectedRow = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database exception", e);
+		} finally {
 			try {
-				preparedStatement = connection.prepareStatement(DbQuery.DELETE_PRODUCT);
-				preparedStatement.setString(1, productId);
-
-				affectedRow = preparedStatement.executeUpdate();
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
 			} catch (SQLException e) {
 				DbLogging.LOG.error("Error Database exception", e);
-			} finally {
-				try {
-					if (preparedStatement != null) {
-						preparedStatement.close();
-					}
-					if (connection != null) {
-						connection.close();
-					}
-				} catch (SQLException e) {
-					DbLogging.LOG.error("Error Database exception", e);
-				}
 			}
 		}
-
 		return affectedRow;
 	}
 

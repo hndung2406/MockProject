@@ -37,26 +37,24 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 	 */
 	@Override
 	public int addManufacture(Manufacture manufacture) {
-		connection = DatabaseConnect.getConnection();
 		int affectedRow = 0;
-		if (connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			callableStatement = connection.prepareCall(DbQuery.INSERT_NEW_MANUFACTURE);
+			callableStatement.setString(1, manufacture.getManufactureName());
+			affectedRow = callableStatement.executeUpdate();
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database exception");
+		} finally {
 			try {
-				callableStatement = connection.prepareCall(DbQuery.INSERT_NEW_MANUFACTURE);
-				callableStatement.setString(1, manufacture.getManufactureName());
-				affectedRow = callableStatement.executeUpdate();
+				if (callableStatement != null) {
+					callableStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
 			} catch (SQLException e) {
 				DbLogging.LOG.error("Error Database exception");
-			} finally {
-				try {
-					if (callableStatement != null) {
-						callableStatement.close();
-					}
-					if (connection != null) {
-						connection.close();
-					}
-				} catch (SQLException e) {
-					DbLogging.LOG.error("Error Database exception");
-				}
 			}
 		}
 		return affectedRow;
@@ -71,34 +69,32 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 	@Override
 	public List<Manufacture> findAll() {
 		List<Manufacture> listManufacture = new ArrayList<>();
-		connection = DatabaseConnect.getConnection();
-		if(connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			prepareStatement = connection.prepareStatement(DbQuery.SELECT_ALL_MANUFACTURE_QUERY);
+			resultSet = prepareStatement.executeQuery();
+			Manufacture manufacture = null;
+			while (resultSet.next()) {
+				manufacture = new Manufacture();
+				manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
+				manufacture.setManufactureName(resultSet.getString("ManufactureName"));
+				listManufacture.add(manufacture);
+			}
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database exception");
+		} finally {
 			try {
-				prepareStatement = connection.prepareStatement(DbQuery.SELECT_ALL_MANUFACTURE_QUERY);
-				resultSet = prepareStatement.executeQuery();
-				Manufacture manufacture = null;
-				while (resultSet.next()) {
-					manufacture = new Manufacture();
-					manufacture.setManufactureId(resultSet.getInt("ManufactureId"));
-					manufacture.setManufactureName(resultSet.getString("ManufactureName"));
-					listManufacture.add(manufacture);
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
 				}
 			} catch (SQLException e) {
 				DbLogging.LOG.error("Error Database exception");
-			} finally {
-				try {
-					if (resultSet != null) {
-						resultSet.close();
-					}
-					if (prepareStatement != null) {
-						prepareStatement.close();
-					}
-					if (connection != null) {
-						connection.close();
-					}
-				} catch (SQLException e) {
-					DbLogging.LOG.error("Error Database exception");
-				}
 			}
 		}
 		return listManufacture;
@@ -107,9 +103,9 @@ public class ManufactureDAOImpl implements ManufactureDAO {
 	@Override
 	public Manufacture findById(int id) {
 		Manufacture manufacture = null;
-		connection = DatabaseConnect.getConnection();
 		if (connection != null) {
 			try {
+				connection = DatabaseConnect.getInstance().getConnection();
 				prepareStatement = connection.prepareStatement(DbQuery.SELECT_MANUFACTURE_BY_ID);
 				prepareStatement.setInt(1, id);
 				resultSet = prepareStatement.executeQuery();

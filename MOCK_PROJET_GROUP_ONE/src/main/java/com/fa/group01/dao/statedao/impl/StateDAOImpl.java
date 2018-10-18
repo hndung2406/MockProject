@@ -37,15 +37,15 @@ public class StateDAOImpl implements StateDAO {
 	 */
 	@Override
 	public int addState(State state) {
-		connection = DatabaseConnect.getConnection();
 		int affectedRow = 0;
 		try {
+			connection = DatabaseConnect.getInstance().getConnection();
 			callableStatement = connection.prepareCall(DbQuery.INSERT_NEW_STATE);
 			callableStatement.setString(1, state.getStateName());
 			affectedRow = callableStatement.executeUpdate();
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			DbLogging.LOG.error("Error Database exception", e);
-		}finally {
+		} finally {
 			try {
 				if (callableStatement != null) {
 					callableStatement.close();
@@ -70,36 +70,33 @@ public class StateDAOImpl implements StateDAO {
 	public List<State> findAll() {
 		List<State> states = new ArrayList<>();
 		State state = null;
-		connection = DatabaseConnect.getConnection();
-		if (connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(DbQuery.SELECT_ALL_STATE_QUERY);
+			while (resultSet.next()) {
+				state = new State();
+				state.setStateId(resultSet.getInt("StateId"));
+				state.setStateName(resultSet.getString("StateName"));
+				states.add(state);
+			}
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database Exception", e);
+
+		} finally {
 			try {
-				statement = connection.createStatement();
-				resultSet = statement.executeQuery(DbQuery.SELECT_ALL_STATE_QUERY);
-				while (resultSet.next()) {
-					state = new State();
-					state.setStateId(resultSet.getInt("StateId"));
-					state.setStateName(resultSet.getString("StateName"));
-					states.add(state);
+				if (connection != null) {
+					connection.close();
+				}
+				if (statement != null) {
+					statement.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
 				}
 			} catch (SQLException e) {
 				DbLogging.LOG.error("Error Database Exception", e);
-
-			} finally {
-				try {
-					if (connection != null) {
-						connection.close();
-					}
-					if (statement != null) {
-						statement.close();
-					}
-					if (resultSet != null) {
-						resultSet.close();
-					}
-				} catch (SQLException e) {
-					DbLogging.LOG.error("Error Database Exception", e);
-				}
 			}
-
 		}
 		return states;
 	}
@@ -113,28 +110,26 @@ public class StateDAOImpl implements StateDAO {
 	 */
 	@Override
 	public State findByID(State state) {
-		connection = DatabaseConnect.getConnection();
-		if (connection != null) {
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			callableStatement = connection.prepareCall(DbQuery.SELECT_STATE_BY_ID);
+			callableStatement.setInt(1, state.getStateId());
+			resultSet = callableStatement.executeQuery();
+			while (resultSet.next()) {
+				state.setStateName(resultSet.getString("StateName"));
+			}
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database Exception", e);
+		} finally {
 			try {
-				callableStatement = connection.prepareCall(DbQuery.SELECT_STATE_BY_ID);
-				callableStatement.setInt(1, state.getStateId());
-				resultSet = callableStatement.executeQuery();
-				while (resultSet.next()) {
-					state.setStateName(resultSet.getString("StateName"));
+				if (connection != null) {
+					connection.close();
+				}
+				if (callableStatement != null) {
+					callableStatement.close();
 				}
 			} catch (SQLException e) {
 				DbLogging.LOG.error("Error Database Exception", e);
-			} finally {
-				try {
-					if (connection != null) {
-						connection.close();
-					}
-					if (callableStatement != null) {
-						callableStatement.close();
-					}
-				} catch (SQLException e) {
-					DbLogging.LOG.error("Error Database Exception", e);
-				}
 			}
 		}
 		return state;

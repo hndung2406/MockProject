@@ -143,16 +143,83 @@ public class Product implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return this.id.hashCode();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((condition == null) ? 0 : condition.hashCode());
+		result = prime * result + ((dateOfManufacture == null) ? 0 : dateOfManufacture.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
+		result = prime * result + ((manufacture == null) ? 0 : manufacture.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((properties == null) ? 0 : properties.hashCode());
+		result = prime * result + quantity;
+		result = prime * result + ((spec == null) ? 0 : spec.hashCode());
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		Product product = (Product) obj;
-		if (this.id.equals(product.getId())) {
+		if (this == obj)
 			return true;
-		}
-		return false;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		if (condition == null) {
+			if (other.condition != null)
+				return false;
+		} else if (!condition.equals(other.condition))
+			return false;
+		if (dateOfManufacture == null) {
+			if (other.dateOfManufacture != null)
+				return false;
+		} else if (!dateOfManufacture.equals(other.dateOfManufacture))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (imageUrl == null) {
+			if (other.imageUrl != null)
+				return false;
+		} else if (!imageUrl.equals(other.imageUrl))
+			return false;
+		if (manufacture == null) {
+			if (other.manufacture != null)
+				return false;
+		} else if (!manufacture.equals(other.manufacture))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		if (properties == null) {
+			if (other.properties != null)
+				return false;
+		} else if (!properties.equals(other.properties))
+			return false;
+		if (quantity != other.quantity)
+			return false;
+		if (spec == null) {
+			if (other.spec != null)
+				return false;
+		} else if (!spec.equals(other.spec))
+			return false;
+		return true;
 	}
 	
 }
