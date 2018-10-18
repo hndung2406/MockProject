@@ -463,7 +463,7 @@ GO
 
 
 IF OBJECT_ID('usp_FetchProductsInCurrentPage', 'P') IS NOT NULL
-DROP PROC usp_FetchProductsInCurrentPage
+	DROP PROC usp_FetchProductsInCurrentPage
 GO
 
 CREATE PROC usp_FetchProductsInCurrentPage
@@ -478,4 +478,22 @@ AS
 	FETCH NEXT @maxResultPerPage ROWS ONLY
 	END
 GO
+
+IF OBJECT_ID('usp_FetchProductsByCreatedDate', 'P') IS NOT NULL
+	DROP PROC usp_FetchProductsByCreatedDate
+GO
+
+CREATE PROC usp_FetchProductsByCreatedDate
+@createdDate DATE
+AS
+	BEGIN
+		SELECT TOP 10 *
+		FROM Product p
+		WHERE p.DateOfManufacture > @createdDate
+		ORDER BY p.DateOfManufacture 
+	END
+GO
+
+EXEC usp_FetchProductsByCreatedDate '2018-1-10'
+
 
