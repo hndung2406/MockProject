@@ -52,8 +52,8 @@
 								</td>
 								<td><span>$</span><span class="price">${entry.key.getPrice() * entry.value}</span></td>
 								<td>
-									<input type="hidden" value="${entry.key.getId()}">
-									<button type="button" class="btn btn-danger btn-remove"><img src="../views/assets/images/trash-2x.png"></button>
+									<span hidden="hidden">${entry.key.getId()}</span>
+									<button type="button" class="btn btn-danger btn-remove"><img src="<%=request.getServletContext().getContextPath()%>/views/assets/images/trash-2x.png"></button>
 								</td>
 							</tr>
 							</c:forEach>

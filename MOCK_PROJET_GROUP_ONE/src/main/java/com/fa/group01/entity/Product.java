@@ -3,14 +3,16 @@
  */
 package com.fa.group01.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  * @author nguyenthanhlinh
  *
  */
-public class Product {
+public class Product implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String name;
 	private double price;

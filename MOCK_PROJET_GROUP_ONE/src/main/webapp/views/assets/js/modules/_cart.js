@@ -3,15 +3,15 @@ $(document).ready(function () {
 			var totalPrice = 0;
 
 			$(".btn-remove").click(function () {
-				var id = $(this).closest("td").find("input").val();
+				var id = $(this).closest("td").find("span").text();
 				$.ajax({
-					url : "deleteProductFromCart",
+					url : "deleteProduct",
 					type : "POST",
 					data : {
 						"id" : id
 					},
 					success : function(data) {
-
+						location.reload();
 					}
 				});
 				$(this).closest("tr").fadeOut('slow', function (c) {
@@ -41,7 +41,7 @@ $(document).ready(function () {
 						"quantity" : quantity
 					},
 					success : function(data) {
-
+						location.reload();
 					}
 				});
 				

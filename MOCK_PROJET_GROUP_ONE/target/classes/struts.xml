@@ -11,10 +11,6 @@
 			<result type="redirect">/views/home.jsp</result>
 		</action>
     
-    	<action name="addToCart" class="com.fa.group01.action.Cart" method="addToCart">
-    		<result name="success"></result>
-    	</action>
-    
     	<action name="user" class="com.fa.group01.action.UserAction" method="fetchUser">
     		<result name="success">/views/pages/edit-user.jsp</result>
     	</action>
@@ -39,35 +35,8 @@
 		<action name="productDetail" class="com.fa.group01.action.ProductDetailAction" method="productDetail">
 			<result name="success">/views/pages/product-detail.jsp</result>
 		</action>
-
-		<action name="admin-showDeleteProduct" class="com.fa.group01.action.ProductAction" method="showDeleteProductPage">
-			<result name="success">/views/pages/admin-delete-product.jsp</result>
-		</action>
 		
-		<action name="admin-deleteProduct" class="com.fa.group01.action.ProductAction" method="deleteProduct">
-			<result name="success" type="redirect">/views/pages/admin-products</result>
-			<result name="error" type="redirect">/views/pages/admin-showDeleteProduct</result>
-		</action>
 		
-		<action name="admin-showUpdateProduct" class="com.fa.group01.action.ProductAction" method="showUpdateProductPage">
-			<result name="success">/views/pages/admin-update-product.jsp</result>
-		</action>
-		
-		<action name="admin-updateProduct" class="com.fa.group01.action.ProductAction" method="updateProduct">
-			<result name="success">/views/pages/admin-update-product.jsp</result>
-		</action>
-		
-		<action name="showCart" class="com.fa.group01.action.Cart" method="showCartSession">
-			<result name="success">/views/pages/cart.jsp</result>
-		</action>
-		
-		<action name="deleteProductFromCart" class="com.fa.group01.action.Cart" method="deleteProductFromCart">
-			<result name="success"></result>
-		</action>
-		
-		<action name="changeQuantity" class="com.fa.group01.action.Cart" method="changeQuantity">
-			<result name="success"></result>
-		</action>
 		
 		<action name="checkOut" class="com.fa.group01.action.CheckOutAction" method="checkOut">
 			<result name="success">/views/pages/checkout.jsp</result>
@@ -110,11 +79,39 @@
     		<result name="success" type="json"></result>
     	</action>
 		
-		<action name="cartSession" class="com.fa.group01.action.Cart" method="showCartSession"> 
-			<result name="success" type="json"></result>
-		</action>
-
+		
+				
 	</package>
+	
+	<package name="cart-business" extends="struts-default">
+		<interceptors>
+    		<interceptor name="cartInterceptor" class="com.fa.group01.interceptor.CartInterceptor"></interceptor>
+    		<interceptor-stack name="cartStack">
+    			<interceptor-ref name="cartInterceptor"></interceptor-ref>
+    			<interceptor-ref name="defaultStack"></interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>   	
+    	
+    	<default-interceptor-ref name="cartStack"></default-interceptor-ref> 
+    	
+    	<global-results>
+    		<result name="success">/views/pages/cart.jsp</result>
+    	</global-results>
+    	
+    	<action name="addToCart" class="com.fa.group01.action.CartAction" method="addToCart">    		
+    	</action>
+    	
+    	<action name="showCart" class="com.fa.group01.action.CartAction" method="showCartSession">			
+		</action>
+		
+		<action name="deleteProduct" class="com.fa.group01.action.CartAction" method="deleteProductFromCart">
+		</action>
+		
+		<action name="changeQuantity" class="com.fa.group01.action.CartAction" method="changeQuantity">
+		</action>
+	
+	</package>
+	
 	
 	<package name="sercurity" extends="struts-default">
     	<interceptors>
