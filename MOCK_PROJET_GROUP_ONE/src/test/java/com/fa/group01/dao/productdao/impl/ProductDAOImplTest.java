@@ -23,20 +23,18 @@ public class ProductDAOImplTest {
 	}
 
 	@Test
-	@Ignore
 	public void CanGetListProducts() throws SQLException {
 		List<Product> products = productDAO.findAllProduct();
 		products.forEach(System.out::println);
 		assertNotEquals(products.size(), 0);
 	}
 
-	@Test
-	@Ignore
+	@Test	
 	public void CanGetLimitNumberOfProduct() {
 		List<Product> products;
 		products = productDAO.fetchLimitNumberOfProducts(0, 3);
 		products.forEach(System.out::println);
-		assertEquals(products.size(), 0);
+		assertNotEquals(products.size(), 0);
 
 	}
 	
@@ -44,7 +42,7 @@ public class ProductDAOImplTest {
 	public void CanGetProductsFromSpecificDate() {
 		List<Product> products = productDAO.fetchProductsFromSpecificDate("2018-10-01");
 		products.forEach(System.out::println);
-		assertEquals(products.size(),0);
+		assertNotEquals(products.size(),0);
 	}
 
 }

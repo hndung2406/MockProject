@@ -8,10 +8,11 @@
 @import url('modules/cart.css');
 @import url('modules/checkout.css');
 @import url('modules/product-detail.css');
-
+@import url('modules/products.css');
 
 /*Global style*/
-
+body {
+	
 }
 
 a {
@@ -188,4 +189,8 @@ ul {
 	width: 4rem;
 	position: absolute;
 	transform: translateY(-10%);
+}
+.sweet-modal { 
+	width:  300px;
+	background: lightyellow;   
 }

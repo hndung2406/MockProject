@@ -3,11 +3,12 @@ package com.fa.group01.utils;
 import static org.junit.Assert.*;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class DateUtilsTest {
 
@@ -16,17 +17,21 @@ public class DateUtilsTest {
 	public void setUp() throws Exception {
 		
 	}
+	
+	@Rule 
+	public ExpectedException thrown  = ExpectedException.none();
 
 	@Test	
 	public void CanConvertCorrectStringFormatDateToSqlDate() {
 		
 		Date sqlDate = DateUtils.getDateByStringFormat("2018-01-10");
-		assertEquals(sqlDate,null);
+		assertNotEquals(sqlDate,null);
 	}
 
-	@Test	
-	public void CanConvertNotCorrectStringFormatDateToSqlDate() {		
-		Date sqlDate = DateUtils.getDateByStringFormat("201802-19");
-		assertEquals(sqlDate,null);
+	@Test()
+	public void CanConvertNotCorrectStringFormatDateToSqlDate() {
+		thrown.expect(DateTimeParseException.class);
+		DateUtils.getDateByStringFormat("2018-0219");
+		
 	}
 }

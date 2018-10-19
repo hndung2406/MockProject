@@ -2,6 +2,15 @@
 	padding: 1rem 0;
 }
 
+ .carousel-control-prev, .carousel-control-next {
+	background: rgba(0,0,0,0.5);
+    padding: 0;
+    margin: 0;
+    height: 30%;
+    transform: translateY(120%);
+    width: 5%;
+}
+
 .weshop-mobiles .mobile-item__thumbnail {
 	height: 17.125rem;
 }
