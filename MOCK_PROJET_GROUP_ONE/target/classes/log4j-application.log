@@ -1265,3 +1265,4 @@ com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near ')'.
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:745)
 2018-10-19 10:14:23 INFO  DbLogging:119 - Check Out Success
+2018-10-19 10:16:32 INFO  DbLogging:119 - Check Out Success

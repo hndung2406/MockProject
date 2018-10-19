@@ -5,6 +5,7 @@ package com.fa.group01.service.productservice;
 
 import java.io.File;
 import java.sql.SQLException;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -79,4 +80,7 @@ public interface ProductService {
 	 */
 	public Product setProduct(Product product, String randomName, Manufacture manufacture, Date date);
 	
+	
+	
+
 }

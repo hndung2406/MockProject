@@ -33,7 +33,7 @@ public class DbQuery {
 	public static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM [Product] WHERE ProductId = ?";
 	public static final String SELECT_MANUFACTURE_BY_ID = "SELECT * FROM [Manufacture] WHERE ManufactureId = ?";
 	public static final String FETCH_LIMIT_PRODUCS = "{call usp_FetchProductsInCurrentPage(?,?)}";
-	
+	public static final String FETCH_PRODUCTS_BY_CREATED_DATE = "{call usp_FetchProductsByCreatedDate(?)}";
 	//Update Query
 	public static final String UPDATE_USER = "UPDATE [Users] SET UserName = ?, Password = ?, FirstName = ?, LastName = ? WHERE UserId = ?";
 	public static final String UPDATE_PRODUCT = "UPDATE [Product] SET [ProductName] = ?, [ProductPrice] = ?, [Description] = ?, [Image] = ?, [Quantity] = ?, [Condition] = ?, [DateOfManufacture] = ?, [Spec] = ?, [Properties] = ?, [ManufactureId] = ? WHERE [ProductId] = ?";

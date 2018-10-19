@@ -5,11 +5,13 @@ package com.fa.group01.dao.productdao.impl;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.fa.group01.connect.DatabaseConnect;
@@ -18,6 +20,9 @@ import com.fa.group01.dao.productdao.ProductDAO;
 import com.fa.group01.entity.Manufacture;
 import com.fa.group01.entity.Product;
 import com.fa.group01.logging.DbLogging;
+import com.fa.group01.utils.DateUtils;
+
+
 
 /**
  * @author nguyenthanhlinh
@@ -247,6 +252,43 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 		}
 		return affectedRow;
+	}
+
+	@Override
+	public List<Product> fetchProductsFromSpecificDate(String specificDate) {
+		List<Product> products = new ArrayList<>();
+		Product product = null;
+		Manufacture manufacture = null;
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			callableStatement = connection.prepareCall(DbQuery.FETCH_PRODUCTS_BY_CREATED_DATE);
+			Date sqlDate = DateUtils.getDateByStringFormat(specificDate);
+			
+			callableStatement.setDate(1,sqlDate);			
+			resultSet = callableStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				product = new Product();
+				manufacture = new Manufacture();
+				fetchOneProduct(product, manufacture);
+				products.add(product);
+			}
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database exception", e);
+		} finally {
+			try {
+				if (callableStatement != null) {
+					callableStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				DbLogging.LOG.error("Error Database exception", e);
+			}
+
+		}
+		return products;
 	}
 
 }

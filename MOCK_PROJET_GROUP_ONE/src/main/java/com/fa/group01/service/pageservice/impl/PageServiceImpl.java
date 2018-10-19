@@ -1,6 +1,7 @@
 package com.fa.group01.service.pageservice.impl;
 
 import java.sql.SQLException;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 import com.fa.group01.dao.productdao.ProductDAO;
@@ -33,4 +34,8 @@ public class PageServiceImpl implements PageService {
 
 	}
 
+	@Override
+	public List<Product> fetchProductsByCreatedDate(String specificDate) throws DateTimeParseException {
+		return this.productDAO.fetchProductsFromSpecificDate(specificDate);
+	}
 }

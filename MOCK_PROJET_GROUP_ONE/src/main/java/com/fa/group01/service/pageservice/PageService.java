@@ -1,6 +1,7 @@
 package com.fa.group01.service.pageservice;
 
 import java.sql.SQLException;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 import com.fa.group01.entity.Product;
@@ -27,4 +28,6 @@ public interface PageService {
 	 * @throws SQLException
 	 */
 	public int getTotalProductRecord() throws SQLException;
+	
+	public List<Product> fetchProductsByCreatedDate(String specificDate) throws DateTimeParseException;
 }

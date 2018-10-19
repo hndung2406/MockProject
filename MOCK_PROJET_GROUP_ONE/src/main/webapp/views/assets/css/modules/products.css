@@ -2,10 +2,16 @@
 	padding: 1rem 0;
 }
 
+.weshop-mobiles .mobile-item__thumbnail {
+	height: 17.125rem;
+}
+
 .weshop-mobiles-pagination .mobile-item__name {
 	max-height: 3rem;
 	height: 3rem;
 }
+
+
 
 .weshop-mobiles-pagination .mobile-item__thumbnail {
 	height: 9.15rem ;
