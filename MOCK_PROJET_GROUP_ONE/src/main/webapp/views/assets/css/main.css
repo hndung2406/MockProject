@@ -190,3 +190,7 @@ ul {
 	position: absolute;
 	transform: translateY(-10%);
 }
+.sweet-modal { 
+	width:  300px;
+	background: lightyellow;   
+}

@@ -41,7 +41,10 @@ $(document).ready(function(){
 				"id": $(this).prev().prev().prev().prev().text()
 			},
 			success: function(data) {
-				
+				swal({
+				  title: "Add to cart successfully!", 
+				  icon: "success"
+				});
 			}
 		});
 		$.ajax({
@@ -61,7 +64,9 @@ $(document).ready(function(){
 				"id": $("#product-id").text()
 			},
 			success: function(data) {
-				
+				swal({
+				  title: "Add to cart successfully!", 
+				  icon: "success"});
 			}
 		});
 		$.ajax({
