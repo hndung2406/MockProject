@@ -4,6 +4,7 @@
 package com.fa.group01.dao.productdao;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import com.fa.group01.entity.Product;
@@ -55,5 +56,10 @@ public interface ProductDAO {
 	 * @throws SQLException
 	 */
 	public int deleteProduct(String productId);
-
+	
+	/**
+	 * @param specificDate
+	 * @return
+	 */
+	public List<Product> fetchProductsFromSpecificDate(String specificDate);
 }

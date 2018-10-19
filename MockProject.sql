@@ -487,13 +487,13 @@ CREATE PROC usp_FetchProductsByCreatedDate
 @createdDate DATE
 AS
 	BEGIN
-		SELECT TOP 10 *
+		SELECT TOP 8 *
 		FROM Product p
 		WHERE p.DateOfManufacture > @createdDate
 		ORDER BY p.DateOfManufacture 
 	END
 GO
 
-EXEC usp_FetchProductsByCreatedDate '2018-1-10'
+EXEC usp_FetchProductsByCreatedDate '2018-10-01'
 
 

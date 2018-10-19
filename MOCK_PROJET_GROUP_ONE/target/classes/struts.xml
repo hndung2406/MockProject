@@ -26,7 +26,7 @@
     	<action name="home" class="com.fa.group01.action.PageAction" method="fetchProductsOnCurrentPage">
     		<result >/views/index.jsp</result>
     	</action>
-    
+    	    
     	<action name="registerUser" class="com.fa.group01.action.RegisterAction" method="registerUser">
     		<result name="register">/views/pages/login.jsp</result>
     		<result name="input">/views/pages/register.jsp</result>

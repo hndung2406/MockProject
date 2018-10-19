@@ -3,6 +3,7 @@ package com.fa.group01.dao.productdao.impl;
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.Before;
@@ -30,12 +31,20 @@ public class ProductDAOImplTest {
 	}
 
 	@Test
+	@Ignore
 	public void CanGetLimitNumberOfProduct() {
 		List<Product> products;
 		products = productDAO.fetchLimitNumberOfProducts(0, 3);
 		products.forEach(System.out::println);
 		assertEquals(products.size(), 0);
 
+	}
+	
+	@Test
+	public void CanGetProductsFromSpecificDate() {
+		List<Product> products = productDAO.fetchProductsFromSpecificDate("2018-10-01");
+		products.forEach(System.out::println);
+		assertEquals(products.size(),0);
 	}
 
 }
