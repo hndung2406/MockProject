@@ -11,6 +11,7 @@ import com.fa.group01.connect.DatabaseConnect;
 import com.fa.group01.constants.DbQuery;
 import com.fa.group01.dao.orderdao.OrderDAO;
 import com.fa.group01.entity.Order;
+import com.fa.group01.entity.OrderDetail;
 import com.fa.group01.logging.DbLogging;
 
 /**
@@ -45,6 +46,36 @@ public class OrderDAOImpl implements OrderDAO {
 			callableStatement.setString(8, order.getOrderCity());
 			callableStatement.setString(9, order.getOrderAddress1());
 			callableStatement.setString(10, order.getOrderAddress2());
+			callableStatement.setString(11, order.getOrderId());
+			affectedRow = callableStatement.executeUpdate();
+		} catch (SQLException e) {
+			DbLogging.LOG.error("Error Database exception", e);
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+				if (callableStatement != null) {
+					callableStatement.close();
+				}
+			} catch (Exception e) {
+				DbLogging.LOG.error("Error Database exception", e);
+			}
+		}
+		return affectedRow;
+	}
+
+	@Override
+	public int addOrderDetail(OrderDetail orderDetail) {
+		int affectedRow = 0;
+		try {
+			connection = DatabaseConnect.getInstance().getConnection();
+			callableStatement = connection.prepareCall(DbQuery.INSERT_NEW_ORDER_DETAIL);
+			callableStatement.setString(1, orderDetail.getOrder().getOrderId());
+			callableStatement.setString(2, orderDetail.getProduct().getId());
+			callableStatement.setInt(3, orderDetail.getTotalQuantity());
+			callableStatement.setDouble(4, orderDetail.getTotalAmount());
+			
 			affectedRow = callableStatement.executeUpdate();
 		} catch (SQLException e) {
 			DbLogging.LOG.error("Error Database exception", e);

@@ -15,7 +15,8 @@ public class DbQuery {
 	public static final String INSERT_NEW_COUNTRY = "INSERT INTO [Country]([CountryName]) VALUES (?)";
 	public static final String INSERT_NEW_PRODUCT = "INSERT INTO [Product]([ProductId], [ProductName], [ProductPrice], [Description], [Image], [Quantity], [Condition], [DateOfManufacture], [Spec], [Properties], [ManufactureId]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	public static final String INSERT_NEW_USER_QUERY = "INSERT INTO [Users] (UserName, Password, Email, FirstName, LastName, Role, CreateDate) VALUES (?,?,?,?,?,?,?)";
-	public static final String INSERT_NEW_ORDER_QUERY = "INSERT INTO [Orders] (UserId, CardNumber, CountryId, OrderDate, Phone, PostalCode, StateId, City, OrderAddress1, OrderAddress2) VALUES(?,?,?,?,?,?,?,?,?,?)";
+	public static final String INSERT_NEW_ORDER_QUERY = "INSERT INTO [Orders] (UserId, CardNumber, CountryId, OrderDate, Phone, PostalCode, StateId, City, OrderAddress1, OrderAddress2, OrderId) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+	public static final String INSERT_NEW_ORDER_DETAIL = "INSERT INTO [OrderDetail] ([OrderId], [ProductId], [OrderQuantity], [TotalAmount]) VALUES (?,?,?,?)";
 	
 	//Select All Query
 	public static final String SELECT_ALL_MANUFACTURE_QUERY = "SELECT * FROM [Manufacture]";

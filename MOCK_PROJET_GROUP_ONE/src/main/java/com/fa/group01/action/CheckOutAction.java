@@ -6,6 +6,7 @@ package com.fa.group01.action;
 import java.sql.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -15,6 +16,7 @@ import com.fa.group01.dao.orderdao.impl.OrderDAOImpl;
 import com.fa.group01.dao.statedao.impl.StateDAOImpl;
 import com.fa.group01.entity.Country;
 import com.fa.group01.entity.Order;
+import com.fa.group01.entity.OrderDetail;
 import com.fa.group01.entity.Product;
 import com.fa.group01.entity.State;
 import com.fa.group01.entity.User;
@@ -93,13 +95,29 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 		state = stateService.findById(state);
 		country = countryService.findByID(country);
 		user = (User) ActionContext.getContext().getSession().get("authenticatedUser");
-		order = orderService.setOrder(order, state, country, user);
+		String randomCode = UUID.randomUUID().toString();
+		order = orderService.setOrder(order, state, country, user, randomCode);
 		int affectedRow = orderService.addOrder(order);
 		
+		int totalQuantity = 0;
+		double totalAmout = 0;
+		for (Product product : cart.keySet()) {
+			double amout = cart.get(product) * product.getPrice();
+			totalQuantity += cart.get(product);
+			totalAmout += amout;
+			
+			OrderDetail orderDetail = new OrderDetail();
+			orderDetail.setOrder(order);
+			orderDetail.setProduct(product);
+			orderDetail.setTotalQuantity(totalQuantity);
+			orderDetail.setTotalAmount(totalAmout);
+			orderService.addOrderDetail(orderDetail);
+		}
 		
 		
 		if (affectedRow > 0) {
 			DbLogging.LOG.info("Check Out Success");
+			cartSession.remove("cart");
 			return PageConstant.SUCCESS;
 		} else {
 			DbLogging.LOG.error("Check Out Error");
@@ -107,6 +125,11 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 		}
 	}
 
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.cartSession = session;
+	}
+	
 	public Order getOrder() {
 		return order;
 	}
@@ -153,11 +176,6 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 
 	public void setCountries(List<Country> countries) {
 		this.countries = countries;
-	}
-
-	@Override
-	public void setSession(Map<String, Object> session) {
-		this.cartSession = session;
 	}
 
 	public int getTotalQuantity() {

@@ -8,6 +8,7 @@ import java.util.Calendar;
 import com.fa.group01.dao.orderdao.OrderDAO;
 import com.fa.group01.entity.Country;
 import com.fa.group01.entity.Order;
+import com.fa.group01.entity.OrderDetail;
 import com.fa.group01.entity.State;
 import com.fa.group01.entity.User;
 import com.fa.group01.service.orderservice.OrderService;
@@ -29,14 +30,21 @@ public class OrderServiceImpl implements OrderService {
 	public int addOrder(Order order){
 		return orderDao.addOrder(order);
 	}
+	
 	@Override
-	public Order setOrder(Order order, State state, Country country, User user) {
+	public Order setOrder(Order order, State state, Country country, User user, String randomCode) {
 		java.sql.Date createDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 		order.setState(state);
 		order.setCountry(country);
 		order.setOrderDate(createDate);
 		order.setUser(user);
+		order.setOrderId(randomCode);
 		return order;
+	}
+
+	@Override
+	public int addOrderDetail(OrderDetail orderDetail) {
+		return orderDao.addOrderDetail(orderDetail);
 	}
 	
 }

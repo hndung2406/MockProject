@@ -113,7 +113,7 @@ GO
 
 
 CREATE TABLE [Orders](
-    [OrderId] INT IDENTITY PRIMARY KEY,
+    [OrderId] VARCHAR(40) PRIMARY KEY,
     [UserId] INT NULL,
     [CardNumber] BIGINT,
     [CountryId] INT,
@@ -139,7 +139,7 @@ GO
 
 CREATE TABLE [OrderDetail](
     [OrderDetailId] INT IDENTITY PRIMARY KEY,
-    [OrderId] INT,
+    [OrderId] VARCHAR(40),
     [ProductId] VARCHAR(6),
     [OrderQuantity] INT,
     [TotalAmount] FLOAT,
