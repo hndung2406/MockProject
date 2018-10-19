@@ -1318,3 +1318,4 @@ com.microsoft.sqlserver.jdbc.SQLServerException: Could not find stored procedure
 	at java.lang.Thread.run(Thread.java:745)
 2018-10-19 10:36:27 INFO  DbLogging:119 - Check Out Success
 2018-10-19 10:37:22 INFO  DbLogging:119 - Check Out Success
+2018-10-19 10:44:06 INFO  DbLogging:119 - Check Out Success

@@ -59,7 +59,7 @@ public class CartAction extends ActionSupport implements Preparable, SessionAwar
 
 	public String showCartSession() {
 		totalQuantity = 0;
-		if(!cart.isEmpty() && cart != null) {
+		if(cart != null) {
 			for(int val: cart.values()) {
 				totalQuantity += val;
 			}
