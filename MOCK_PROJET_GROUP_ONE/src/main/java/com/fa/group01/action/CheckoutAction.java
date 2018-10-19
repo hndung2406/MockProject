@@ -117,7 +117,7 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 		
 		if (affectedRow > 0) {
 			DbLogging.LOG.info("Check Out Success");
-			cartSession.remove("cart");
+			cart.clear();
 			return PageConstant.SUCCESS;
 		} else {
 			DbLogging.LOG.error("Check Out Error");

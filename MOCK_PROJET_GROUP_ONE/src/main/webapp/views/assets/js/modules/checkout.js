@@ -53,7 +53,7 @@ $(document).ready(function(){
 	});
 	
 	$("#card").keyup(function(){
-		if($("#card").val().length > 16) {
+		if($("#card").val().length != 16) {
 			$("#card-error").text("*Your card number should have 16 digits only").show();
 		} else {
 			$("#card-error").text("").hide();
