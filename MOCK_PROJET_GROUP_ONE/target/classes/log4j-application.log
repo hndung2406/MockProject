@@ -1319,3 +1319,16 @@ com.microsoft.sqlserver.jdbc.SQLServerException: Could not find stored procedure
 2018-10-19 10:36:27 INFO  DbLogging:119 - Check Out Success
 2018-10-19 10:37:22 INFO  DbLogging:119 - Check Out Success
 2018-10-19 10:44:06 INFO  DbLogging:119 - Check Out Success
+2018-10-20 19:34:32 ERROR DbLogging:37 - Error login connection
+2018-10-20 19:44:05 ERROR DbLogging:37 - Error login connection
+2018-10-20 19:44:28 ERROR DbLogging:37 - Error login connection
+2018-10-20 19:45:25 ERROR DbLogging:37 - Error login connection
+2018-10-20 19:51:52 ERROR DbLogging:37 - Error login connection
+2018-10-20 19:52:30 ERROR DbLogging:37 - Error login connection
+2018-10-20 19:55:16 ERROR DbLogging:37 - Error login connection
+2018-10-20 19:58:46 ERROR DbLogging:37 - Error login connection
+2018-10-20 19:59:29 ERROR DbLogging:37 - Error login connection
+2018-10-20 19:59:43 ERROR DbLogging:37 - Error login connection
+2018-10-20 20:25:50 ERROR DbLogging:37 - Error login connection
+2018-10-20 20:26:15 ERROR DbLogging:37 - Error login connection
+2018-10-20 20:27:33 ERROR DbLogging:37 - Error login connection
