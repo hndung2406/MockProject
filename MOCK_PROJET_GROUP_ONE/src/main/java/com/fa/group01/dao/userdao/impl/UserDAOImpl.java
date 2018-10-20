@@ -56,17 +56,13 @@ public class UserDAOImpl implements UserDAO {
 				return "Update Successful";
 			}
 		} catch (SQLException e) {
-			DbLogging.LOG.error("Error Database exception", e);
+			DbLogging.LOG.error(this.getClass() + "Error Database exception", e);
 		} finally {
 			try {
-				if (connection != null) {
-					connection.close();
-				}
-				if (callabaleStatement != null) {
-					callabaleStatement.close();
-				}
-			} catch (Exception e) {
-				DbLogging.LOG.error("Error Database exception", e);
+				DatabaseConnect.getInstance().close(callabaleStatement);
+				DatabaseConnect.getInstance().close(connection);
+			} catch (SQLException e) {
+				DbLogging.LOG.error(this.getClass() + "- Error Database exception", e);
 			}
 		}
 		return "Update fail";
@@ -103,17 +99,11 @@ public class UserDAOImpl implements UserDAO {
 			DbLogging.LOG.error("Error Database exception", e);
 		} finally {
 			try {
-				if (connection != null) {
-					connection.close();
-				}
-				if (statement != null) {
-					statement.close();
-				}
-				if (resultSet != null) {
-					resultSet.close();
-				}
+				DatabaseConnect.getInstance().close(statement);
+				DatabaseConnect.getInstance().close(resultSet);
+				DatabaseConnect.getInstance().close(connection);
 			} catch (Exception e) {
-				DbLogging.LOG.error("Error Database exception", e);
+				DbLogging.LOG.error(this.getClass() + "- Error Database exception", e);
 			}
 		}
 		return users;
@@ -127,12 +117,21 @@ public class UserDAOImpl implements UserDAO {
 			prepareStatement = connection.prepareStatement(DbQuery.SELECT_USER_BY_EMAIL_AND_PASSWORD);
 			prepareStatement.setString(1, email);
 			prepareStatement.setString(2, password);
-			ResultSet resultSet = prepareStatement.executeQuery();
+			resultSet = prepareStatement.executeQuery();
 			while (resultSet.next()) {
 				isAuthenticated = true;
 			}
 		} catch (SQLException e) {
 			DbLogging.LOG.error("Erro Database exception", e);
+		} finally {
+			try {
+				DatabaseConnect.getInstance().close(prepareStatement);
+				DatabaseConnect.getInstance().close(resultSet);
+				DatabaseConnect.getInstance().close(connection);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				DbLogging.LOG.error(this.getClass() + "- Error Database exception", e);
+			}
 		}
 		return isAuthenticated;
 	}
@@ -160,16 +159,13 @@ public class UserDAOImpl implements UserDAO {
 			DbLogging.LOG.error("Error Database exception", e);
 		} finally {
 			try {
-				if (connection != null) {
-					connection.close();
-				}
-				if (callabaleStatement != null) {
-					callabaleStatement.close();
-				}
-			} catch (Exception e) {
-				DbLogging.LOG.error("Error Database exception", e);
+				DatabaseConnect.getInstance().close(callabaleStatement);
+				DatabaseConnect.getInstance().close(connection);
+			} catch (SQLException e) {
+				DbLogging.LOG.error(this.getClass() + "- Error Database exception", e);
 			}
 		}
 		return affectedRow;
 	}
+
 }

@@ -12,10 +12,10 @@ import org.junit.rules.ExpectedException;
 
 public class DateUtilsTest {
 
-	
+	private DateUtils dateUtil;
 	@Before
 	public void setUp() throws Exception {
-		
+		dateUtil = new DateUtils();
 	}
 	
 	@Rule 
@@ -28,10 +28,17 @@ public class DateUtilsTest {
 		assertNotEquals(sqlDate,null);
 	}
 
-	@Test()
+	@Test
 	public void CanConvertNotCorrectStringFormatDateToSqlDate() {
 		thrown.expect(DateTimeParseException.class);
 		DateUtils.getDateByStringFormat("2018-0219");
+		
+	}
+	
+	@Test
+	public void CanGetDate() {
+		java.util.Date date = DateUtils.getDate();
+		assertNotEquals(date, null);
 		
 	}
 }
