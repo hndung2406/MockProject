@@ -34,7 +34,6 @@ public class CountryServiceImplTest {
 	CountryDAO countryDao;
 	
 	private static Country country;
-	private static int countryId;
 	private static List<Country> countries;
 	private static List<Country> emptyCountries;
 	

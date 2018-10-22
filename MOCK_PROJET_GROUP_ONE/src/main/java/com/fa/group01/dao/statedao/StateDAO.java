@@ -32,6 +32,6 @@ public interface StateDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public State findByID(State state);
+	public State findById(State state);
 	
 }

@@ -109,7 +109,7 @@ public class StateDAOImpl implements StateDAO {
 	 * @throws SQLException
 	 */
 	@Override
-	public State findByID(State state) {
+	public State findById(State state) {
 		try {
 			connection = DatabaseConnect.getInstance().getConnection();
 			callableStatement = connection.prepareCall(DbQuery.SELECT_STATE_BY_ID);

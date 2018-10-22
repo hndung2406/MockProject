@@ -39,7 +39,7 @@ public class ManufactureServiceImplTest {
 	private static List<Manufacture> emptyManufactures;
 	
 	static {
-		manufacture = new Manufacture(1, "IL");
+		manufacture = new Manufacture(1, "Apple");
 		manufactureId = 1;
 		manufactures = Arrays.asList(manufacture);
 		emptyManufactures = null;

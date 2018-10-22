@@ -33,7 +33,7 @@ public class StateServiceImpl implements StateService {
 
 	@Override
 	public State findById(State state) {
-		return stateDao.findByID(state);
+		return stateDao.findById(state);
 	}
 
 }
