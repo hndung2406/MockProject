@@ -56,6 +56,7 @@ public class ProductDAOImpl implements ProductDAO {
 			affectedRow = preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			DbLogging.LOG.error("Error Database exception", e);
+			return 0;
 		} finally {
 			try {
 				if (preparedStatement != null) {
@@ -90,6 +91,7 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 		} catch (SQLException e) {
 			DbLogging.LOG.error("Error Database exception");
+			return null;
 		} finally {
 			try {
 				if (connection != null) {
@@ -122,6 +124,7 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 		} catch (SQLException e) {
 			DbLogging.LOG.error("Error Database Exception", e);
+			return null;
 		} finally {
 			try {
 				if (resultSet != null) {
@@ -180,6 +183,7 @@ public class ProductDAOImpl implements ProductDAO {
 			affectedRow = preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			DbLogging.LOG.error("Error Database exception", e);
+			return 0;
 		} finally {
 			try {
 				if (preparedStatement != null) {
@@ -214,6 +218,7 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 		} catch (SQLException e) {
 			DbLogging.LOG.error("Error Database exception", e);
+			return null;
 		} finally {
 			try {
 				if (callableStatement != null) {
@@ -239,6 +244,7 @@ public class ProductDAOImpl implements ProductDAO {
 			affectedRow = preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			DbLogging.LOG.error("Error Database exception", e);
+			return 0;
 		} finally {
 			try {
 				if (preparedStatement != null) {
@@ -275,6 +281,7 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 		} catch (SQLException e) {
 			DbLogging.LOG.error("Error Database exception", e);
+			return null;
 		} finally {
 			try {
 				if (callableStatement != null) {
