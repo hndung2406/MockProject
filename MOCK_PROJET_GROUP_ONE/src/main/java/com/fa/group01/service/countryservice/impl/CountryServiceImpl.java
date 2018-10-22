@@ -54,7 +54,7 @@ public class CountryServiceImpl implements CountryService {
 	 * @throws SQLException
 	 */
 	@Override
-	public Country findByID(Country country) {
+	public Country findById(Country country) {
 		return countryDao.findById(country);
 	}
 

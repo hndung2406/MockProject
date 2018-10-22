@@ -31,8 +31,10 @@ public class ProductDAOImplTest {
 
 	@Mock
 	private Connection mockConnection;
+	
 	@Mock
 	private PreparedStatement mockPreparedStatement;
+	
 	@Mock
 	private DatabaseConnect mockDatabaseConnect;
 	

@@ -93,7 +93,7 @@ public class CheckOutAction extends ActionSupport implements UserAware, Preparab
 	 */
 	public String checkOutCart() {
 		state = stateService.findById(state);
-		country = countryService.findByID(country);
+		country = countryService.findById(country);
 		user = (User) ActionContext.getContext().getSession().get("authenticatedUser");
 		String randomCode = UUID.randomUUID().toString();
 		order = orderService.setOrder(order, state, country, user, randomCode);

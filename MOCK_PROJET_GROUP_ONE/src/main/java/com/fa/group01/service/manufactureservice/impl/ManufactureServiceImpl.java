@@ -48,6 +48,13 @@ public class ManufactureServiceImpl implements ManufactureService {
 		return manufactureDao.findAll();
 	}
 
+	/**
+	 * Find Manufacture by Id;
+	 * 
+	 * @param manufacture
+	 * @return
+	 * @throws SQLException
+	 */
 	@Override
 	public Manufacture findById(int id) {
 		return manufactureDao.findById(id);

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.fa.group01.service.productservice.impl;
+package com.fa.group01.service;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -24,6 +24,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.fa.group01.dao.productdao.ProductDAO;
 import com.fa.group01.entity.Manufacture;
 import com.fa.group01.entity.Product;
+import com.fa.group01.service.productservice.impl.ProductServiceImpl;
 
 /**
  * @author nguyenthanhlinh
@@ -31,6 +32,7 @@ import com.fa.group01.entity.Product;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class ProductServiceImplTest {
+	
 	@InjectMocks
 	ProductServiceImpl productService;
 	
@@ -39,6 +41,7 @@ public class ProductServiceImplTest {
 
 	@Mock
 	File image;
+	
 	@Mock
 	File file;
 	
@@ -47,6 +50,7 @@ public class ProductServiceImplTest {
 	private static List<Product> emptyProducts;
 	private static String productId;
 	private static Manufacture manufacture;
+	
 	static {
 		productId = "P001";
 		manufacture = new Manufacture(1, "Apple");

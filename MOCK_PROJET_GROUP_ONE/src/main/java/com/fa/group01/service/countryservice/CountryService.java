@@ -32,6 +32,6 @@ public interface CountryService {
 	 * @return
 	 * @throws SQLException
 	 */
-	public Country findByID(Country country);
+	public Country findById(Country country);
 	
 }
