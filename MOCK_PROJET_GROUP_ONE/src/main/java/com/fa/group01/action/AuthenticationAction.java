@@ -8,7 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.fa.group01.dao.userdao.impl.UserDAOImpl;
 import com.fa.group01.entity.User;
 import com.fa.group01.service.userservice.UserService;
-import com.fa.group01.service.userservice.impl.UserServiceImpl;
+import com.fa.group01.service.userservice.impl.UserServiceImplTest;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,7 +28,7 @@ public class AuthenticationAction extends ActionSupport implements Preparable, S
 
 	@Override
 	public void prepare() throws Exception {
-		userService = new UserServiceImpl(new UserDAOImpl());
+		userService = new UserServiceImplTest(new UserDAOImpl());
 	}
 
 	@Override

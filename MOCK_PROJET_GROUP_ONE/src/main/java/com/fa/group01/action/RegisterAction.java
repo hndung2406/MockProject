@@ -13,7 +13,7 @@ import com.fa.group01.dao.userdao.impl.UserDAOImpl;
 import com.fa.group01.entity.User;
 import com.fa.group01.logging.DbLogging;
 import com.fa.group01.service.userservice.UserService;
-import com.fa.group01.service.userservice.impl.UserServiceImpl;
+import com.fa.group01.service.userservice.impl.UserServiceImplTest;
 import com.fa.group01.utils.DateUtils;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -37,7 +37,7 @@ public class RegisterAction extends ActionSupport implements Preparable {
 	@Override
 	public void prepare() throws Exception {
 		userDao = new UserDAOImpl();
-		userService = new UserServiceImpl(userDao);
+		userService = new UserServiceImplTest(userDao);
 	}
 	
 	/**

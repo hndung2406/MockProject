@@ -16,7 +16,7 @@ import com.fa.group01.entity.User;
 import com.fa.group01.service.productservice.ProductService;
 import com.fa.group01.service.productservice.impl.ProductServiceImpl;
 import com.fa.group01.service.userservice.UserService;
-import com.fa.group01.service.userservice.impl.UserServiceImpl;
+import com.fa.group01.service.userservice.impl.UserServiceImplTest;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -42,7 +42,7 @@ public class ReportAction extends ActionSupport implements Preparable {
 	public void prepare() throws Exception {
 		userDao = new UserDAOImpl();
 		productDao = new ProductDAOImpl();
-		userService = new UserServiceImpl(userDao);
+		userService = new UserServiceImplTest(userDao);
 		productService = new ProductServiceImpl(productDao);
 		users = new ArrayList<>();
 		products = new ArrayList<>();
