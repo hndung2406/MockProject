@@ -25,14 +25,4 @@ public class StorageUtilsTest {
 		assertNotEquals(fileExtension, "[.]com");
 	}
 	
-	@Rule 
-	public ExpectedException thrown  = ExpectedException.none();
-	
-	@Test
-	public void RemoveFileCanThrownIOException() {
-		thrown.expect(SecurityException.class);
-		StorageUtils.removeFile("demo.jpg");		
-	}
-	
-
 }
